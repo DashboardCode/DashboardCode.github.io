@@ -4,17 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <title>Bootstrap 4 Multiselect</title>
+        <title>Dashboardcode Multiselect for Bootstrap 4</title>
     </head>
     <body class="bg-light">
         <div class="container">
             <div class="py-5 text-center">
-                <h2>Bootstrap 4 Multiselect Plugin</h2>
+                <h2>Dashboardcode Multiselect for Bootstrap 4</h2>
                 <p class="lead">Use your browser's "view source" function to see internals</p>
             </div>
             <div class="">
                 <form action="/" method="post">
-                    <h5> BS Horizontal form </h5>
+                    <h5> BS Form With Label's Column</h5>
                     <br/>
                     <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="edit-text-name-id">Sample text field</label>
@@ -81,6 +81,14 @@
                         </div>
                     </div>
 
+					<div class="form-group row">
+                        <label class="col-form-label col-sm-2" for="edit-testtext2-id">Disabled text field</label>
+                        <div class="col-sm-10">
+							<input name="TestText2" class="form-control text-box single-line" id="edit-testtext2-id" type="text" value="some disable text" disabled>
+						</div>
+                    </div>
+
+					
                     <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="edit-statesD-id">Multiselect disabled</label>
                             <div class="col-sm-10">
@@ -141,16 +149,32 @@
                         </div>
 
                     <br/>
-                    <h5> BS Vertical form </h5>
+                    <h5> BS Form Row</h5>
                     <br/>
-                    <div class="form-group">
-                        <label  for="edit-testtext2-id">Sample text field</label>
-                        <input name="TestText2" class="form-control text-box single-line" id="edit-testtext2-id" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label  for="edit-states2-id">Multiselect</label>
+
+                          
+					<div class="form-row">
+						<div class="col-md-3 mb-3">
+							<label for="validationServer01">Valid text</label>
+							<input name="validationServer01" type="text" class="form-control is-valid" id="validationServer01"  value="Some" required>
+							<div class="valid-feedback">
+								Looks good!
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label for="validationServer02">Invalid text</label>
+							<input name="validationServer02" type="text" class="form-control is-invalid" id="validationServer02"  value="Some" required>
+							<div class="invalid-feedback">
+								Error!
+							</div>
+						</div>
+						
+						
+						
+						<div class="col-md-3 mb-3 form-group">
+                        <label  for="edit-statesV-id">Valid Multiselect</label>
                         <div>
-                            <select name="States2" id="edit-states2-id" class="form-control"  multiple="multiple" style="display: none;">
+                            <select name="StatesV" id="edit-statesV-id" class="form-control  is-valid"  multiple="multiple" style="display: none;">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -203,17 +227,90 @@
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                             </select>
+							<div class="valid-feedback">
+								Looks good!
+							</div>
                         </div>
                     </div>
-                    <br/>
+					
+					
+					
+					
+					<div class="col-md-3 mb-3 form-group">
+                        <label  for="edit-statesI-id">Invald Multiselect</label>
+                        <div>
+                            <select name="StatesI" id="edit-statesI-id" class="form-control  is-invalid"  multiple="multiple" style="display: none;">
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option selected value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option selected value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                            </select>
+							<div class="invalid-feedback">
+								Error!
+							</div>
+                        </div>
+                    </div>
+					
+					
+						
+					</div>
+					<br/>
                     <div class="form-group">
-                            <p>Use your browser's Network Tracing to check the output</p>
+                            <p>Use your browser's Network Tracing to check the request</p>
                             <div class="d-flex flex-row align-self">
                                 <input class="btn" type="submit" value="Save">
                                 
                             </div>
-                        </div>
+                    </div>
                 </form>
+                <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
