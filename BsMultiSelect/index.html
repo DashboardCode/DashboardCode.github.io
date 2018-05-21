@@ -163,14 +163,7 @@
 								Looks good!
 							</div>
 						</div>
-						<div class="col-md-3 mb-3">
-							<label for="validationServer02">Invalid text</label>
-							<input  type="text" class="form-control is-invalid" id="validationServer02"  value="Some" required>
-							<div class="invalid-feedback">
-								Error!
-							</div>
-						</div>
-						
+					
 						
 						
 						<div class="col-md-3 mb-3 form-group">
@@ -236,7 +229,14 @@
                     </div>
 					
 					
-					
+                    <div class="col-md-3 mb-3">
+                        <label for="validationServer02">Invalid text</label>
+                        <input  type="text" class="form-control is-invalid" id="validationServer02"  value="Some" required>
+                        <div class="invalid-feedback">
+                            Error!
+                        </div>
+                    </div>
+
 					
 					<div class="col-md-3 mb-3 form-group">
                         <label  for="edit-statesI-id">Invald Multiselect</label>
@@ -320,9 +320,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         
         <!-- IE11 support -->
-        <script src="https://cdn.polyfill.io/v2/polyfill.js?features=Node.prototype.contains,Element.prototype.matches,Element.prototype.classList,Element.prototype.closest"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.min.js"></script> -->
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <script src="https://cdn.polyfill.io/v2/polyfill.js?features=Node.prototype.contains,Element.prototype.matches,Element.prototype.classList,Element.prototype.closest,String.prototype.includes"></script>
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>-->
         
         <script>
             $("select").dashboardCodeBsMultiSelect();
