@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
-        <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css">
+        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css">
+        <!-- <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css"> -->
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -22,13 +22,22 @@
                     <br/>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2" for="bs-size-name-id">Select size</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-7">
                             <select id="bs-size-name-id" class="custom-select form-control">
                                 <option value="DF" selected>Default</option>
                                 <option value="LG">Large</option>
                                 <option value="SM">Small</option>
                             </select>
                         </div>
+
+                        <div id="toggle-id" class="btn-group btn-group-toggle col-sm-3" data-toggle="buttons">
+                                <label class="btn btn-outline-secondary active">
+                                   <input type="radio" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
+                                </label>
+                                <label class="btn btn-outline-secondary">
+                                   <input type="radio" id="optionDisable" autocomplete="off" value="OFF">Disable
+                                </label>
+                         </div>
                     </div>
                     <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="edit-text-name-id">Input field</label>
@@ -331,11 +340,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>-->
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script> 
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>
         
         <script>
-            $("select[multiple='multiple']").dashboardCodeBsMultiSelect();
+            $("select[multiple='multiple']").dashboardCodeBsMultiSelect({useCss:true});
             $("#bs-size-name-id").change( function(){
                 var size = this.value;
                 if (size=="LG"){
@@ -355,6 +364,23 @@
                     $(".btn").removeClass("btn-sm");
                     $(".btn").removeClass("btn-lg");
                 }
+                $("select[multiple='multiple']").each( function(index, element){
+                    $(element).dashboardCodeBsMultiSelect("UpdateSize");
+                });
+            });
+            $('#toggle-id').find('input[type=radio]').change(function() {
+                if (this.value == 'ON') {
+                    console.log("diss");
+                    $(".form-control").not("#bs-size-name-id").prop("readonly", false)
+                    $(".form-control").not("#bs-size-name-id").prop("disabled", false)
+                }
+                else if (this.value == 'OFF') {
+                    $(".form-control").not("#bs-size-name-id").prop("readonly", true)
+                    $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
+                }
+                $("select[multiple='multiple']").each( function(index, element){
+                    $(element).dashboardCodeBsMultiSelect("UpdateReadonly");
+                });
             });
         </script>
     </body>
