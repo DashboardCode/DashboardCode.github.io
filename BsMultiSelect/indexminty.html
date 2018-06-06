@@ -347,11 +347,15 @@
                     .form-control .badge {color:black}
                 &lt;/style&gt;</pre>
 
-                <p>Since default readonly background color was changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
+                <p>Since default readonly background color and focus colors were changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
                 <pre class="code">
                 &lt;script&gt;
                      $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
-                        selectedPanelReadonlyBackgroundColor: "#f7f7f9"
+                        selectedPanelReadonlyBackgroundColor:"#f7f7f9",
+                        selectedPanelFocusBorderColor: '#d0eae2',
+                        selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
+                        selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
+                        selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
                      });
                 &lt;/script&gt;</pre>
                 <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
@@ -361,11 +365,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>   
+         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>
         <script>
              $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
-                selectedPanelReadonlyBackgroundColor:"#f7f7f9"
+                selectedPanelReadonlyBackgroundColor:"#f7f7f9",
+                
+                selectedPanelFocusBorderColor: '#d0eae2',
+                selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
+                selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
+                selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
             });
             $("#bs-size-name-id").change( function(){
                 var size = this.value;
