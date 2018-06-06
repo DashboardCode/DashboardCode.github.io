@@ -18,6 +18,15 @@
                 <p class="lead">Just Bootstrap 4 plugin</p>
                 <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
+            
+            <p>Styles should be patched with this css because original <a href="https://bootswatch.com/darkly/">Darkly</a> theme close button is "always white" means invisible inside white badge:</p>
+                <pre class="code">
+                        &lt;style&gt; 
+                            .form-control .close, .form-control .close:active, .form-control .close:focus{
+                                color:black !important;
+                            }
+                        &lt;/style&gt;</pre>
+
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/darkly/">Darkly</a> Theme Form Text Input's styles</p>
             <div class="">
                     <form action="/" method="post">
@@ -333,16 +342,9 @@
                         </div>
                     </form>
 
-                <p>Styles should be patched with:</p>
-                <pre class="code">
-                        // pathcing <a href="https://bootswatch.com/darkly/">Darkly</a> theme "bug": close button is "always white" means invisible inside badge
-                        &lt;style&gt; 
-                            .form-control .close, .form-control .close:active, .form-control .close:focus{
-                                color:black !important;
-                            }
-                        &lt;/style&gt;</pre>
+                
 
-                <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
+                <p><a href="./index.html">Return to Standard Theme</a></p>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

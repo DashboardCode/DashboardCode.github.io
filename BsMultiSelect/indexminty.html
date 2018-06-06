@@ -8,14 +8,7 @@
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
         <!-- <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css"> -->
         <style>.form-control .badge {color:black}</style>
-        <style>.dashboardcode-bsmultiselect > ul.form-control.disabled {background-color:#f7f7f9} </style>
-        <style>
-               .dashboardcode-bsmultiselect > ul.form-control.focus {box-shadow: 0px 0px 0px 0.2rem rgba(120,194,173,0.25); border-color:#d0eae2;} 
-               .dashboardcode-bsmultiselect > ul.form-control.is-valid {border-color: rgb(86, 204, 157);} 
-               .dashboardcode-bsmultiselect > ul.form-control.is-valid.focus {box-shadow: 0px 0px 0px 0.2rem rgba(86,204,157,0.25)} 
-               .dashboardcode-bsmultiselect > ul.form-control.is-invalid {border-color:#FF7851; }
-               .dashboardcode-bsmultiselect > ul.form-control.is-invalid.focus {box-shadow: 0px 0px 0px 0.2rem rgba(255,120,81,0.25)}
-        </style>
+        
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -25,6 +18,22 @@
                 <p class="lead">Just Bootstrap 4 plugin</p>
                 <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
+                <p>Since default readonly background color and focus colors were changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
+                <pre class="code">
+                &lt;script&gt;
+                     $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
+                        selectedPanelReadonlyBackgroundColor:"#f7f7f9",
+                        selectedPanelFocusBorderColor: '#d0eae2',
+                        selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
+                        selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
+                        selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
+                     });
+                &lt;/script&gt;</pre>
+                <p>Also styles should be patched with this css since original <a href="https://bootswatch.com/minty/">Minty</a> theme change default "not colored" badge text color to white and it become invisible placed in form-control:</p>
+                <pre class="code">
+                &lt;style&gt; 
+                    .form-control .badge {color:black}
+                &lt;/style&gt;</pre>                
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/minty/">Minty</a> Theme Form Text Input's styles</p>
             <div class="">
                     <form action="/" method="post">
@@ -340,25 +349,7 @@
                         </div>
                     </form>
 
-                <p>Styles should be patched with:</p>
-                <pre class="code">
-                // pathcing <a href="https://bootswatch.com/minty/">Minty</a> theme "bug": Minty's badges on white form-control background are invisible
-                &lt;style&gt; 
-                    .form-control .badge {color:black}
-                &lt;/style&gt;</pre>
-
-                <p>Since default readonly background color and focus colors were changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
-                <pre class="code">
-                &lt;script&gt;
-                     $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
-                        selectedPanelReadonlyBackgroundColor:"#f7f7f9",
-                        selectedPanelFocusBorderColor: '#d0eae2',
-                        selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
-                        selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
-                        selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
-                     });
-                &lt;/script&gt;</pre>
-                <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
+                <p><a href="./index.html">Return to Standard Theme</a></p>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

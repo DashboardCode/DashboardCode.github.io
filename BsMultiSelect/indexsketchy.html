@@ -6,7 +6,7 @@
         
         <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.css">
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
-        <!-- <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css"> -->
+        <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css">
         
         <style>
             .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
@@ -15,15 +15,6 @@
 
             .dashboardcode-bsmultiselect > ul.dropdown-menu > li.text-primary  label{
                 color:rgb(99, 97, 97);
-            }
-        </style>
-        <style>
-            .dashboardcode-bsmultiselect > ul.form-control.focus:not(.is-valid):not(.is-invalid){
-               border-color:#333;
-               box-shadow: 0px 0px 0px 0.2rem rgba(51,51,51,0.25)
-            }
-            .dashboardcode-bsmultiselect > ul.form-control.disabled{
-                background-color: rgb(247, 247, 249);
             }
         </style>
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
@@ -35,6 +26,31 @@
                 <p class="lead">Just Bootstrap 4 plugin</p>
                 <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
+
+            <p>Since default focus border+shadow and readonly background color were changed by <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme:</p>
+            <pre class="code">
+                    &lt;script&gt;
+                         $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
+                            selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
+                            selectedPanelFocusBorderColor:"#333",
+                            selectedPanelReadonlyBackgroundColor: "#f7f7f9"
+                         });
+                    &lt;/script&gt;</pre>
+
+            <p>Also styles should be patched with css since original <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme has no highlighting on hover in dropdown-menu:</p>
+            <pre class="code">
+                    &lt;style&gt;
+                    .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
+                        background-color:rgb(240, 240, 240) !important;
+                    }
+        
+                    .dashboardcode-bsmultiselect > ul.dropdown-menu > li.text-primary  label{
+                        color:rgb(99, 97, 97);
+                    }
+                    &lt;/style&gt;</pre>
+            
+            
+
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/sketchy/">Sketchy</a> Theme Form Text Input's styles</p>
             
             <div class="">
@@ -349,30 +365,7 @@
                         </div>
                     </form>
 
-                <p>Styles should be patched with:</p>
-                <pre class="code">
-                        // pathcing original <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme "feature": no highlighting on hover in dropdown-menu
-                        &lt;style&gt;
-                        .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
-                            background-color:rgb(240, 240, 240) !important;
-                        }
-            
-                        .dashboardcode-bsmultiselect > ul.dropdown-menu > li.text-primary  label{
-                            color:rgb(99, 97, 97);
-                        }
-                        &lt;/style&gt;</pre>
-                
-                <p>Since default focus border+shadow and readonly background color were changed by <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme:</p>
-                <pre class="code">
-                        &lt;script&gt;
-                             $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
-                                selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
-                                selectedPanelFocusBorderColor:"#333",
-                                selectedPanelReadonlyBackgroundColor: "#f7f7f9"
-                             });
-                        &lt;/script&gt;</pre>
-
-                <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
+                <p><a href="./index.html">Return to Standard Theme</a></p>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
