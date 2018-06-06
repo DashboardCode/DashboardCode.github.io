@@ -347,11 +347,11 @@
                     .form-control .badge {color:black}
                 &lt;/style&gt;</pre>
 
-                <p>Since default readonly panel color was changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
+                <p>Since default readonly background color was changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
                 <pre class="code">
                 &lt;script&gt;
-                     $("select").dashboardCodeBsMultiSelect({
-                         "selectedPanelReadonlyBackgroundColor":"#f7f7f9"
+                     $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
+                        selectedPanelReadonlyBackgroundColor: "#f7f7f9"
                      });
                 &lt;/script&gt;</pre>
                 <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
@@ -361,8 +361,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>-->
-         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>       
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>   
         <script>
              $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
                 selectedPanelReadonlyBackgroundColor:"#f7f7f9"
