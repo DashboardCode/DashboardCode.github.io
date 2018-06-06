@@ -6,7 +6,7 @@
         
         <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.css">
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
-        <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css">
+        <!-- <link rel="stylesheet" href="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.css"> -->
         <style>.form-control .badge {color:black}</style>
         <style>.dashboardcode-bsmultiselect > ul.form-control.disabled {background-color:#f7f7f9} </style>
         <style>
@@ -23,7 +23,7 @@
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
-                <p class="code">$("select").dashboardCodeBsMultiSelect();</p>
+                <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/minty/">Minty</a> Theme Form Text Input's styles</p>
             <div class="">
@@ -365,8 +365,7 @@
          <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>       
         <script>
              $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
-                useCss:true,
-                "selectedPanelReadonlyBackgroundColor":"#f7f7f9"
+                selectedPanelReadonlyBackgroundColor:"#f7f7f9"
             });
             $("#bs-size-name-id").change( function(){
                 var size = this.value;
