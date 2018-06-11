@@ -384,10 +384,8 @@
             }            
 
             function dispose(){
-                $multiSelects.each(function(index, element){
-                        $(element).dashboardCodeBsMultiSelect("Dispose");
-                        $(element).show();
-                    });
+                $multiSelects.dashboardCodeBsMultiSelect("Dispose");
+                $multiSelects.show();
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON')
