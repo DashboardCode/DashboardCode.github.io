@@ -23,29 +23,34 @@
                     <br/>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2" for="bs-size-name-id">Select size</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-5">
                             <select id="bs-size-name-id" class="custom-select form-control">
                                 <option value="DF" selected>Default</option>
                                 <option value="LG">Large</option>
                                 <option value="SM">Small</option>
                             </select>
                         </div>
+                        <div class="cols-sm-5">
+                        <div id="toggle-dispose-id" class="btn-group btn-group-toggle " data-toggle="buttons">
+                                <label class="btn btn-outline-secondary active">
+                                   <input type="radio" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
+                                </label>
+                                <label class="btn btn-outline-secondary">
+                                   <input type="radio" id="optionDispose" autocomplete="off" value="OFF">Dispose
+                                </label>
+                        </div>
 
-                        <div id="toggle-id" class="btn-group btn-group-toggle col-sm-3" data-toggle="buttons">
+                        <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-outline-secondary active">
                                    <input type="radio" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
                                 </label>
                                 <label class="btn btn-outline-secondary">
                                    <input type="radio" id="optionDisable" autocomplete="off" value="OFF">Disable
                                 </label>
-                         </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="form-group row">
-                            <label class="col-form-label col-sm-2" for="edit-text-name-id">Input field</label>
-                            <div class="col-sm-10">
-                                <input class="form-control text-box single-line" id="edit-text-name-id" type="text" value="some text">
-                            </div>
-                    </div>
+                    <hr/>
                     <div class="form-group row">
                         <label class="col-form-label col-sm-2" for="edit-states1-id">BsMultiSelect</label>
                         <div class="col-sm-10">
@@ -105,14 +110,13 @@
                         </div>
                     </div>
 
-					<div class="form-group row">
-                        <label class="col-form-label col-sm-2" for="edit-testtext2-id">Disabled input</label>
-                        <div class="col-sm-10">
-							<input  class="form-control text-box single-line" id="edit-testtext2-id" type="text" value="some disabled text" disabled>
-						</div>
+                    <div class="form-group row">
+                            <label class="col-form-label col-sm-2" for="edit-text-name-id">Input field</label>
+                            <div class="col-sm-10">
+                                <input class="form-control text-box single-line" id="edit-text-name-id" type="text" value="some text">
+                            </div>
                     </div>
 
-					
                     <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="edit-statesD-id">BsMultiSelect disabled</label>
                             <div class="col-sm-10">
@@ -170,7 +174,16 @@
                                 <option value="WY">Wyoming</option>
                                 </select>
                             </div>
+
                         </div>
+
+                        <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for="edit-testtext2-id">Disabled input</label>
+                                <div class="col-sm-10">
+                                    <input  class="form-control text-box single-line" id="edit-testtext2-id" type="text" value="some disabled text" disabled>
+                                </div>
+                        </div>
+
                     </fieldset>
                     <br/>
 
@@ -325,7 +338,6 @@
                             <p>Use your browser's Network Tracing to check the request</p>
                             <div class="d-flex flex-row align-self">
                                 <input class="btn btn-primary" type="submit" value="Save">
-                                
                             </div>
                     </div>
                 </form>
@@ -351,7 +363,23 @@
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>
         
         <script>
-            $("select[multiple='multiple']").dashboardCodeBsMultiSelect();
+            var $multiSelects = $("select[multiple='multiple']");
+            function install(){
+                $multiSelects.dashboardCodeBsMultiSelect();
+            }
+            function dispose(){
+                $multiSelects.each(function(index, element){
+                        $(element).dashboardCodeBsMultiSelect("Dispose");
+                        $(element).show();
+                    });
+            }
+            $('#toggle-dispose-id').find('input[type=radio]').change(function() {
+                if (this.value == 'ON')
+                    install()
+                else if (this.value == 'OFF')
+                    dispose()                 
+            });
+            install();
             
             $("#bs-size-name-id").change( function(){
                 var size = this.value;
@@ -372,11 +400,13 @@
                     $(".btn").removeClass("btn-sm");
                     $(".btn").removeClass("btn-lg");
                 }
-                $("select[multiple='multiple']").each( function(index, element){
-                    $(element).dashboardCodeBsMultiSelect("UpdateSize");
+                $multiSelects.each( function(index, element){
+                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
+                        $(element).dashboardCodeBsMultiSelect("UpdateSize");
                 });
             });
-            $('#toggle-id').find('input[type=radio]').change(function() {
+            
+            $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
                     console.log("diss");
                     $(".form-control").not("#bs-size-name-id").prop("readonly", false)
@@ -386,8 +416,9 @@
                     $(".form-control").not("#bs-size-name-id").prop("readonly", true)
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
-                $("select[multiple='multiple']").each( function(index, element){
-                    $(element).dashboardCodeBsMultiSelect("UpdateReadonly");
+                $multiSelects.each( function(index, element){
+                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
+                        $(element).dashboardCodeBsMultiSelect("UpdateReadonly");
                 });
             });
         </script>
