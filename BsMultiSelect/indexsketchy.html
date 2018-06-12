@@ -27,13 +27,13 @@
                 <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
 
-            <p>Since default focus border+shadow and readonly background color were changed by <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme:</p>
+            <p>Since default focus border+shadow and disabled background color were changed by <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme:</p>
             <pre class="code">
                     &lt;script&gt;
                          $("select[multiple='multiple']").dashboardCodeBsMultiSelect({
                             selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
                             selectedPanelFocusBorderColor:"#333",
-                            selectedPanelReadonlyBackgroundColor: "#f7f7f9"
+                            selectedPanelDisabledBackgroundColor: "#f7f7f9"
                          });
                     &lt;/script&gt;</pre>
 
@@ -157,7 +157,7 @@
                         <div class="form-group row">
                                 <label class="col-form-label col-sm-2" for="edit-statesD-id">BsMultiSelect disabled</label>
                                 <div class="col-sm-10">
-                                    <select name="StatesD" id="edit-statesD-id" class="form-control"  multiple="multiple" readonly="readonly" disabled="disabled" style="display: none;">
+                                    <select name="StatesD" id="edit-statesD-id" class="form-control"  multiple="multiple" disabled="disabled" style="display: none;">
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -395,7 +395,7 @@
                     {
                     selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
                     selectedPanelFocusBorderColor:"#333",
-                    selectedPanelReadonlyBackgroundColor: "#f7f7f9"
+                    selectedPanelDisabledBackgroundColor: "#f7f7f9"
                     }
                 );
             }
@@ -440,16 +440,14 @@
             $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
                     console.log("diss");
-                    $(".form-control").not("#bs-size-name-id").prop("readonly", false)
                     $(".form-control").not("#bs-size-name-id").prop("disabled", false)
                 }
                 else if (this.value == 'OFF') {
-                    $(".form-control").not("#bs-size-name-id").prop("readonly", true)
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
                     if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateReadonly");
+                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
                 });
             });
         </script>

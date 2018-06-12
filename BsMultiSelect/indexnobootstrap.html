@@ -118,7 +118,7 @@
                         <div class="form-group row">
                                 <label class="col-form-label col-sm-2" for="edit-statesD-id">BsMultiSelect disabled</label>
                                 <div class="col-sm-10">
-                                    <select name="StatesD" id="edit-statesD-id" class="form-control"  multiple="multiple" readonly="readonly" disabled="disabled" style="display: none;">
+                                    <select name="StatesD" id="edit-statesD-id" class="form-control"  multiple="multiple" disabled="disabled" style="display: none;">
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>
@@ -394,16 +394,14 @@
             $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
                     console.log("diss");
-                    $(".form-control").not("#bs-size-name-id").prop("readonly", false)
                     $(".form-control").not("#bs-size-name-id").prop("disabled", false)
                 }
                 else if (this.value == 'OFF') {
-                    $(".form-control").not("#bs-size-name-id").prop("readonly", true)
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
                     if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateReadonly");
+                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
                 });
             });
         </script>
