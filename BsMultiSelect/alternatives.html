@@ -13,9 +13,9 @@
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
-                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
+                <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
             </div>
-            <p>Compare MultiSelect component's styles with Bootstrap Standard Theme Form Text Input's styles</p>
+            <p>Compare MultiSelects. Styling should be added bu</p>
             <div class="">
                 <form action="/" method="post">
                     <fieldset id="columnFieldSet">
@@ -367,10 +367,10 @@
         <script>
             var $multiSelects = $("select[multiple='multiple']");
             function install(){
-                $multiSelects.bsMultiSelect();
+                $multiSelects.dashboardCodeBsMultiSelect();
             }
             function dispose(){
-                $multiSelects.bsMultiSelect("Dispose");
+                $multiSelects.dashboardCodeBsMultiSelect("Dispose");
                 $multiSelects.show();
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
@@ -401,8 +401,8 @@
                     $(".btn").removeClass("btn-lg");
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
-                        $(element).bsMultiSelect("UpdateSize");
+                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
+                        $(element).dashboardCodeBsMultiSelect("UpdateSize");
                 });
             });
             
@@ -415,8 +415,8 @@
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
-                        $(element).bsMultiSelect("UpdateDisabled");
+                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
+                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
                 });
             });
         </script>

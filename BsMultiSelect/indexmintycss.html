@@ -23,7 +23,7 @@
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
-                <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
+                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
                 <p>Since default disabled background color and focus colors were changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
                 <pre class="code">
@@ -380,11 +380,11 @@
         <script>
             var $multiSelects = $("select[multiple='multiple']");
             function install(){
-                $multiSelects.dashboardCodeBsMultiSelect({useCss:true});
+                $multiSelects.bsMultiSelect({useCss:true});
             }
 
             function dispose(){
-                $multiSelects.dashboardCodeBsMultiSelect("Dispose");
+                $multiSelects.bsMultiSelect("Dispose");
                 $multiSelects.show();
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
@@ -415,8 +415,8 @@
                     $(".btn").removeClass("btn-lg");
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateSize");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateSize");
                 });
             });
             
@@ -429,8 +429,8 @@
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateDisabled");
                 });
             });
         </script>

@@ -16,7 +16,7 @@
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
-                <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
+                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
             
             <p>Styles should be patched with this css because original <a href="https://bootswatch.com/darkly/">Darkly</a> theme close button is "always white" means invisible inside white badge:</p>
@@ -369,11 +369,11 @@
             var $multiSelects = $("select[multiple='multiple']");
             
             function install(){
-                $multiSelects.dashboardCodeBsMultiSelect();
+                $multiSelects.bsMultiSelect();
             }
 
             function dispose(){
-                $multiSelects.dashboardCodeBsMultiSelect("Dispose");
+                $multiSelects.bsMultiSelect("Dispose");
                 $multiSelects.show();
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
@@ -404,8 +404,8 @@
                     $(".btn").removeClass("btn-lg");
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateSize");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateSize");
                 });
             });
             
@@ -418,8 +418,8 @@
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateDisabled");
                 });
             });
         </script>

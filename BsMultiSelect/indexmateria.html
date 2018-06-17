@@ -15,7 +15,7 @@
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
-                <p class="code">$("select[multiple='multiple']").dashboardCodeBsMultiSelect();</p>
+                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/materia/">Materia</a> Theme Form Text Input's styles. <b>BsMultiSelect plugin there is not adjusted to be used with this heavy customized theme, so you can eveluate amount of work need to be done (adjust disabled control color, adjust border line, adjust filter input font-size... that is all... not too much; NOTE: this theme use not convinient feature: border line/box-shadow is changed not for .form-control but for input element, that is why bsmultiselect doesn't iherit it as it could).</b></p>
             <div class="">
@@ -356,11 +356,11 @@
             var $multiSelects = $("select[multiple='multiple']");
             
             function install(){
-                $multiSelects.dashboardCodeBsMultiSelect();
+                $multiSelects.bsMultiSelect();
             }
 
             function dispose(){
-                $multiSelects.dashboardCodeBsMultiSelect("Dispose");
+                $multiSelects.bsMultiSelect("Dispose");
                 $multiSelects.show();
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
@@ -391,8 +391,8 @@
                     $(".btn").removeClass("btn-lg");
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateSize");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateSize");
                 });
             });
             
@@ -405,8 +405,8 @@
                     $(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                 }
                 $multiSelects.each( function(index, element){
-                    if ( $(element).data("dashboardCodeBsMultiSelect")  )
-                        $(element).dashboardCodeBsMultiSelect("UpdateDisabled");
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                        $(element).bsMultiSelect("UpdateDisabled");
                 });
             });
         </script>
