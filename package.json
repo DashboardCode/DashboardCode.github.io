@@ -1,0 +1,9 @@
+{
+    "name": "@dashboardcode/bsmutltiselect-docs",
+    "version": "0.0.01",
+    "private": false,
+    "dependencies": {
+        "@dashboardcode/bsmutltiselect": "^0.2.4",
+        "chosen-js": "^1.8.5"
+    }
+}
