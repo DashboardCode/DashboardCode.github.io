@@ -4,6 +4,7 @@
     "private": false,
     "dependencies": {
         "@dashboardcode/bsmutltiselect": "^0.2.4",
+        "bootstrap-select": "^1.13.1",
         "chosen-js": "^1.8.5"
     }
 }
