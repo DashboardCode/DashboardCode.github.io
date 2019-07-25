@@ -330,6 +330,61 @@
 						
                     </div>
                     </fieldset>
+                    <div>
+                            <div class="dropdown" id="myDropdown">
+                                    
+                                    <button  type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                       aria-haspopup="true"
+                                                       aria-expanded="false" id="filterBtn">Inside Dropdown</button>
+                                    <span>don't forget filter out close clicks: check the code F12</span>
+                                    <div class="dropdown-menu dropdown-menu-right px-4 py-3">
+                                        <form action="/" method="post">
+                                            <div class="form-group">
+                                                        <label for="exampleDropdownFormEmail1">Email address</label>
+                                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status">BsMultySelect</label>
+                                                <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" id="status" multiple='multiple'>
+                                                    <option value="0" selected>Asia</option>
+                                                    <option value="1" selected>Europe</option>
+                                                    <option value="2">Australia</option>
+                                                    <option value="3">America</option>
+                                                    <option value="4">Africa</option>
+                                                </select>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            
+                                            <input class="btn btn-primary" type="submit" value="Submit">
+                                        </form>
+                                    </div>
+                                    
+                            </div>
+                    </div>
+
+                    <!-- <div>
+                        <div class="dropdown">
+                                <a href="#" class="glyphicon glyphicon-filter dropdown-toggle" data-toggle="dropdown"
+                                                   aria-haspopup="true"
+                                                   aria-expanded="false" id="filterBtn">Inside Dropdown</a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-box">
+                                                    <div class="mx-4 my-3">
+                                                        <div class="form-group">
+                                                            <label for="status">BsMultySelect：</label>
+                                                            <select class="form-control custom-select" id="status" multiple='multiple'>
+                                                                <option value="0" selected>Asia</option>
+                                                                <option value="1" selected>Europe</option>
+                                                                <option value="2">Australia</option>
+                                                                <option value="3">America</option>
+                                                                <option value="4">Africa</option>
+                                                            </select>
+                                                        </div>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button class="btn btn-primary" id="filterSubmitBtn">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    </div> -->
 
 					<br/>
                     <div class="form-group">
@@ -359,7 +414,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>  -->
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
         
         <script>
@@ -416,6 +471,24 @@
                         $(element).bsMultiSelect("UpdateDisabled");
                 });
             });
+
+            $('#edit-states1-id').change(function (){
+                console.log("#edit-states1-id changed");
+            });
+
+            // dropdown support
+            $('#myDropdown').on('hide.bs.dropdown', function (event) {
+                if (event.clickEvent)
+                {
+                    e1 = $('#bsMultiSelectOnDropdown').parent().find('ul.form-control')[0];
+                    e2 =  $(event.clickEvent.target)[0];
+                    if (e1==e2 || $.contains( e1, e2))
+                        return false;
+                }
+            })
+            // $('#bsMultiSelectOnDropdown').parent().find('ul.form-control').on('click', function(event) {
+            //     event.stopPropagation(); 
+            // });
         </script>
     </body>
 </html>
