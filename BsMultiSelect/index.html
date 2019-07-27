@@ -8,6 +8,12 @@
     </head>
     <body class="bg-light">
         <div class="container">
+            <!-- <div id="test" style="width:100%; background-color:coral ">
+                 <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" id="test-id-al" type="checkbox">
+                        <label class="custom-control-label" for="test-id-al">Alabama</label>
+                </div>
+            </div> -->
             <div class="py-5 text-center">
                 <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
@@ -186,7 +192,7 @@
                     <br/>
 
                     <fieldset id="inlineFieldSet">
-                        <!-- TODO: test disabled -->
+                        
                             <legend>BS Form Row</legend>
 					<div class="form-row">
                         
@@ -333,7 +339,7 @@
                     <div>
                             <div class="dropdown" id="myDropdown">
                                     
-                                    <button  type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                    <button  type="button" class="btn  btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
                                                        aria-haspopup="true"
                                                        aria-expanded="false" id="filterBtn">Inside Dropdown</button>
                                     <span>don't forget filter out close clicks: check the code F12</span>
@@ -344,8 +350,8 @@
                                                         <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
                                             </div>
                                             <div class="form-group">
-                                                <label for="status">BsMultySelect</label>
-                                                <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" id="status" multiple='multiple'>
+                                                <label for="bsMultiSelectOnDropdown">BsMultySelect</label>
+                                                <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" name="status1" multiple='multiple'>
                                                     <option value="0" selected>Asia</option>
                                                     <option value="1" selected>Europe</option>
                                                     <option value="2">Australia</option>
@@ -361,31 +367,51 @@
                                     
                             </div>
                     </div>
+                    <div class="my-4">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                                Inside modal
+                              </button>
 
-                    <!-- <div>
-                        <div class="dropdown">
-                                <a href="#" class="glyphicon glyphicon-filter dropdown-toggle" data-toggle="dropdown"
-                                                   aria-haspopup="true"
-                                                   aria-expanded="false" id="filterBtn">Inside Dropdown</a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-box">
-                                                    <div class="mx-4 my-3">
-                                                        <div class="form-group">
-                                                            <label for="status">BsMultySelect：</label>
-                                                            <select class="form-control custom-select" id="status" multiple='multiple'>
-                                                                <option value="0" selected>Asia</option>
-                                                                <option value="1" selected>Europe</option>
-                                                                <option value="2">Australia</option>
-                                                                <option value="3">America</option>
-                                                                <option value="4">Africa</option>
-                                                            </select>
-                                                        </div>
-                                                    <div class="dropdown-divider"></div>
-                                                    <button class="btn btn-primary" id="filterSubmitBtn">Close</button>
-                                                    </div>
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <form action="/" method="post">
+                                                <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" id="test-generated-id-1" type="checkbox">
+                                                        <label class="custom-control-label" for="test-generated-id-1">Test</label>
                                                 </div>
-                                            </div>
-                    </div> -->
-
+                                                <div class="form-group">
+                                                            <label for="exampleDropdownFormEmail2">Email address</label>
+                                                            <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status2">BsMultySelect</label>
+                                                    <select  id="bsMultiSelectOnDropdown2" class="form-control custom-select" id="status2" name="status2" multiple='multiple'>
+                                                        <option value="0" selected>Asia</option>
+                                                        <option value="1" selected>Europe</option>
+                                                        <option value="2">Australia</option>
+                                                        <option value="3">America</option>
+                                                        <option value="4">Africa</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                    </div>
 					<br/>
                     <div class="form-group">
                             <p>Use your browser's Network Tracing to check the request</p>
@@ -410,12 +436,17 @@
                 <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
             </div>
         </div>
+        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>  -->
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <script src="popper.js"></script>
+        <script src="bootstrap.js"></script>
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        
         
         <script>
             var $multiSelects = $("select[multiple='multiple']");
@@ -476,19 +507,29 @@
                 console.log("#edit-states1-id changed");
             });
 
+            $('#bsMultiSelectOnDropdown2').change(function (){
+                console.log("#bsMultiSelectOnDropdown2 changed");
+            });
+
             // dropdown support
+            
             $('#myDropdown').on('hide.bs.dropdown', function (event) {
                 if (event.clickEvent)
                 {
-                    e1 = $('#bsMultiSelectOnDropdown').parent().find('ul.form-control')[0];
-                    e2 =  $(event.clickEvent.target)[0];
-                    if (e1==e2 || $.contains( e1, e2))
+                    var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
+                    if (bs.container==event.clickEvent.target || $.contains(bs.container, event.clickEvent.target))
                         return false;
                 }
             })
-            // $('#bsMultiSelectOnDropdown').parent().find('ul.form-control').on('click', function(event) {
-            //     event.stopPropagation(); 
-            // });
         </script>
+
+        <!-- <script>
+            $("#test").click(
+                function(event){
+                    console.log("test click");
+                }
+            )
+        </script> -->
+
     </body>
 </html>

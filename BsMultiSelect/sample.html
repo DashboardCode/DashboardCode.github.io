@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div>
+                    <div class="form-group">
+                            <label for="status1">BsMultySelect</label>
+                            <select  id="bsMultiSelectOnDropdown3" 
+                                    name="test-select2"  
+                                    class="form-control custom-select" id="status1" multiple='multiple'>
+                                <option value="0" selected>Asia</option>
+                                <option value="1" selected>Europe</option>
+                                <option value="2">Australia</option>
+                                <option value="3">America</option>
+                                <option value="4">Africa</option>
+                            </select>
+                        </div>
+            </div>
+            <div>
+                <form action="http://localhost/" >
+                    <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" id="test1" type="checkbox" name="Test1" >
+                            <label class="custom-control-label" for="test1">Test1</label>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </form>
+                <hr/>
+            </div>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                                Inside modal
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <form action="http://localhost/" >
+                                                <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" name="Test2"  id="test2" type="checkbox">
+                                                        <label class="custom-control-label" for="test2">Test2</label>
+                                                </div>
+                                                <br/>
+                                                <div id="test-modal-anchor">Click to open</div>
+                                                <div id="test-modal" class="bg-secondary d-none px-4 py-4">
+                                                        <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" name="Test3"  id="test3" type="checkbox">
+                                                                <label class="custom-control-label" for="test3">Test3</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" name="Test4"  id="test4" type="checkbox">
+                                                                <label class="custom-control-label" for="test4">Test4</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" name="Test5"  id="test5" type="checkbox">
+                                                                <label class="custom-control-label" for="test5">Test5</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" name="Test6"  id="test6" type="checkbox">
+                                                                <label class="custom-control-label" for="test6">Test6</label>
+                                                        </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status">BsMultySelect</label>
+                                                    <select  id="bsMultiSelectOnDropdown2" name="test-select"  class="form-control custom-select" id="status2" multiple='multiple'>
+                                                        <option value="0" selected>Asia</option>
+                                                        <option value="1" selected>Europe</option>
+                                                        <option value="2">Australia</option>
+                                                        <option value="3">America</option>
+                                                        <option value="4">Africa</option>
+                                                    </select>
+                                                </div>
+                                                <input class="btn btn-primary" type="submit" value="Save" style="float:right">
+                                            </form>
+                                            
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                    </div>
+                                  </div>
+                                </div>
+                        </div>
+        </div>
+
+        <!--
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <script src="popper.js"></script>
+        <script src="bootstrap.js"></script>
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
+        <script>
+            popup = document.getElementById("test-modal");
+            anchor = document.getElementById("test-modal-anchor");
+            
+            document.addEventListener('click', function (event) {
+                if (event.target.id === 'test-modal-anchor') {
+                    popup.classList.remove('d-none');
+                    popup.classList.add('d-block');
+                    popper = new Popper(anchor, popup, {
+                    placement: 'bottom-start',
+                    modifiers: {
+                        preventOverflow: {enabled:false},
+                        hide: {enabled:false},
+                        flip: { enabled:false}
+                        }
+                    });
+                }
+            }, false);
+            
+            
+        </script>
+        
+        <script>
+            var $multiSelects = $("select[multiple='multiple']");
+            $multiSelects.bsMultiSelect();
+
+            $('#bsMultiSelectOnDropdown2').change(function (){
+                console.log("#bsMultiSelectOnDropdown2 changed");
+            });
+
+            //var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
+            // bs.container
+        </script>
+
+        <!-- <script>
+            $("#test").click(
+                function(event){
+                    console.log("test click");
+                }
+            )
+        </script> -->
+
+    </body>
+</html>
