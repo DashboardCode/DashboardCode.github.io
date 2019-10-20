@@ -352,11 +352,11 @@
                                             <div class="form-group">
                                                 <label for="bsMultiSelectOnDropdown">BsMultySelect</label>
                                                 <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" name="status1" multiple='multiple'>
-                                                    <option value="0" selected>Asia</option>
-                                                    <option value="1" selected>Europe</option>
-                                                    <option value="2">Australia</option>
-                                                    <option value="3">America</option>
-                                                    <option value="4">Africa</option>
+                                                    <option value="C0" selected>Asia</option>
+                                                    <option value="C1" selected>Europe</option>
+                                                    <option value="C2">Australia</option>
+                                                    <option value="C3">America</option>
+                                                    <option value="C4">Africa</option>
                                                 </select>
                                             </div>
                                             <div class="dropdown-divider"></div>
@@ -396,11 +396,11 @@
                                                 <div class="form-group">
                                                     <label for="status2">BsMultySelect</label>
                                                     <select  id="bsMultiSelectOnDropdown2" class="form-control custom-select" id="status2" name="status2" multiple='multiple'>
-                                                        <option value="0" selected>Asia</option>
-                                                        <option value="1" selected>Europe</option>
-                                                        <option value="2">Australia</option>
-                                                        <option value="3">America</option>
-                                                        <option value="4">Africa</option>
+                                                        <option value="C0" selected>Asia</option>
+                                                        <option value="C1" selected>Europe</option>
+                                                        <option value="C2">Australia</option>
+                                                        <option value="C3">America</option>
+                                                        <option value="C4">Africa</option>
                                                     </select>
                                                 </div>
                                             </form>
@@ -411,6 +411,11 @@
                                   </div>
                                 </div>
                               </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="bsMultiSelectJsonInput">BsMultySelect JSON</label>
+                        <div id="bsMultiSelectJson"></div>
                     </div>
 					<br/>
                     <div class="form-group">
@@ -437,25 +442,35 @@
             </div>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>  -->
 
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
-        <script src="popper.js"></script>
-        <script src="bootstrap.js"></script>
-        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
         
         
         <script>
             var $multiSelects = $("select[multiple='multiple']");
             function install(){
                 $multiSelects.bsMultiSelect();
+                $('#bsMultiSelectJson').bsMultiSelect(
+                        {
+                            options : [
+                                        {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
+                                        {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
+                                        {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
+                                        {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
+                                        {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
+                                     ],
+                            getDisabled : () => $('#optionDisable').is(":checked")
+                        }
+                );
             }
             function dispose(){
                 $multiSelects.bsMultiSelect("Dispose");
                 $multiSelects.show();
+                $('#bsMultiSelectJson').bsMultiSelect("Dispose");
             }
             $('#toggle-dispose-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON')
