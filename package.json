@@ -3,7 +3,7 @@
     "version": "0.0.01",
     "private": false,
     "dependencies": {
-        "@dashboardcode/bsmultiselect": "^0.2.24",
+        "@dashboardcode/bsmultiselect": "^0.3.0",
         "bootstrap": "^4.3.1",
         "bootstrap-select": "^1.13.12",
         "chosen-js": "^1.8.7",
