@@ -37,19 +37,19 @@
                         <div class="cols-sm-5">
                         <div id="toggle-dispose-id" class="btn-group btn-group-toggle " data-toggle="buttons">
                                 <label class="btn btn-outline-secondary active">
-                                   <input type="radio" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
+                                   <input type="radio" name="optionsAD" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
                                 </label>
                                 <label class="btn btn-outline-secondary">
-                                   <input type="radio" id="optionDispose" autocomplete="off" value="OFF">Dispose
+                                   <input type="radio" name="optionsAD" id="optionDispose" autocomplete="off" value="OFF">Dispose
                                 </label>
                         </div>
 
                         <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-outline-secondary active">
-                                   <input type="radio" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
+                                   <input type="radio" name="optionsED" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
                                 </label>
                                 <label class="btn btn-outline-secondary">
-                                   <input type="radio" id="optionDisable" autocomplete="off" value="OFF">Disable
+                                   <input type="radio" name="optionsED" id="optionDisable" autocomplete="off" value="OFF">Disable
                                 </label>
                         </div>
                         </div>
@@ -446,9 +446,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
 
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
         
         
         <script>
@@ -464,7 +464,9 @@
                                         {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
                                         {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
                                      ],
-                            getDisabled : function(){ $('#optionDisable').is(":checked");}
+                            getDisabled : function(){ 
+                                return $('#optionDisable').prop("checked");
+                            }
                         }
                 );
             }
@@ -519,8 +521,9 @@
                     if ( $(element).data("DashboardCode.BsMultiSelect")  )
                         $(element).bsMultiSelect("UpdateDisabled");
                 });
-                if ( $('#bsMultiSelectJson').data("DashboardCode.BsMultiSelect")  )
+                if ( $('#bsMultiSelectJson').data("DashboardCode.BsMultiSelect")  ){
                     $('#bsMultiSelectJson').bsMultiSelect("UpdateDisabled");
+                }
             });
 
             $('#edit-states1-id').change(function (){
