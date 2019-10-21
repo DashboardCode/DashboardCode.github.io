@@ -445,7 +445,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        
+
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
 
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
@@ -464,7 +464,7 @@
                                         {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
                                         {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
                                      ],
-                            getDisabled : () => $('#optionDisable').is(":checked")
+                            getDisabled : function(){ $('#optionDisable').is(":checked");}
                         }
                 );
             }
