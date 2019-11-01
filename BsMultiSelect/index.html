@@ -414,7 +414,7 @@
                     </div>
                     <br/>
                     <div class="form-group">
-                        <label for="bsMultiSelectJsonInput">BsMultySelect from JS object</label>
+                        <label id="labelTmpId" for="bsMultiSelectJsonInput">BsMultySelect from JS object</label>
                         <div id="bsMultiSelectJson"></div>
                     </div>
 					<br/>
@@ -446,7 +446,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> 
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
 
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
@@ -466,6 +466,9 @@
                                      ],
                             getDisabled : function(){ 
                                 return $('#optionDisable').prop("checked");
+                            },
+                            buildConfiguration: function(element, configuration){
+                                configuration.label=$('#labelTmpId').get(0);
                             }
                         }
                 );

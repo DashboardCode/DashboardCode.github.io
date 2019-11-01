@@ -11,17 +11,22 @@
             <div>
                     <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-secondary active">
-                               <input type="radio" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
+                               <input type="radio" id="optionEnable" name="optionEnableDisable" autocomplete="off"  value="ON" checked>Enable
                             </label>
                             <label class="btn btn-outline-secondary">
-                               <input type="radio" id="optionDisable" autocomplete="off" value="OFF">Disable
+                               <input type="radio" id="optionDisable" name="optionEnableDisable"  autocomplete="off" value="OFF">Disable
                             </label>
                     </div>
             </div>
             <br/>
             <div class="form-group">
                 <label for="bsMultiSelectJsonInput">BsMultySelect JSON</label>
-                <div id="bsMultiSelectJson"></div>
+                <div class="multiSelectJson"  id="cl1"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="bsMultiSelectJsonInput">BsMultySelect JSON</label>
+                <div class="multiSelectJson" id="cl2"></div>
             </div>
         </div>
 
@@ -37,19 +42,33 @@
         <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
         
         <script>
-            $('#bsMultiSelectJson').bsMultiSelect(
+            $('.multiSelectJson').bsMultiSelect(
                         {
-                            options : [
-                                        {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
-                                        {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
-                                        {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
-                                        {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
-                                        {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
-                                     ],
-                            getDisabled : () => $('#optionDisable').is(":checked")
+                            buildConfiguration: function(e, c){
+                                c.options = [
+                                        {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true, id:"id0"},
+                                        {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false, id:"id1"},
+                                        {text:"Australia",value:"C2",hidden:false,disabled:true,selected:true, id:"id2"},
+                                        {text:"America",value:"C3",hidden:false,disabled:false,selected:false, id:"id3"},
+                                        {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false, id:"id4"}
+                                    ];
+                                c.createInputId = function(){
+                                              return 'MyId-'+e.id+'-filterInput-id';
+                                    }
+                            },
+                            
+                            // you still need push it.
+                            getDisabled : function(){ 
+                                return $('#optionDisable').prop("checked"); 
+                            }
                         }
                 );
 
+                $('#toggle-disable-id').find('input[type=radio]').change(function() {
+                    if ( $('.multiSelectJson').data("DashboardCode.BsMultiSelect")  ){
+                        $('.multiSelectJson').bsMultiSelect("UpdateDisabled");
+                    }
+                });
             
             //var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
             // bs.container
