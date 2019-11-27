@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -417,6 +417,7 @@
                         <label id="labelTmpId" for="bsMultiSelectJsonInput">BsMultySelect from JS object</label>
                         <div id="bsMultiSelectJson"></div>
                     </div>
+                    <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
 					<br/>
                     <div class="form-group">
                             <p>Use your browser's Network Tracing to check the request</p>
@@ -444,26 +445,27 @@
         
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> 
 
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
         
         <script>
             var $multiSelects = $("select[multiple='multiple']");
+            var options =  [
+                                {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
+                                {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
+                                {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
+                                {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
+                                {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
+                            ];
             function install(){
                 $multiSelects.bsMultiSelect();
                 $('#bsMultiSelectJson').bsMultiSelect(
                         {
-                            options : [
-                                        {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
-                                        {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
-                                        {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
-                                        {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
-                                        {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
-                                     ],
+                            options : options,
                             getDisabled : function(){ 
                                 return $('#optionDisable').prop("checked");
                             },
@@ -473,6 +475,19 @@
                         }
                 );
             }
+            $('#addAntarcticaButton').click(
+                function(){
+                   options.push(
+                        {text:"Antarctica",value:"C5",hidden:false,disabled:false,selected:false}
+                    );
+                    $('#bsMultiSelectJson').bsMultiSelect("UpdateData");
+                    //var bsMultiSelect = $('#bsMultiSelectJson').BsMultiSelect();
+                    //bsMultiSelect.UpdateData();
+                    $('#addAntarcticaButton').prop('disabled', true);
+                }
+            )
+            
+
             function dispose(){
                 $multiSelects.bsMultiSelect("Dispose");
                 $multiSelects.show();
