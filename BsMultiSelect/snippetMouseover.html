@@ -9,12 +9,12 @@
 
 <div style="background-color: yellow; width:100px; height:100px;">
   <div id="showMe" 
-    style="background-color: red; position: absolute; z-index: 1; display:none;">
-    <div id="item1"><div style="width:100px;">item 1</div></div>
-    <div id="item2"><div style="width:100px;">item 2</div></div>
-    <div id="item3"><div style="width:100px;">item 3</div></div>
-    <div id="item4"><div style="width:100px;">item 4</div></div>
-    <div id="item5"><div style="width:100px;">item 5</div></div>
+    style=" position: absolute; z-index: 1; display:none;">
+    <div style="background-color: red;" id="item1"><div style="width:100px;">item 1</div></div>
+    <div style="background-color: red;" id="item2"><div style="width:100px;">item 2</div></div>
+    <div style="background-color: red;" id="item3"><div style="width:100px;">item 3</div></div>
+    <div style="background-color: red;" id="item4"><div style="width:100px;">item 4</div></div>
+    <div style="background-color: red;" id="item5"><div style="width:100px;">item 5</div></div>
   </div>
 
 </div>
@@ -44,6 +44,7 @@ for(var i =1; i<=5; i++)
       //   })
       itemX.addEventListener('mouseover',
          function(){
+            itemX.style.backgroundColor="blue";
              console.log("mouseover happen "+i + " isInShow "+isInShow );   
          })
 
