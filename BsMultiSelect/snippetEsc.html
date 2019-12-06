@@ -1,0 +1,27 @@
+<html>
+<body>
+
+1 put focus to input<br/>
+2 press esc<br/>
+3 observe input event<br/>
+
+<input id="typeMe" style="width:100px;"  />
+
+<div id="logMe"></div>
+
+<script>
+var isInShow = false;
+var typeMeInput = document.getElementById("typeMe");
+var logMeDiv    = document.getElementById("logMe");
+
+typeMeInput.addEventListener('input',
+   function(){
+      logMeDiv.style.backgroundColor="red";
+      logMeDiv.innerHtml="input event";
+      console.log("input happen");  
+   }
+)
+   
+</script>
+</body>
+</html>
