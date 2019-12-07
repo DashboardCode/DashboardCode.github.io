@@ -318,6 +318,9 @@
         <script src="./../node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
         <script>
+                Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+        </script>        
+        <script>
             var $multiSelects = $("select[multiple='multiple']");
 			$multiSelects.change(function(){console.log("multiSelects change")});
 

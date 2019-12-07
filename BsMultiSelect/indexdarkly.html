@@ -364,6 +364,10 @@
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.js"></script>
         
         <script>
+                Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+        </script>        
+        
+        <script>
             var $multiSelects = $("select[multiple='multiple']");
             
             function install(){
