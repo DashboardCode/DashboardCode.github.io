@@ -21,7 +21,7 @@
             </div>
             <p>Compare MultiSelect component's styles with Bootstrap Standard Theme Form Text Input's styles</p>
             <div class="">
-                <form action="/test" method="post">
+                <form action="https://postman-echo.com/post" method="post">
                     <fieldset id="columnFieldSet">
                     <legend> BS Form With Label's Column</legend>
                     <br/>
@@ -338,100 +338,114 @@
                     </fieldset>
                    
                     <div class="form-group">
-                            <p>Use your browser's Network Tracing to check the request</p>
+                            
                             <div class="d-flex flex-row align-self">
-                                <input class="btn btn-primary" type="submit" value="Save">
-                                <input class="btn btn-secondary ml-2" type="reset" value="Reset">
-                                
+                                <input class="btn btn-primary" type="submit" value="Form Send Echo">
+                                <input class="btn btn-secondary ml-2" type="reset" value="Form Reset">
                             </div>
+ 
                     </div>
                 </form>
                 <br/><hr/><br/>
-                <div>
-                        <div>
-                                <div class="dropdown" id="myDropdown">
-                                        
-                                        <button  type="button" class="btn  btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
-                                                           aria-haspopup="true"
-                                                           aria-expanded="false" id="filterBtn">Inside Dropdown</button>
-                                        <span>don't forget filter out close clicks: check the code F12</span>
-                                        <div class="dropdown-menu dropdown-menu-right px-4 py-3">
-                                            <form action="/" method="post">
-                                                <div class="form-group">
-                                                            <label for="exampleDropdownFormEmail1">Email address</label>
-                                                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="bsMultiSelectOnDropdown">BsMultySelect</label>
-                                                    <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" name="status1" multiple='multiple'>
-                                                        <option value="C0" selected>Asia</option>
-                                                        <option value="C1" selected>Europe</option>
-                                                        <option value="C2">Australia</option>
-                                                        <option value="C3">America</option>
-                                                        <option value="C4">Africa</option>
-                                                    </select>
-                                                </div>
-                                                <div class="dropdown-divider"></div>
-                                                <input class="btn btn-primary" type="submit" value="Submit">
-                                            </form>
-                                        </div>
-                                        
-                                </div>
-                        </div>
-                        <div class="my-4">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                                    Inside modal
-                                  </button>
-    
-                                  <!-- Modal -->
-                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                                <form action="/" method="post">
-                                                    <div class="custom-control custom-checkbox">
-                                                            <input class="custom-control-input" id="test-generated-id-1" type="checkbox">
-                                                            <label class="custom-control-label" for="test-generated-id-1">Test</label>
-                                                    </div>
-                                                    <div class="form-group">
-                                                                <label for="exampleDropdownFormEmail2">Email address</label>
-                                                                <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="status2">BsMultySelect</label>
-                                                        <select  id="bsMultiSelectOnModal" class="form-control custom-select" id="status2" name="status2" multiple='multiple'>
-                                                            <option value="C0" selected>Asia</option>
-                                                            <option value="C1" selected>Europe</option>
-                                                            <option value="C2">Australia</option>
-                                                            <option value="C3">America</option>
-                                                            <option value="C4">Africa</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" disabled>Save changes</button> 
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"  aria-label="Close">Close</button>
-                                        </div>
-                                      </div>
+                <div class="my-1">
+                    <div class="dropdown" id="myDropdown">
+                            <button  type="button" class="btn  btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                                               aria-haspopup="true"
+                                               aria-expanded="false" id="filterBtn">Inside Dropdown</button>
+                            <div class="dropdown-menu dropdown-menu-right px-4 py-3">
+                                <form action="https://postman-echo.com/post" method="post">
+                                    <div class="form-group">
+                                                <label for="exampleDropdownFormEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
                                     </div>
-                                  </div>
+                                    <div class="form-group">
+                                        <label for="bsMultiSelectOnDropdown">BsMultySelect</label>
+                                        <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" name="status1" multiple='multiple'>
+                                            <option value="C0" selected>Asia</option>
+                                            <option value="C1" selected>Europe</option>
+                                            <option value="C2">Australia</option>
+                                            <option value="C3">America</option>
+                                            <option value="C4">Africa</option>
+                                        </select>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <input class="btn btn-primary" type="submit" value="Submit">
+                                </form>
+                            </div>
+                    </div>
+                    <button class="btn btn-link" style="padding-left: 0" type="button" data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+                       To support MultiSelect inside BS DropDown you will need to filter out clicks inside menu...
+                    </button>
+                    <div class="collapse" id="collapseComment">
+                        <div class="card card-body">
+<pre> 
+    $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
+        if (jqEvent.clickEvent) {
+            var target = jqEvent.clickEvent.target;
+            var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
+            if (bs.container== target || $.contains(bs.container, target))
+                return false;
+        }
+    })
+</pre>
                         </div>
-                        <br/><hr/><br/>
-                        <div class="form-group">
-                            <label id="labelTmpId" for="bsMultiSelectJsonInput">BsMultySelect from JS object</label>
-                            <div id="bsMultiSelectJson"></div>
-                        </div>
-                        <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
-                        <br/>
+                    </div>
+
                 </div>
+                
+                <div class="my-4">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                                Inside modal
+                        </button>
+    
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                      <form action="https://postman-echo.com/post" method="post">
+                                          <div class="custom-control custom-checkbox">
+                                                  <input class="custom-control-input" id="test-generated-id-1" type="checkbox">
+                                                  <label class="custom-control-label" for="test-generated-id-1">Test</label>
+                                          </div>
+                                          <div class="form-group">
+                                                      <label for="exampleDropdownFormEmail2">Email address</label>
+                                                      <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="status2">BsMultySelect</label>
+                                              <select  id="bsMultiSelectOnModal" class="form-control custom-select" id="status2" name="status2" multiple='multiple'>
+                                                  <option value="C0" selected>Asia</option>
+                                                  <option value="C1" selected>Europe</option>
+                                                  <option value="C2">Australia</option>
+                                                  <option value="C3">America</option>
+                                                  <option value="C4">Africa</option>
+                                              </select>
+                                          </div>
+                                      </form>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" disabled>Save changes</button> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                
+                <br/><hr/><br/>
+                <div class="form-group">
+                    <label id="labelTmpId" for="bsMultiSelectJsonInput">BsMultySelect from JS object</label>
+                    <div id="bsMultiSelectJson"></div>
+                </div>
+                <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
+                <br/>
                 <br/><hr/><br/>
                 <table>
                         <tr><td style="padding-right:2rem">Bootswatch <a href="https://bootswatch.com/cosmo/">Cosmo</a> theme applied:</td><td><a href="./indexcosmo.html">default initialization is ok</a></td></tr>
@@ -457,9 +471,9 @@
 
         <!--       <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
-	<script>
-	    Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
-	</script>        
+	    <script>
+	       Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+	    </script>        
 
         <script>
 
@@ -489,11 +503,12 @@
             $('#addAntarcticaButton').click(
                 function(){
                    options.push(
-                        {text:"Antarctica",value:"C5",hidden:false,disabled:false,selected:false}
+                        {text:"Antarctica", value:"C5", hidden:false, disabled:false, selected:false}
                     );
                     $('#bsMultiSelectJson').bsMultiSelect("UpdateData");
-                    //var bsMultiSelect = $('#bsMultiSelectJson').BsMultiSelect();
-                    //bsMultiSelect.UpdateData();
+                    // NOTE: or get the component and call its method
+                    // var bsMultiSelect = $('#bsMultiSelectJson').BsMultiSelect();
+                    // bsMultiSelect.UpdateData();
                     $('#addAntarcticaButton').prop('disabled', true);
                 }
             )
