@@ -580,12 +580,11 @@
 
             // dropdown support - do not close on clicks inside the BsMultiSelect
             $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
-                if (jqEvent.clickEvent)
-                {
+                if (jqEvent.clickEvent){
                     var target = jqEvent.clickEvent.target;
-                    var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
-                    if (bs.container== target|| $.contains(bs.container, target))
-                        return false;
+                    var container = $('#bsMultiSelectOnDropdown').bsMultiSelect("GetContainer");
+                    if (container== target|| $.contains(container, target))
+                         return false;
                 }
             })
 

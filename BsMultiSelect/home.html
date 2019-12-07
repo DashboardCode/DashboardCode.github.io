@@ -476,16 +476,14 @@
 	    </script>        
 
         <script>
-
-
             var $multiSelects = $("select[multiple='multiple']");
             var options =  [
-                                {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
-                                {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
-                                {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
-                                {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
-                                {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
-                            ];
+                {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
+                {text:"Europe",value:"C1",hidden:false,disabled:false,selected:false},
+                {text:"Australia",value:"C2",hidden:false,disabled:false,selected:false},
+                {text:"America",value:"C3",hidden:false,disabled:false,selected:false},
+                {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
+            ];
             function install(){
                 $multiSelects.bsMultiSelect();
                 $('#bsMultiSelectJson').bsMultiSelect(
@@ -580,12 +578,11 @@
 
             // dropdown support - do not close on clicks inside the BsMultiSelect
             $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
-                if (jqEvent.clickEvent)
-                {
-                    var target = jqEvent.clickEvent.target;
-                    var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
-                    if (bs.container== target|| $.contains(bs.container, target))
-                        return false;
+                if (jqEvent.clickEvent) {
+                     var target = jqEvent.clickEvent.target;
+                     var container = $('#bsMultiSelectOnDropdown').bsMultiSelect("GetContainer");
+                     if (container== target|| $.contains(container, target))
+                         return false;
                 }
             })
 
