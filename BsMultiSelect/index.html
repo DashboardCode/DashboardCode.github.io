@@ -382,8 +382,8 @@
     $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
         if (jqEvent.clickEvent) {
             var target = jqEvent.clickEvent.target;
-            var bs = $('#bsMultiSelectOnDropdown').BsMultiSelect();
-            if (bs.container== target || $.contains(bs.container, target))
+            var container = $('#bsMultiSelectOnDropdown').bsMultiSelect("GetContainer");
+            if (container== target || $.contains(container, target))
                 return false;
         }
     })
