@@ -4,55 +4,51 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+        <title>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
+        <div class="toast bg-light m-2" data-delay="2000" style="position: fixed;"><div class="toast-body"></div></div>
+
         <div class="container">
-            <!-- <div id="test" style="width:100%; background-color:coral ">
-                 <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" id="test-id-al" type="checkbox">
-                        <label class="custom-control-label" for="test-id-al">Alabama</label>
-                </div>
-            </div> -->
             <div class="py-5 text-center">
-                <h2>DashboardCode Multiselect Plugin for Bootstrap 4</h2>
+                <h2>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</h2>
                 <p class="lead">Just Bootstrap 4 plugin</p>
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
             <p>Compare MultiSelect component's styles with Bootstrap Standard Theme Form Text Input's styles</p>
-
             
-                    <div class="form-group row dashboardcode-control">
-                        <label class="col-form-label col-sm-2" for="bs-size-name-id">Select size</label>
-                        <div class="col-sm-5">
-                            <select id="bs-size-name-id" class="custom-select">
-                                <option value="DF" selected>Default</option>
-                                <option value="LG">Large</option>
-                                <option value="SM">Small</option>
-                            </select>
-                        </div>
-                        <div class="cols-sm-5">
-                        <div id="toggle-dispose-id" class="btn-group btn-group-toggle " data-toggle="buttons">
-                                <label class="btn btn-outline-secondary active">
-                                   <input type="radio" name="optionsAD" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
-                                </label>
-                                <label class="btn btn-outline-secondary">
-                                   <input type="radio" name="optionsAD" id="optionDispose" autocomplete="off" value="OFF">Dispose
-                                </label>
-                        </div>
+            
+            <!-- --->
+            <div class="form-group row dashboardcode-control">
+                <label class="col-form-label col-sm-2" for="bs-size-name-id">Select size</label>
+                <div class="col-sm-5">
+                    <select id="bs-size-name-id" class="custom-select">
+                        <option value="DF" selected>Default</option>
+                        <option value="LG">Large</option>
+                        <option value="SM">Small</option>
+                    </select>
+                </div>
+                <div class="cols-sm-5">
+                <div id="toggle-dispose-id" class="btn-group btn-group-toggle " data-toggle="buttons">
+                        <label class="btn btn-outline-secondary active">
+                           <input type="radio" name="optionsAD" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                           <input type="radio" name="optionsAD" id="optionDispose" autocomplete="off" value="OFF">Dispose
+                        </label>
+                </div>
 
-                        <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-outline-secondary active">
-                                   <input type="radio" name="optionsED" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
-                                </label>
-                                <label class="btn btn-outline-secondary">
-                                   <input type="radio" name="optionsED" id="optionDisable" autocomplete="off" value="OFF">Disable
-                                </label>
-                        </div>
-                        </div>
-                    </div>
-                    <hr/>
-                    <br/>
+                <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary active">
+                           <input type="radio" name="optionsED" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                           <input type="radio" name="optionsED" id="optionDisable" autocomplete="off" value="OFF">Disable
+                        </label>
+                </div>
+                </div>
+            </div>
+            <hr/><br/>
                     
             <div class="">
                 <form action="https://postman-echo.com/post" method="post">
@@ -65,7 +61,7 @@
                         <div class="col-sm-10">
                             <select name="States1" id="edit-states1-id" 
                                 data-bsmultiselect-placeholder="Placeholder... Placeholder... Placeholder... Placeholder... Placeholder..."
-                                class="form-control test"  multiple="multiple" style="display: none;">
+                                class="form-control  test"  multiple="multiple" style="display: none;">
                             <option value="AL">Alabama</option>
                             <option value="AK" disabled>Alaska</option>
                             <option value="AZ" >Arizona</option>
@@ -363,7 +359,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">:-)</span>
                                     </div>
-                                    <select name="StatesPp" id="edit-StatesPp-id" class="form-control"  multiple="multiple" style="display: none;">
+                                    <select name="StatesPp" id="edit-StatesPp-id" 
+                                    class="form-control"  multiple="multiple" style="display: none;">
                                         <option value="AL">Alabama</option>
                                         <option value="AK" >Alaska</option>
                                         <option value="AZ" disabled>Arizona</option>
@@ -509,8 +506,8 @@
                                                       <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
                                           </div>
                                           <div class="form-group">
-                                              <label for="status2">BsMultySelect</label>
-                                              <select  id="bsMultiSelectOnModal" class="form-control custom-select" id="status2" name="status2" multiple='multiple'>
+                                              <label for="bsMultiSelectOnModal">BsMultySelect</label>
+                                              <select  id="bsMultiSelectOnModal" class="form-control custom-select" name="status2" multiple='multiple'>
                                                   <option value="C0" selected>Asia</option>
                                                   <option value="C1" selected>Europe</option>
                                                   <option value="C2">Australia</option>
@@ -532,15 +529,14 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label>BsMultySelect from JS object</label>
+                            <label class="col-form-label" id="bsMultiSelectJsonLabel">From JS object</label>
                             <div id="bsMultiSelectJson" data-bsmultiselect-placeholder="Placeholder..."></div>
                         </div>
                         <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
                     </div>
                     <div class="col-6">
-                    <div class="form-group">
-
-                        <label>JS object (no flick on refresh)</label>
+                        <div class="form-group">
+                            <label class="col-form-label" id="bsMultiSelectJson2Label">From JS object (no flick)</label>
                             <div id="bsMultiSelectJson2">
                                 <ul class="form-control"></ul>
                             </div>
@@ -567,6 +563,8 @@
             </div>
         </div>
         
+
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -580,7 +578,9 @@
 	    </script>        
 
         <script>
-            var $multiSelects = $("select[multiple='multiple']");
+            //$('.toast').toast('show');
+            var $selectMultiSelects = $("select[multiple='multiple']");
+            var $multiSelects = $("select[multiple='multiple'], #bsMultiSelectJson, #bsMultiSelectJson2");
 
             var options =  [
                 {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
@@ -591,68 +591,51 @@
             ];
 
             function install(){
-                $multiSelects.bsMultiSelect();
-                $('#bsMultiSelectJson').bsMultiSelect(
+                $selectMultiSelects.bsMultiSelect(
                     {
-                        // for all elements (selected by selector)
-                        options : options,
-                        getDisabled : function(){ 
-                            return $('#optionDisable').prop("checked");
-                        },
-                        // iterating through elements (selected by selector)
-                        buildConfiguration: function(element, configuration){
-                            configuration.label=$('#labelTmpId').get(0);
-                            //configuration.selectionsElement = $();
+                        setSelected: function(o,i) { 
+                            o.selected = i;
+                            $('.toast').toast('show').find('.toast-body').text(o.text+" "+(i?"selected":"unselected"));
                         }
                     }
                 );
 
-                $('#bsMultiSelectJson2').bsMultiSelect(
+                $multiSelects.bsMultiSelect(
                     {
+                        setSelected: function(o,i) { 
+                            o.selected = i;
+                            $('.toast').toast('show').find('.toast-body').text(o.text+" "+(i?"selected":"unselected"));
+                        },
                         // for all elements (selected by selector)
-                        options : options,
+                        options : options, // yes, one source for two multiselects
                         placeholder: "Placeholder from config object",
                         getDisabled : function(){ 
                             return $('#optionDisable').prop("checked");
                         },
-                        // iterating through elements (selected by selector)
+                        // for each element
                         buildConfiguration: function(element, configuration){
-                            configuration.label=$('#labelTmpId').get(0);
-                            //configuration.selectionsElement = $();
+                            configuration.label=$('#'+element.id+'Label').get(0); // TODO: resolve the bug
                         }
                     }
                 );
             }
-
-            $('#addAntarcticaButton').click(
-                function(){
-                   options.push(
-                        {text:"Antarctica", value:"C5", hidden:false, disabled:false, selected:false}
-                    );
-                    $('#bsMultiSelectJson').bsMultiSelect("UpdateData");
-                    $('#bsMultiSelectJson2').bsMultiSelect("UpdateData");
-                    // NOTE: or get the component and call its method
-                    // var bsMultiSelect = $('#bsMultiSelectJson').BsMultiSelect();
-                    // bsMultiSelect.UpdateData();
-                    $('#addAntarcticaButton').prop('disabled', true);
-                }
-            )
+            install();
 
             function dispose(){
                 $multiSelects.bsMultiSelect("Dispose");
-                $multiSelects.show();
-                $('#bsMultiSelectJson').bsMultiSelect("Dispose");
-                $('#bsMultiSelectJson2').bsMultiSelect("Dispose");
+                $selectMultiSelects.show(); 
+                
             }
 
-            $('#toggle-dispose-id').find('input[type=radio]').change(function() {
-                if (this.value == 'ON')
-                    install()
-                else if (this.value == 'OFF')
-                    dispose()                 
-            });
-            install();
-            
+            // ------------------------------------------------------------------------
+            // TODO: define it inside BsMultiSelect
+            // there are two possible sources: 1) ul.form-control.form-control-xx and 2) .input-group.input-group-xx
+            // this is quite strange but this works for BS nice (abstraction leak, I know)
+            // I would prefer to ref to original select[multiple='multiple'].custom-select.custom-select-xx in (1)
+            // For this select[multiple='multiple'].form-control should be changed to .custom-select
+            // Also then I will need to add .form-control-xx for ul.form-control (if this is not input-group)
+            // too many abstraction leaks in any case
+            // for json enabled: should be custom function that should include .input-group.input-group-xx
             $("#bs-size-name-id").change( function(){
                 var size = this.value;
                 if (size=="LG"){
@@ -689,7 +672,7 @@
                     $(".col-form-label").removeClass( "col-form-label-lg");
                     $(".col-form-label").removeClass("col-form-label-sm"); 
                 }
-                $multiSelects.each( function(index, element){
+                $selectMultiSelects.each( function(index, element){
                     if ( $(element).data("DashboardCode.BsMultiSelect")  )
                         $(element).bsMultiSelect("UpdateSize");
                 });
@@ -699,18 +682,26 @@
                     $('#bsMultiSelectJson2').bsMultiSelect("UpdateSize");
             });
             
+            $('#toggle-dispose-id').find('input[type=radio]').change(function() {
+                if (this.value == 'ON')
+                    install()
+                else if (this.value == 'OFF')
+                    dispose()                 
+            });
+
+            // TODO .form-control -> .custom-select
+            // TODO disable other controls to do not select internals of multiselect
             $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
-                    //$(".form-control").not("#bs-size-name-id").prop("disabled", false)
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", false);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", false);
                 }
                 else if (this.value == 'OFF') {
-                    //$(".form-control").not("#bs-size-name-id").prop("disabled", true)                    
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", true);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", true);
                 }
-                $multiSelects.each( function(index, element){
+                
+                $selectMultiSelects.each( function(index, element){
                     if ( $(element).data("DashboardCode.BsMultiSelect")  )
                         $(element).bsMultiSelect("UpdateDisabled");
                 });
@@ -722,13 +713,24 @@
                 }
             });
 
+
+            
+            // -------------------------------------------------------------------
+            // TODO: do through BS popups for all
             $('#edit-states1-id').change(function (){
                 console.log("#edit-states1-id changed");
             });
-
-            $('#bsMultiSelectOnModal').change(function (){
-                console.log("#bsMultiSelectOnModal changed");
-            });
+            // -------------------------------------------------------------------
+            // TODO: do it more interesting
+            $('#addAntarcticaButton').click(
+                function(){
+                   options.push(
+                        {text:"Antarctica", value:"C5", hidden:false, disabled:false, selected:false}
+                    );
+                    $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect("UpdateData");
+                    $(this).prop('disabled', true);
+                }
+            )
 
             // dropdown support - do not close on clicks inside the BsMultiSelect
             $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
@@ -740,26 +742,6 @@
                 }
             })
 
-            // modal support - do not close on esc pressed inside the BsMultiSelect
-            // $('#exampleModal').on('hide.bs.modal', function (jqEvent) {
-            //     console.log(jqEvent)
-            //     if (jqEvent.clickEvent)
-            //     {
-            //         var target = jqEvent.clickEvent.target;
-            //         var bs = $('#bsMultiSelectOnModal').BsMultiSelect();
-            //         if (bs.container==target || $.contains(bs.container, target))
-            //             return false;
-            //     }
-            // })
         </script>
-
-        <!-- <script>
-            $("#test").click(
-                function(event){
-                    console.log("test click");
-                }
-            )
-        </script> -->
-
     </body>
 </html>
