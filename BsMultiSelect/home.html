@@ -595,7 +595,7 @@
                     {
                         setSelected: function(o,i) { 
                             o.selected = i;
-                            $('.toast').toast('show').find('.toast-body').text(o.text+" "+(i?"selected":"unselected"));
+                            $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
                         }
                     }
                 );
