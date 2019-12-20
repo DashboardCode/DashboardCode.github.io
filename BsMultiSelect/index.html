@@ -61,7 +61,7 @@
                         <div class="col-sm-10">
                             <select name="States1" id="edit-states1-id" 
                                 data-bsmultiselect-placeholder="Placeholder... Placeholder... Placeholder... Placeholder... Placeholder..."
-                                class="form-control  test"  multiple="multiple" style="display: none;">
+                                class="custom-select test"  multiple="multiple" style="display: none;">
                             <option value="AL">Alabama</option>
                             <option value="AK" disabled>Alaska</option>
                             <option value="AZ" >Arizona</option>
@@ -127,7 +127,7 @@
                     <div class="form-group row">
                             <label class="col-form-label col-sm-2" for="edit-statesD-id">BsMultiSelect disabled</label>
                             <div class="col-sm-10">
-                                    <select name="StatesD" id="edit-statesD-id" class="form-control"  multiple="multiple" disabled="disabled" style="display: none;">
+                                    <select name="StatesD" id="edit-statesD-id" class="custom-select"  multiple="multiple" disabled="disabled" style="display: none;">
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AZ" disabled>Arizona</option>
@@ -205,7 +205,7 @@
 						<div class="col-md-3 mb-3 form-group">
                             <label  for="edit-statesV-id">Valid BsMultiSelect</label>
                             <div>
-                                <select name="StatesV" id="edit-statesV-id" class="form-control is-valid"  multiple="multiple" style="display: none;">
+                                <select name="StatesV" id="edit-statesV-id" class="custom-select is-valid"  multiple="multiple" style="display: none;">
                                 <option value="AL">Alabama</option>
                                 <option value="AK" >Alaska</option>
                                 <option value="AZ" disabled>Arizona</option>
@@ -273,7 +273,7 @@
 					    <div class="col-md-3 mb-3 form-group">
                             <label  for="edit-statesI-id">Invald BsMultiSelect</label>
                             <div>
-                                <select name="StatesI" id="edit-statesI-id" class="form-control  is-invalid"  multiple="multiple" style="display: none;">
+                                <select name="StatesI" id="edit-statesI-id" class="custom-select  is-invalid"  multiple="multiple" style="display: none;">
                                 <option value="AL">Alabama</option>
                                 <option value="AK" disabled selected>Alaska</option>
                                 <option value="AZ" disabled>Arizona</option>
@@ -360,7 +360,7 @@
                                         <span class="input-group-text" id="basic-addon1">:-)</span>
                                     </div>
                                     <select name="StatesPp" id="edit-StatesPp-id" 
-                                    class="form-control"  multiple="multiple" style="display: none;">
+                                    class="custom-select"  multiple="multiple" style="display: none;">
                                         <option value="AL">Alabama</option>
                                         <option value="AK" >Alaska</option>
                                         <option value="AZ" disabled>Arizona</option>
@@ -446,7 +446,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="bsMultiSelectOnDropdown">BsMultySelect</label>
-                                        <select  id="bsMultiSelectOnDropdown" class="form-control custom-select" name="status1" multiple='multiple'>
+                                        <select  id="bsMultiSelectOnDropdown" class="custom-select" name="status1" multiple='multiple'>
                                             <option value="C0" selected>Asia</option>
                                             <option value="C1" selected>Europe</option>
                                             <option value="C2">Australia</option>
@@ -507,7 +507,7 @@
                                           </div>
                                           <div class="form-group">
                                               <label for="bsMultiSelectOnModal">BsMultySelect</label>
-                                              <select  id="bsMultiSelectOnModal" class="form-control custom-select" name="status2" multiple='multiple'>
+                                              <select  id="bsMultiSelectOnModal" class="custom-select" name="status2" multiple='multiple'>
                                                   <option value="C0" selected>Asia</option>
                                                   <option value="C1" selected>Europe</option>
                                                   <option value="C2">Australia</option>
@@ -569,9 +569,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+	<script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
 
-        <!--               <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
 	    <script>
 	       Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
@@ -600,7 +600,7 @@
                     }
                 );
 
-                $multiSelects.bsMultiSelect(
+                $(' #bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect(
                     {
                         setSelected: function(o,i) { 
                             o.selected = i;
@@ -612,9 +612,19 @@
                         getDisabled : function(){ 
                             return $('#optionDisable').prop("checked");
                         },
+                        
                         // for each element
                         buildConfiguration: function(element, configuration){
                             configuration.label=$('#'+element.id+'Label').get(0); // TODO: resolve the bug
+                            configuration.getSize = function() {
+                                var $inputGroup = $(element).closest('input-group');
+			                    if ($inputGroup.length>0)
+                                    return $inputGroup.hasClass("input-group-lg")?"input-group-lg":($inputGroup.hasClass("input-group-sm")?"input-group-sm":null);
+                                else{
+                                    var v = $("#bs-size-name-id").val();
+                                    return v=="LG"?"custom-select-lg":(v=="SM"?"custom-select-sm":null);
+                                }
+			                }    
                         }
                     }
                 );
@@ -693,10 +703,12 @@
             // TODO disable other controls to do not select internals of multiselect
             $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
+                    $(".custom-select").prop("disabled", false);
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", false);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", false);
                 }
                 else if (this.value == 'OFF') {
+                    $(".custom-select").prop("disabled", true);
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", true);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", true);
                 }
