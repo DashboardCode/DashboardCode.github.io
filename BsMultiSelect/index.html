@@ -7,23 +7,69 @@
         <title>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
+        <a href="https://github.com/you"><img width="149" height="149" 
+            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" 
+            class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"
+            style="position: relative; float:right"></a>
         <div class="toast bg-light m-2" data-delay="2000" style="position: fixed;"><div class="toast-body"></div></div>
 
         <div class="container">
             <div class="py-5 text-center">
-                <h2>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</h2>
-                <p class="lead">Just Bootstrap 4 plugin</p>
+                <h2>BsMultiselect</h2>
+                <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p>
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
-            <p>Compare MultiSelect component's styles with Bootstrap Standard Theme Form Text Input's styles</p>
             
             
+
+                <div class="form-inline dashboardcode-control">
+                <label>Compare BsMultiSelect with standard input fields.</label>    
+                <label class="my-1 mr-2  ml-3" for="bs-css-name-id">Change theme and check adaptiveness</label>
+                <select id="bs-css-name-id" class="custom-select my-1 mr-2">
+                    <option value="DF" selected>Bootstrap 4.1 default</option>
+                    <option value="CS">Cosmo (bootswatch.com)</option>
+                    <option value="SK">Sketchy (bootswatch.com)</option>
+                    <option value="MN">Minty (bootswatch.com)</option>
+                    <option value="DR">Darkly (bootswatch.com)</option>
+                    <option value="MT">Materia (bootswatch.com)</option>
+                    <option value="NO">(no css)</option>
+                </select>
+            </div>
+            
+            <div id="cosmo-alert" class="alert alert-primary" role="alert" style="display: none;">
+                    Bootswatch <a href="https://bootswatch.com/cosmo/">Cosmo</a> theme applied: no adjusting is required</a></td></tr>
+            </div>
+            
+            <div id="sketchy-alert" class="alert alert-warning" role="alert" style="display: none;">
+                    Bootswatch <a href="https://bootswatch.com/sletchy/">Sketchy</a> theme applied: additional adjusting is required
+                    <ul>
+                            <li><a href="./indexsketchy.html">1. customization through js and css theme's features patch</a></li>
+                            <li><a href="./indexsketchycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></li>
+                    </ul>
+            </div>
+
+            <div id="materia-alert" class="alert alert-warning" role="alert" style="display: none;">
+                Bootswatch <a href="https://bootswatch.com/materia/">Materia</a> theme applied: additional adjusting is required, but I do not provide it there. Just check how it look in heavy theme.
+            </div>
+
+            <div id="darkly-alert" class="alert alert-warning" role="alert" style="display: none;">
+                    Bootswatch <a href="https://bootswatch.com/darkly/">Darkly</a> theme applied: additional adjusting is required. <br\>Check it <a href="./indexdarkly.html">here...</a> 
+            </div>
+
+            <div id = "minty-alert" class="alert alert-warning" role="alert" style="display: none;">
+                    Bootswatch <a href="https://bootswatch.com/minty/">Minty</a> theme applied: 
+                    <ul>
+                        <li><a href="./indexminty.html">1. customization through js and css theme's features patch</a></li>
+                        <li><a href="./indexmintycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></li>
+                    </ul>
+            </div>
+
             <!-- --->
             <!-- <legend>Inline Form</legend> -->
             <div class="form-inline dashboardcode-control">
                 <div class="custom-control custom-switch">
                             <input type="checkbox" checked class="custom-control-input" id="toggle-dispose-id">
-                            <label class="custom-control-label" for="toggle-dispose-id">Attach</label>
+                            <label class="custom-control-label" for="toggle-dispose-id">Attach plugin</label>
                 </div>
                 <!-- <div id="toggle-dispose-id" class="btn-group btn-group-toggle my-1 mr-2" data-toggle="buttons">
                             <label class="btn btn-outline-secondary active">
@@ -33,7 +79,8 @@
                                <input type="radio" name="optionsAD" id="optionDispose" autocomplete="off" value="OFF">Dispose
                             </label>
                 </div> -->
-        
+                
+                
                 
                 <label class="my-1 mr-2  ml-3" for="bs-size-name-id">Select size</label>
                 <select id="bs-size-name-id" class="custom-select my-1 mr-2">
@@ -629,21 +676,7 @@
                     </div>
                 </div>
                 <br/>
-
-                <br/>
-                <br/><hr/><br/>
-                <table>
-                        <tr><td style="padding-right:2rem">Bootswatch <a href="https://bootswatch.com/cosmo/">Cosmo</a> theme applied:</td><td><a href="./indexcosmo.html">default initialization is ok</a></td></tr>
-                        <tr><td style="padding-right:2rem">Bootswatch <a href="https://bootswatch.com/darkly/">Darkly</a>  theme applied:</td><td><a href="./indexdarkly.html">default initialization and css theme's features patch</a></td></tr>
-                        <tr><td style="padding-right:2rem">Bootswatch <a href="https://bootswatch.com/sketchy/">Sketchy</a>  theme applied:</td><td><a href="./indexsketchy.html">1. customization through js and css theme's features patch</a></td></tr>
-                        <tr><td style="padding-right:2rem"></td><td><a href="./indexsketchycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></td></tr>
-                        <tr><td style="padding-right:2rem">Bootswatch <a href="https://bootswatch.com/minty/">Minty</a>  theme applied:</td><td><a href="./indexminty.html">1. customization through js and css theme's features patch</a></td></tr>
-                        <tr><td style="padding-right:2rem"></td><td><a href="./indexmintycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></td></tr>
-                </table>
-                <p></p> 
-                <p>How BsMultiSelect look when <a href="./indexnobootstrap.html"> bootstrap is not loaded</a></p>
-                <p>"Not happy" Bootswatch <a href="https://bootswatch.com/materia/">Materia</a> theme <a href="./indexmateria.html">: how plugin look in heavy customized theme without adjustments</a></p>
-                <p></p>
+               
                 <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
             </div>
         </div>
@@ -779,6 +812,53 @@
                     $('#bsMultiSelectJson2').bsMultiSelect("UpdateSize");
             });
             
+            function loadCss(url)
+            {
+                $('link[rel=stylesheet]').remove();
+                $('<link>')
+                        .appendTo('head')
+                        .attr({
+                            type: 'text/css', 
+                            rel: 'stylesheet',
+                            href: url
+                        });
+            }
+
+            function applyTheme(style){
+                $('.alert').hide();
+                if (style=="DF"){
+                    loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+                }
+                else if (style == "SK"){
+                    loadCss('https://bootswatch.com/4/sketchy/bootstrap.css')
+                    $('#sketchy-alert').show();
+                }
+                else if (style == "CS"){
+                    loadCss('https://bootswatch.com/4/cosmo/bootstrap.css')
+                    $('#cosmo-alert').show();
+                }
+                else if (style == "DR"){
+                    loadCss('https://bootswatch.com/4/darkly/bootstrap.css')
+                    $('#darkly-alert').show();
+                }
+                else if (style == "MN"){
+                    loadCss('https://bootswatch.com/4/minty/bootstrap.css')
+                    $('#minty-alert').show();
+                }else if (style == "MT"){
+                    loadCss('https://bootswatch.com/4/materia/bootstrap.css')
+                    $('#materia-alert').show();
+                }
+                else {
+                    $('link[rel=stylesheet]').remove();
+                }
+            }
+            $("#bs-css-name-id").change( function(){
+                applyTheme(this.value);
+            });
+
+            window.setTimeout(function(){applyTheme($("#bs-css-name-id").get(0).value)})
+            
+
             $('#toggle-dispose-id').change(function() {
                 if (this.checked)
                     install()
