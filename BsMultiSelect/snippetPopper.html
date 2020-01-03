@@ -1,0 +1,42 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<p>After you remove <span style="background-color: yellow">filler</span> in Chrome: menu is remain on its place, when on IE11 shift right. Inconsistency.</p>
+<div id="toolbar"><button id='button'>click me - remove filler</button></div>
+<br/>
+
+<div id="panel">
+
+<div><span id="filler" style="background-color: yellow" >fillllllllllllllllllllllllllller</span><input id="filterInput" placeholder="menu anchor" type="search"></div>
+
+<ul id="dropDownMenu" class="dropdown-menu show" >
+  <li class="dropdown-item">Item 1 aaaaaaaaaaaa</li>
+  <li class="dropdown-item">Item 2 aaaaaaaaaaaa</li>
+  <li class="dropdown-item">Item 3 aaaaaaaaaaaa</li>
+</ul>
+</div>
+
+
+</body>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Array.prototype.includes,Array.from,Object.entries,Promise,Object.assign"></script>
+        <script src="https://unpkg.com/@popperjs/core@2.0.0-alpha.3/dist/umd/popper.min.js"></script>
+
+<script>
+var filterInput = document.getElementById("filterInput"); 
+var dropDownMenu = document.getElementById("dropDownMenu"); 
+
+var x = Popper.createPopper(filterInput, dropDownMenu);
+
+var button = document.getElementById("button"); 
+var filler = document.getElementById("filler"); 
+
+button.onclick = function(){
+  filler.style.display = "none";
+  filterInput.focus();
+}
+
+
+</script>
+</html>

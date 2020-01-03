@@ -192,7 +192,7 @@
                         <label class="col-form-label col-sm-2" for="edit-states1-id">BsMultiSelect</label>
                         <div class="col-sm-10">
                             <select name="States1" id="edit-states1-id" 
-                                data-bsmultiselect-placeholder="Placeholder... Placeholder... Placeholder... Placeholder... Placeholder..."
+                                data-placeholder="Placeholder... Placeholder... Placeholder... Placeholder... Placeholder..."
                                 class="custom-select test"  multiple="multiple" style="display: none;">
                             <option value="AL">Alabama</option>
                             <option value="AK" disabled>Alaska</option>
@@ -662,7 +662,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label class="col-form-label" id="bsMultiSelectJsonLabel">From JS object</label>
-                            <div id="bsMultiSelectJson" data-bsmultiselect-placeholder="Placeholder..."></div>
+                            <div id="bsMultiSelectJson" data-placeholder="Placeholder..."></div>
                         </div>
                         <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
                     </div>
@@ -687,7 +687,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-        <!--       <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>-->
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
 
         <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
         
@@ -696,7 +696,8 @@
 	    </script>        
 
         <script>
-      
+            //$.fn.bsMultiSelect.defaults.bs4StylingDefaults.dropDownItemHoverClass= "text-primary bg-dark"
+            //console.log($.fn.bsMultiSelect.defaults);
 
             //$('.toast').toast('show');
             var $selectMultiSelects = $("select[multiple='multiple']");

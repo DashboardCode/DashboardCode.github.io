@@ -692,13 +692,12 @@
         <!--       <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
 	    <script>
-	       Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+           Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+           
+           
 	    </script>        
 
         <script>
-      
-
-            //$('.toast').toast('show');
             var $selectMultiSelects = $("select[multiple='multiple']");
             var $multiSelects = $("select[multiple='multiple'], #bsMultiSelectJson, #bsMultiSelectJson2");
 
