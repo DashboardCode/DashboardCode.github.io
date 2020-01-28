@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css">
         <title>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
         <a href="https://github.com/DashboardCode/BsMultiSelect"><img width="149" height="149" 
-            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" 
-             alt="Fork me on GitHub" data-recalc-dims="1"
+           src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" 
+            alt="Fork me on GitHub" data-recalc-dims="1"
             style="position: relative; float:right"></a>
         <div class="toast bg-light m-2" data-delay="2000" style="position: fixed;"><div class="toast-body"></div></div>
 
@@ -20,13 +21,12 @@
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
             
-            
-
-                <div class="form-inline dashboardcode-control">
-                <label>Compare BsMultiSelect with standard input fields.</label>    
-                <label class="my-1 mr-2  ml-3" for="bs-css-name-id">Change theme and check adaptiveness</label>
+             <div class="form-inline dashboardcode-control">
+                
+                <label class="my-1 mr-1 " for="bs-css-name-id">Select theme: </label>
                 <select id="bs-css-name-id" class="custom-select my-1 mr-2">
                     <option value="DF" selected>Bootstrap 4.1 default</option>
+                    <option value="BS">Bootstrap 4.1 default + BsMultiSelect.css default (patchCss=false)</option>
                     <option value="CS">Cosmo (bootswatch.com)</option>
                     <option value="SK">Sketchy (bootswatch.com)</option>
                     <option value="MN">Minty (bootswatch.com)</option>
@@ -35,7 +35,7 @@
                     <option value="NO">(no css)</option>
                 </select>
             </div>
-            
+            <label>Compare BsMultiSelect with standard input fields.</label>
             <div id="cosmo-alert" class="alert alert-primary" role="alert" style="display: none;">
                     Bootswatch <a href="https://bootswatch.com/cosmo/">Cosmo</a> theme applied: no adjusting is required</a></td></tr>
             </div>
@@ -64,7 +64,6 @@
                     </ul>
             </div>
 
-            <!-- --->
             <!-- <legend>Inline Form</legend> -->
             <div class="form-inline dashboardcode-control">
                 <div class="custom-control custom-switch">
@@ -82,23 +81,22 @@
                 
                 
                 
-                <label class="my-1 mr-2  ml-3" for="bs-size-name-id">Select size</label>
-                <select id="bs-size-name-id" class="custom-select my-1 mr-2">
+                <label class="my-1  ml-3 mr-1" for="bs-size-name-id">Select size</label>
+                <select id="bs-size-name-id" class="custom-select my-1">
                     <option value="DF" selected>Default</option>
                     <option value="LG">Large</option>
                     <option value="SM">Small</option>
                 </select>
                 
-                <!-- <label class="my-1 mr-2" for="bs-isvalid-id">Validated</label>
-                <select id="bs-isvalid-id" class="custom-select my-1 mr-2">
+		        <label class="my-1 ml-2 mr-1" for="bs-validation-id">Validation</label>
+                <select id="bs-validation-id" class="custom-select my-1 mr-2">
                     <option value="DF" selected>Default</option>
-                    <option value="OK">Is Valin</option>
-                    <option value="BD">Is Invalid</option>
-                </select> -->
+                    <option value="VL">Valid</option>
+                    <option value="INVL">Invalid</option>
+                </select>
 
 
-
-                <div id="toggle-disable-id" class="btn-group btn-group-toggle my-1 mr-2" data-toggle="buttons">
+                <div id="toggle-disable-id" class="btn-group btn-group-toggle my-1 ml-2" data-toggle="buttons">
                         <label class="btn btn-outline-secondary active">
                            <input type="radio" name="optionsED" id="optionEnable" autocomplete="off"  value="ON" checked>Enable
                         </label>
@@ -326,8 +324,8 @@
                     <br/>
                     <fieldset id="inlineFieldSet" >
                     <legend>Form Row</legend>
-					<div class="form-row">
-                        
+                    
+                    <div class="form-row">
 						<div class="col-md-3 mb-3">
 							<label for="validationServer01">Valid input</label>
 							<input  type="text" class="form-control is-valid" id="validationServer01"  value="Some valid text" required>
@@ -468,8 +466,10 @@
                     </fieldset>
                     <br/>
                     <fieldset id="ppPendFieldSet">
-                    <legend>Input group / Prepend / Append</legend>
+
+                        <legend>Input group / Prepend / Append</legend>
                     <div class="form-row">
+
                         <div class="col-md-6 mb-6">
                             <label for="ppInput">Input</label>
                             
@@ -680,8 +680,6 @@
                 <p><a href="https://github.com/DashboardCode/BsMultiSelect">Return to Github</a></p>
             </div>
         </div>
-        
-
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -696,10 +694,8 @@
 	    </script>        
 
         <script>
-            //$.fn.bsMultiSelect.defaults.bs4StylingDefaults.dropDownItemHoverClass= "text-primary bg-dark"
-            //console.log($.fn.bsMultiSelect.defaults);
+            var bsMultiSelectLink = 'D:\\cot\\DashboardCode\\BsMultiSelect\\dist\\css\\BsMultiSelect.css';
 
-            //$('.toast').toast('show');
             var $selectMultiSelects = $("select[multiple='multiple']");
             var $multiSelects = $("select[multiple='multiple'], #bsMultiSelectJson, #bsMultiSelectJson2");
 
@@ -745,7 +741,7 @@
                                     var v = $("#bs-size-name-id").val();
                                     return v=="LG"?"custom-select-lg":(v=="SM"?"custom-select-sm":null);
                                 }
-			                }    
+			    }    
                         }
                     }
                 );
@@ -813,22 +809,44 @@
                     $('#bsMultiSelectJson2').bsMultiSelect("UpdateSize");
             });
             
-            function loadCss(url)
+
+            function loadCss(url1, url2)
             {
+                console.log("loadCss");
                 $('link[rel=stylesheet]').remove();
-                $('<link>')
+                window.setTimeout(function(){
+                    $('<link>')
                         .appendTo('head')
                         .attr({
                             type: 'text/css', 
                             rel: 'stylesheet',
-                            href: url
+                            href: url1
                         });
+                if (url2)
+                      $('<link>')
+                        .appendTo('head')
+                        .attr({
+                            type: 'text/css', 
+                            rel: 'stylesheet',
+                            href: url2
+                        }); 
+                        dispose();
+
+                window.setTimeout(function(){
+                    $.fn.bsMultiSelect.defaults.useCssPatch = url2?false:true; // todo add guard againts true/false
+                    install();
+                    })
+                })
             }
 
             function applyTheme(style){
                 $('.alert').hide();
                 if (style=="DF"){
                     loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+                }
+		        if (style=="BS"){
+                    loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', bsMultiSelectLink)
+                    
                 }
                 else if (style == "SK"){
                     loadCss('https://bootswatch.com/4/sketchy/bootstrap.css')
@@ -857,7 +875,10 @@
                 applyTheme(this.value);
             });
 
-            window.setTimeout(function(){applyTheme($("#bs-css-name-id").get(0).value)})
+            window.setTimeout(function(){
+                if ($("#bs-css-name-id").get(0).value!='DF')
+                    applyTheme($("#bs-css-name-id").get(0).value)
+            })
             
 
             $('#toggle-dispose-id').change(function() {
@@ -892,15 +913,9 @@
                     $('#bsMultiSelectJson2').bsMultiSelect("UpdateDisabled");
                 }
             });
-
-            
-
-
-            
             // -------------------------------------------------------------------
-            // TODO: do through BS popups for all
             $('#edit-states1-id').change(function (){
-                console.log("#edit-states1-id changed");
+                console.log("Tracing change event on SELECT: #edit-states1-id changed");
             });
             // -------------------------------------------------------------------
             // TODO: do it more interesting
@@ -909,7 +924,7 @@
                    options.push(
                         {text:"Antarctica", value:"C5", hidden:false, disabled:false, selected:false}
                     );
-                    $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect("UpdateData");
+                    $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect("Update");
                     $(this).prop('disabled', true);
                 }
             )

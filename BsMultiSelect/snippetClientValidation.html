@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <style>
+            .was-validated .custom-control-input:valid[formnovalidate]:checked ~ .custom-control-label::before {
+                border-color: var(--primary);
+                background-color: var(--primary);
+            }
+            .was-validated .custom-control-input:valid[formnovalidate]:not(:checked) ~ .custom-control-label::before {
+                border-color: #adb5bd 
+            }
+        </style>
+
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+                <h2>BsMultiselect</h2>
+                <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p>
+                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
+            </div>
+            <br/>
+            <p>There all fields have <code>required</code> attribte so you can analize how BS <code>.was-validated</code> highlights <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">HTML5</a> <code>valid</code> and <code>invalid</code> status of them</p>
+            <div class="form-inline">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="toggle-wasvalidated-id">
+                <label class="custom-control-label" for="toggle-wasvalidated-id">Set <code class="mx-2"> .was-validated</code> to form</label>
+            </div>
+            </div>
+            <br/>
+            <form action="https://postman-echo.com/post" method="post">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
+                <div class="col-sm-10">
+                    <select name="States1" id="languages-id" class="form-control"  multiple="multiple" required>
+                        <option value="AR">Arabic</option>
+                        <option value="EN">English</option>
+                        <option value="CH">Chinese</option>
+                        <option value="FR">French</option>
+                        <option value="DE" >German</option>
+                        <option value="ID">Indonesian</option>
+                        <option value="MS">Malay</option>
+                        <option value="LT" hidden>Lithuanian</option>
+                        <option value="PT">Portuguese</option>
+                        <option value="RU">Russian</option>
+                        <option value="ES">Spanish</option>
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-id">Input sample:</label>
+                <div class="col-sm-10"> 
+                    <input  type="text" class="form-control" id="sample-id" value="" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-complex-id">Input sample:</label>
+                <div class="col-sm-10"> 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">set</span>
+                        </div>
+                        <input type="text" class="form-control" id="sample-complex-id" aria-label="Amount (to the nearest dollar)" required>
+                        <div class="input-group-append">
+                          <span class="input-group-text">...</span>
+                        </div>
+                    </div>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-complex-id">Append sample:</label>
+            
+                <div class="col-sm-10">
+                <div class="input-group dashboardcode-bsmultiselect">
+                    <ul class="form-control"></ul>
+                    <select name="ComplexLanguages" id="complex-languages-id" 
+                        class="custom-select"  multiple="multiple" style="display: none;" required>
+                            <option value="AR">Arabic</option>
+                            <option value="EN">English</option>
+                            <option value="CH">Chinese</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="ID">Indonesian</option>                            
+                            <option value="MS">Malay</option>
+                            <option value="LT" hidden>Lithuanian</option>                            
+                            <option value="PT">Portuguese</option>
+                            <option value="RU">Russian</option>
+                            <option value="ES">Spanish</option>
+                    </select>
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('DeselectAll')">Clear</a>
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('SelectAll')">Select All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
+            </form>
+            
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
+        
+
+        <script>
+            // $('#languages-id').get(0).setCustomValidity("AAAA");
+            // $('#languages-id').get(0).style.display = "none";
+            //console.log($('#languages-id').get(0).validity.valueMissing);
+            //console.log($('#languages-id').get(0).validationMessage);
+
+            $('#languages-id, #complex-languages-id').bsMultiSelect();
+
+            function setValidity(ms){
+                var $container = $(ms.GetContainer());
+                if($container.closest('.was-validated').length!=0){
+                    if (ms.PicksCount()===0){
+                        $container.siblings('.valid-feedback , .valid-tooltip').hide();
+                        $container.siblings('.invalid-feedback , .invalid-tooltip').show();
+
+                    }
+                    else{
+                        $container.siblings('.valid-feedback , .valid-tooltip').show();
+                        $container.siblings('.invalid-feedback , .invalid-tooltip').hide();
+                    }
+                }
+            }
+
+            $('#toggle-wasvalidated-id').change(function() {
+                $('form').toggleClass('was-validated')
+                $('#languages-id, #complex-languages-id').bsMultiSelect('UpdateWasValidated');
+                
+                if (this.checked) {
+                    $('#languages-id, #complex-languages-id').each(function(i, e){
+                        var ms = $(e).BsMultiSelect();
+                        setValidity(ms);
+                    })
+
+                    //$('#languages-id, #complex-languages-id').on('dashboardcode.xx', function(o){
+                    //    setValidity(o.selectElement);
+                    //})
+                } else {
+                    //$('#languages-id, #complex-languages-id').unbind('dashboardcode.xx', function(o){
+                    //    setValidity(o.selectElement);
+                    //})
+                    $('#languages-id, #complex-languages-id').each(function(i, e){
+                        var ms = $(e).BsMultiSelect();
+                        var $container = $(ms.GetContainer());
+                        $container.siblings('.valid-feedback , .valid-tooltip').hide();
+                        $container.siblings('.invalid-feedback , .invalid-tooltip').hide();
+                        $container.siblings('.valid-feedback , .valid-tooltip').hide();
+                        $container.siblings('.invalid-feedback , .invalid-tooltip').hide();
+                    })
+                }
+            });
+        </script>
+    </body>
+</html>

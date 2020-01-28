@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+                <h2>BsMultiselect</h2>
+                <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p>
+                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
+            </div>
+            <br/>
+
+            <div class="form-inline">
+            <label class="my-1 mr-2" for="bs-validation-id">BS "manual" validation that uses <code class="mx-2">is-valid</code> and <code class="mx-2">is-valid</code> classes</label>
+            <select id="bs-validation-id" class="custom-select my-1 mr-2">
+                <option value="DF" selected>Default</option>
+                <option value="VL">Valid</option>
+                <option value="INVL">Invalid</option>
+            </select>
+
+            </div>
+            <br/>
+            <form action="https://postman-echo.com/post" method="post">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
+                <div class="col-sm-10">
+                    <select name="States1" id="languages-id" class="form-control"  multiple="multiple">
+                        <option value="AR">Arabic</option>
+                        <option value="EN">English</option>
+                        <option value="CH">Chinese</option>
+                        <option value="FR">French</option>
+                        <option value="DE" >German</option>
+                        <option value="ID">Indonesian</option>
+                        <option value="MS">Malay</option>
+                        <option value="LT" hidden>Lithuanian</option>
+                        <option value="PT">Portuguese</option>
+                        <option value="RU">Russian</option>
+                        <option value="ES">Spanish</option>
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-id">Input sample:</label>
+                <div class="col-sm-10"> 
+                    <input  type="text" class="form-control" id="sample-id" value="">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-complex-id">Append sample:</label>
+            
+                <div class="col-sm-10">
+                <div class="input-group dashboardcode-bsmultiselect">
+                    <ul class="form-control"></ul>
+                    <select name="ComplexLanguages" id="complex-languages-id" 
+                        class="custom-select"  multiple="multiple" style="display: none;">
+                            <option value="AR">Arabic</option>
+                            <option value="EN">English</option>
+                            <option value="CH">Chinese</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="ID">Indonesian</option>                            
+                            <option value="MS">Malay</option>
+                            <option value="LT" hidden>Lithuanian</option>                            
+                            <option value="PT">Portuguese</option>
+                            <option value="RU">Russian</option>
+                            <option value="ES">Spanish</option>
+                    </select>
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('DeselectAll')">Clear</a>
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('SelectAll')">Select All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Invalid!</div>
+                </div>
+
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="sample-complex-id">Append input:</label>
+                <div class="col-sm-10"> 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">set</span>
+                        </div>
+                        <input type="text" class="form-control" id="sample-complex-id" aria-label="Amount (to the nearest dollar)">
+                        <div class="input-group-append">
+                          <span class="input-group-text">...</span>
+                        </div>
+                    </div>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Invalid!</div>
+                </div>
+            </div>
+            </form>
+            
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
+        
+
+        <script>
+            $('#languages-id, #complex-languages-id').bsMultiSelect();
+
+            $('#bs-validation-id').change(function() {
+                if (this.value == 'DF') {
+                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-valid is-invalid')
+                    // note next solves BS problem for inputs with prepend/append
+                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip, .invalid-feedback, .invalid-tooltip').css('display','');
+                } else if (this.value == 'VL') {
+                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-invalid')
+                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').addClass('is-valid')
+                    // note next solves BS problem for inputs with prepend/append
+                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip').css('display','block');
+                    $('#sample-complex-id').closest('.input-group').siblings('.invalid-feedback, .invalid-tooltip').css('display','');
+                } else if (this.value == 'INVL') {
+                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-valid')
+                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').addClass('is-invalid')
+                    // note next solves BS problem for inputs with prepend/append
+                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip').css('display','');
+                    $('#sample-complex-id').closest('.input-group').siblings('.invalid-feedback, .invalid-tooltip').css('display','block');
+                }
+                $('#languages-id, #complex-languages-id').bsMultiSelect('UpdateValidity');
+            });
+        </script>
+    </body>
+</html>

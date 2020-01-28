@@ -9,8 +9,8 @@
     <body class="bg-light">
         <div class="container">
             <div class="mt-4">
-		 <button id="btnAttach" class="btn btn-primary">Attach</button>
-		  <button id="btnDispose" class="btn btn-warning">Dispose</button>
+		        <button id="btnAttach" class="btn btn-primary">Attach</button>
+		        <button id="btnDispose" class="btn btn-warning">Dispose</button>
                     <!-- <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-secondary active">
                                <input type="radio" id="optionEnable" name="optionEnableDisable" autocomplete="off"  value="ON" checked>Enable
@@ -22,52 +22,51 @@
             </div>
             <br/>
             <div class="form-group row">
-                        <label class="col-form-label col-sm-2" for="edit-states1-id">BsMultiSelect</label>
-                        <div class="col-sm-10">
-                            <select name="States1" id="edit-states1-id" class="form-control multiSelect"  multiple="multiple">
-                            <option value="AL" selected>Alabama</option>
-                            <option value="AK" disabled>Alaska</option>
-                            <option value="AZ" >Arizona</option>
-                            </select>
-                        </div>
-                    </div>
+                <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
+                <div class="col-sm-10">
+                    <select name="States1" id="languages-id" class="form-control"  multiple="multiple">
+                        <option value="AR" >Arabic</option>
+                        <option value="EN" selected>English</option>
+                        <option value="CH">Chinese</option>
+                        <option value="FR">French</option>
+                        <option value="DE">German</option>
+                        <option value="ID">Indonesian</option>                            
+                        <option value="MS">Malay</option>
+                        <option value="LT" hidden>Lithuanian</option>                            
+                        <option value="PT">Portuguese</option>
+                        <option value="RU" selected>Russian</option>
+                        <option value="ES">Spanish</option>
+                    </select>
+                </div>
+            </div>
         </div>
-
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> 
-
         <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
         <script src="popper.js"></script>
         <script src="bootstrap.js"></script> -->
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>  -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
         
         <script>
-            
-               $('#btnAttach').click(
-                   function(){
-                      $('.multiSelect').bsMultiSelect();
-                    }      
-	           );
+            var $languages = $('#languages-id')
+            $('#btnAttach').click(
+                function() {
+                    $languages.bsMultiSelect();
+                }      
+	        );
 
-               $('#btnDispose').click(
-                   function(){
-                      if ( $('.multiSelect').data("DashboardCode.BsMultiSelect")  ){
-                        $('.multiSelect').bsMultiSelect("Dispose");
-                        $('.multiSelect').show();
+            $languages.click(
+                function() {
+                    if ($languages.data("DashboardCode.BsMultiSelect")){
+                        $languages.bsMultiSelect("Dispose");
+                        $languages.show();
                     }      
-                   }
-	       );
-               // $('#toggle-disable-id').find('input[type=radio]').change(function() {
-               //     if ( $('.multiSelect').data("DashboardCode.BsMultiSelect")  ){
-               //         $('.multiSelect').bsMultiSelect("Dispose");
-               //         $('.multiSelect').show();
-               //     }
-               // });
+                }
+	        );
         </script>
-
     </body>
 </html>
