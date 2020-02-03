@@ -26,7 +26,7 @@
                 <label class="my-1 mr-1 " for="bs-css-name-id">Select theme: </label>
                 <select id="bs-css-name-id" class="custom-select my-1 mr-2">
                     <option value="DF" selected>Bootstrap 4.1 default</option>
-                    <option value="BS">Bootstrap 4.1 default + BsMultiSelect.css default (patchCss=false)</option>
+                    <option value="BS">Bootstrap 4.1 default + BsMultiSelect.css default (useCssPatch=false)</option>
                     <option value="CS">Cosmo (bootswatch.com)</option>
                     <option value="SK">Sketchy (bootswatch.com)</option>
                     <option value="MN">Minty (bootswatch.com)</option>
@@ -694,6 +694,7 @@
 	    </script>        
 
         <script>
+            //var bsMultiSelectLink = 'https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.min.css';
             var bsMultiSelectLink = 'D:\\cot\\DashboardCode\\BsMultiSelect\\dist\\css\\BsMultiSelect.css';
 
             var $selectMultiSelects = $("select[multiple='multiple']");
