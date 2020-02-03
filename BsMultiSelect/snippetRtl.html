@@ -19,14 +19,14 @@
                 padding-left: calc(1.5em + 0.75rem);
                 background-position: left calc(0.375em + 0.1875rem) center;
             }
-
-            .was-validated .custom-control-input:valid[formnovalidate]:checked ~ .custom-control-label::before {
+            /* patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control */
+            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
                 border-color: var(--primary);
                 background-color: var(--primary);
             }
-            .was-validated .custom-control-input:valid[formnovalidate]:not(:checked) ~ .custom-control-label::before {
+            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
                 border-color: #adb5bd 
-            }
+            } 
         </style>
 
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
@@ -44,11 +44,52 @@
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
 
-            <p><b>Step (1):</b> add dir="rtl" into DOM chierarchy, e.g.:</p>
+            <div class="form-inline">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="toggle-wasvalidated-id">
+                    <label class="custom-control-label" for="toggle-wasvalidated-id">Set <code class="mx-2"> .was-validated</code> to form</label>
+                </div>
+            </div>
+            <br/>
+            <p><b>Right-to-left bootstrap multiselect demo (campare with plain input):</b></p>
+            <form action="https://postman-echo.com/post" method="post" dir="rtl">
+                    <div class="form-group row" lang="fa">
+                        <label class="col-form-label col-sm-2" for="select-persian-id">شاعران پارسی</label>
+                        <div class="col-sm-10">
+                            <select name="Persians" 
+                                data-placeholder="متن نمونه" data-value-missing-message="ضروری"
+                                id="select-persian-id" class="form-control" multiple="multiple" required>
+                                <option value="P0" >فردوسی</option>
+                                <option value="P1" >نظامی گنجوی</option>
+                                <option value="P2" >ابو عبد الله رودکی</option>
+                                <option value="P3" >عُمَر خَیّام نیشابوری</option>
+                                <option value="P4" >نظامی گنجوی</option>
+                                <option value="P5" >خواجه شمس‌الدین محمد حافظ شیرازی</option>
+                                <option value="P6" >ابومحمد مُصلِح‌الدین بن عَبدُالله سعدی شیرازی</option>
+                            </select>
+                            <div class="valid-feedback">درست</div>
+                            <div class="invalid-feedback">ضروری</div>
+                        </div>
+                    </div>
+        
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2" for="sample-id">زبان فارسی</label>
+                        <div class="col-sm-10">
+                            <input  type="text" class="form-control" id="sample-id"  placeholder="متن نمونه"  required>
+                            <div class="valid-feedback">درست</div>
+                            <div class="invalid-feedback">ضروری</div>
+                        </div>
+                    </div>
+        
+                    <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
+            </form>
+            <hr/>
+            <p><b>Notes:</b></p>
+            <p><b>(1)</b> Add dir="rtl" into DOM chierarchy, e.g.:</p>
             <pre class="code">
 &lt;form dir="rtl"&gt;...&lt;/div&gt;
             </pre>
-            <p><b>Step (2):</b> add rtl support to used bootsrap components (custom checkboxes, form-control validation); most probably if you use BS with RTL this step is allready done and your css contains something like this:</p>
+            <p><b>(2)</b> Add rtl support to bootsrap; most probably if you use BS with RTL this step is allready done if not this patch is enough for BsMultiSelect:</p>
     <pre class="code">
 &lt;style&gt;
 [dir="rtl"] .custom-control.custom-checkbox{
@@ -67,48 +108,34 @@
 }    
 &lt;/style&gt;
 </pre>
-<p><b>Result:</b></p>
-    <form action="https://postman-echo.com/post" method="post" dir="rtl" class="was-validated">
-            <div class="form-group row" lang="fa">
-                <label class="col-form-label col-sm-2" for="select-persian-id">شاعران پارسی</label>
-                <div class="col-sm-10">
-                    <select name="Persians" id="select-persian-id" class="form-control" multiple="multiple" required>
-                        <option value="P0" >فردوسی</option>
-                        <option value="P1" >نظامی گنجوی</option>
-                        <option value="P2" >ابو عبد الله رودکی</option>
-                        <option value="P3" >عُمَر خَیّام نیشابوری</option>
-                        <option value="P4" >نظامی گنجوی</option>
-                        <option value="P5" >خواجه شمس‌الدین محمد حافظ شیرازی</option>
-                        <option value="P6" >ابومحمد مُصلِح‌الدین بن عَبدُالله سعدی شیرازی</option>
-                    </select>
-                    <div class="valid-feedback">درست</div>
-                    <div class="invalid-feedback">ضروری</div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-form-label col-sm-2" for="sample-id">زبان فارسی</label>
-                <div class="col-sm-10">
-                    <input  type="text" class="form-control" id="sample-id"  value="متن نمونه" required>
-                    <div class="valid-feedback">درست</div>
-                    <div class="invalid-feedback">ضروری</div>
-                </div>
-            </div>
-
-            <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
-        </div>
-        
-    </form>
+<p><b>(3)</b> Patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control:</p>
+    <pre class="code">
+&lt;style&gt;
+.was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
+    border-color: var(--primary);
+    background-color: var(--primary);
+}
+.was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
+    border-color: #adb5bd 
+} 
+&lt;/style&gt;
+</pre>
+</div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
-        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
         <script>
             // $.fn.bsMultiSelect.defaults.isRtl = true; // alternative to dir="rtl" attribute
-            //$('#select-persian-id').bsMultiSelect();
+            $('#select-persian-id').bsMultiSelect();
+
+            $('#toggle-wasvalidated-id').change(function() {
+                $('form').toggleClass('was-validated')
+                $('#select-persian-id').bsMultiSelect('UpdateWasValidated');
+            });
         </script>
     </body>
 </html>

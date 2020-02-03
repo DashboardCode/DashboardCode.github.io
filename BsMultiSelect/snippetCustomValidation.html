@@ -17,20 +17,27 @@
             <br/>
 
             <div class="form-inline">
-            <label class="my-1 mr-2" for="bs-validation-id">BS "manual" validation that uses <code class="mx-2">is-valid</code> and <code class="mx-2">is-valid</code> classes</label>
+            <label class="my-1 mr-2" for="bs-validation-id">BS4 "custom" validation. Put classes (in your code do it on condition) <code class="mx-2">is-valid</code> and <code class="mx-2">is-invalid</code> on original <code class="ml-2">select</code>:</label>
             <select id="bs-validation-id" class="custom-select my-1 mr-2">
-                <option value="DF" selected>Default</option>
-                <option value="VL">Valid</option>
-                <option value="INVL">Invalid</option>
+                <option value="DF" selected>(no validation classes)</option>
+                <option value="VL">is-valid</option>
+                <option value="INVL">is-invalid</option>
             </select>
-
+            
+            
             </div>
-            <br/>
+            <div class="form-inline">
+            Using method: <select id="bs-feedback-method-id" class="custom-select my-1 ml-2">
+                <option value="FD" selected>feedback</option>
+                <option value="TL">tooltip</option>
+            </select>
+            </div>
+            <hr/><br/>
             <form action="https://postman-echo.com/post" method="post">
             <div class="form-group row">
-                <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
+                <label class="col-form-label col-sm-2" for="languages-id">BsMultiselect:</label>
                 <div class="col-sm-10">
-                    <select name="States1" id="languages-id" class="form-control"  multiple="multiple">
+                    <select name="States1" id="languages-id" class="custom-select"  multiple="multiple">
                         <option value="AR">Arabic</option>
                         <option value="EN">English</option>
                         <option value="CH">Chinese</option>
@@ -58,7 +65,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-form-label col-sm-2" for="sample-complex-id">Append sample:</label>
+                <label class="col-form-label col-sm-2" for="sample-complex-id">BsMultiselect:</label>
             
                 <div class="col-sm-10">
                 <div class="input-group dashboardcode-bsmultiselect">
@@ -94,15 +101,15 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-form-label col-sm-2" for="sample-complex-id">Append input:</label>
+                <label class="col-form-label col-sm-2" for="sample-complex-id">Input sample:</label>
                 <div class="col-sm-10"> 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">set</span>
-                        </div>
+                    <div class="input-group">
                         <input type="text" class="form-control" id="sample-complex-id" aria-label="Amount (to the nearest dollar)">
                         <div class="input-group-append">
-                          <span class="input-group-text">...</span>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"  onClick="$('#sample-complex-id').val('')">Clear</a>
+                            </div>
                         </div>
                     </div>
                     <div class="valid-feedback">Looks good!</div>
@@ -117,33 +124,49 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         
-        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
-        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
 
         <script>
             $('#languages-id, #complex-languages-id').bsMultiSelect();
 
             $('#bs-validation-id').change(function() {
+                var $all = $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id');
                 if (this.value == 'DF') {
-                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-valid is-invalid')
-                    // note next solves BS problem for inputs with prepend/append
-                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip, .invalid-feedback, .invalid-tooltip').css('display','');
+                    $all.removeClass('is-valid is-invalid')
                 } else if (this.value == 'VL') {
-                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-invalid')
-                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').addClass('is-valid')
-                    // note next solves BS problem for inputs with prepend/append
-                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip').css('display','block');
-                    $('#sample-complex-id').closest('.input-group').siblings('.invalid-feedback, .invalid-tooltip').css('display','');
+                    $all.removeClass('is-invalid').addClass('is-valid')
                 } else if (this.value == 'INVL') {
-                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').removeClass('is-valid')
-                    $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id').addClass('is-invalid')
-                    // note next solves BS problem for inputs with prepend/append
-                    $('#sample-complex-id').closest('.input-group').siblings('.valid-feedback, .valid-tooltip').css('display','');
-                    $('#sample-complex-id').closest('.input-group').siblings('.invalid-feedback, .invalid-tooltip').css('display','block');
+                    $all.removeClass('is-valid').addClass('is-invalid')
                 }
-                $('#languages-id, #complex-languages-id').bsMultiSelect('UpdateValidity');
+
+                $('#languages-id, #complex-languages-id').bsMultiSelect('UpdateValidity'); // push updates on original select to BsMutliSelect
+
+                // note: next lines solves BS4 problem "feedback for inputs with prepend/append is not supported"
+                var $inputGroup = $('#sample-complex-id').closest('.input-group');
+                var $valid = $inputGroup.siblings('.valid-feedback, .valid-tooltip');
+                var $invalid = $inputGroup.siblings('.invalid-feedback, .invalid-tooltip');
+                if (this.value == 'DF') {
+                    $valid.add($invalid).css('display','');
+                } else if (this.value == 'VL') {
+                    $valid.css('display','block');
+                    $invalid.css('display','');
+                } else if (this.value == 'INVL') {
+                    $valid.css('display','');
+                    $invalid.css('display','block');
+                }
             });
+
+            $('#bs-feedback-method-id').change(function() {
+                if (this.value == 'TL') {
+                    $('.valid-feedback').removeClass('valid-feedback').addClass('valid-tooltip')
+                    $('.invalid-feedback').removeClass('invalid-feedback').addClass('invalid-tooltip')
+                } else {
+                    $('.valid-tooltip').removeClass('valid-tooltip').addClass('valid-feedback')
+                    $('.invalid-tooltip').removeClass('invalid-tooltip').addClass('invalid-feedback')
+                }
+            })
         </script>
     </body>
 </html>
