@@ -6,15 +6,11 @@
         
         <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.css">
         
-        <style>
+        <!-- <style>
             .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
-                background-color:rgb(240, 240, 240) !important;
+                background-color:rgb(168, 168, 168) !important;
             }
-
-            .dashboardcode-bsmultiselect > ul.dropdown-menu > li.text-primary  label{
-                color:rgb(99, 97, 97);
-            }
-        </style>
+        </style> -->
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -29,21 +25,18 @@
             <pre class="code">
                     &lt;script&gt;
                          $("select[multiple='multiple']").bsMultiSelect({
-                            selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
-                            selectedPanelFocusBorderColor:"#333",
-                            selectedPanelDisabledBackgroundColor: "#f7f7f9"
+                            cssPatch: { 
+                                picks_focus: { boxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)" , borderColor:"#333"},
+                                picks_disabled: {backgroundColor: "#f7f7f9"}
+                            }
                          });
                     &lt;/script&gt;</pre>
 
-            <p>Also styles should be patched with css since original <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme has no highlighting on hover in dropdown-menu:</p>
+            <p>Also styles should be patched with css since original <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme redefined bg-light with !important and it makes impossible to redefine using cssPatch :</p>
             <pre class="code">
                     &lt;style&gt;
                     .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
-                        background-color:rgb(240, 240, 240) !important;
-                    }
-        
-                    .dashboardcode-bsmultiselect > ul.dropdown-menu > li.text-primary  label{
-                        color:rgb(99, 97, 97);
+                        background-color:rgb(168, 168, 168) !important;
                     }
                     &lt;/style&gt;</pre>
             
@@ -395,9 +388,15 @@
             function install(){
                 $multiSelects.bsMultiSelect(
                     {
-                    selectedPanelFocusBoxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)",
-                    selectedPanelFocusBorderColor:"#333",
-                    selectedPanelDisabledBackgroundColor: "#f7f7f9"
+                        cssPatch: { 
+                            picks_focus: { boxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)" , borderColor:"#333"},
+                            picks_disabled: {backgroundColor: "#f7f7f9"},
+                            choice_hover: {
+                                classes: "",
+                                styles: {
+                                    backgroundColor: "rgb(168, 168, 168)"}
+                                }
+                        }
                     }
                 );
             }

@@ -6,7 +6,7 @@
         
         <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.css">
 
-        <style>.form-control .badge {color:black}</style>
+        <!-- <style>.form-control .badge {color:black}</style> -->
         
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
@@ -19,20 +19,20 @@
             </div>
                 <p>Since default disabled background color and focus colors were changed by <a href="https://bootswatch.com/minty/">Minty</a> theme:</p>
                 <pre class="code">
-                &lt;script&gt;
-                     $("select[multiple='multiple']").bsMultiSelect({
-                        selectedPanelDisabledBackgroundColor:"#f7f7f9",
-                        selectedPanelFocusBorderColor: '#d0eae2',
-                        selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
-                        selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
-                        selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
-                     });
-                &lt;/script&gt;</pre>
-                <p>Additionally styles should be patched with this css since original <a href="https://bootswatch.com/minty/">Minty</a> theme change default "not colored" badge text color to white and it become invisible placed on form-control:</p>
-                <pre class="code">
-                &lt;style&gt; 
-                    .form-control .badge {color:black}
-                &lt;/style&gt;</pre>                
+    &lt;script&gt;
+        $("select[multiple='multiple']").bsMultiSelect({
+                cssPatch: {
+                    picks_disabled: {backgroundColor: "#f7f7f9", borderColor: '#d0eae2'},
+                    picks_focus: {borderColor: '#d0eae2', boxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)'},
+                    picks_focus_valid: {boxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)'},
+                    picks_focus_invalid: {boxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'},
+                    
+                    pick: {color: 'black'} /*theme "crazyness": theme have changed default "not colored" 
+                                badge text color to white and it become invisible placed on form-control*/
+                }
+        });
+    &lt;/script&gt;</pre>
+                
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/minty/">Minty</a> Theme Form Text Input's styles</p>
             <div class="">
                     <form action="/" method="post">
@@ -376,13 +376,15 @@
             var $multiSelects = $("select[multiple='multiple']");
             
             function install(){
-                $multiSelects.bsMultiSelect({
-                selectedPanelDisabledBackgroundColor:"#f7f7f9",
-                
-                selectedPanelFocusBorderColor: '#d0eae2',
-                selectedPanelFocusBoxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)',
-                selectedPanelFocusValidBoxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)',
-                selectedPanelFocusInvalidBoxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'
+                $multiSelects.bsMultiSelect(
+                    {
+                        cssPatch: {
+                            picks_disabled: {backgroundColor: "#f7f7f9", borderColor: '#d0eae2'},
+                            picks_focus: { borderColor: '#d0eae2', boxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)'},
+                            picks_focus_valid: {boxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)'},
+                            picks_focus_invalid: {boxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'},
+                            pick: {color: 'black'}
+                        }
                 });
             }            
 

@@ -14,7 +14,20 @@
                 <p class="lead">Just Bootstrap 4 plugin</p>
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
-            <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/materia/">Materia</a> Theme Form Text Input's styles. <b>BsMultiSelect plugin there is not adjusted to be used with this heavy customized theme, so you can eveluate amount of work need to be done (adjust disabled control color, adjust border line, adjust filter input font-size... that is all... not too much; NOTE: this theme use not convinient feature: border line/box-shadow is changed not for .form-control but for input element, that is why bsmultiselect doesn't iherit it as it could).</b></p>
+            <p>Adjusted configuration:</p>
+                <pre class="code">
+    &lt;script&gt;
+        $("select[multiple='multiple']").bsMultiSelect({
+            cssPatch: {
+                picks_disabled: {backgroundColor: "transparent", color:"#ddd", borderColor: 'transparent'},
+                picks_focus: { boxShadow: 'inset 0 -2px 0 #2196F3'},
+                picks_focus_valid: {boxShadow: 'inset 0 -2px 0 #2196F3'},
+                picks_focus_invalid: {boxShadow: 'inset 0 -2px 0 #2196F3'},
+                picks: { boxShadow: 'inset 0 -1px 0 #ddd'} 
+            }
+        });
+    &lt;/script&gt;</pre>
+
             <div class="">
                     <form action="/" method="post">
                         <fieldset id="columnFieldSet">
@@ -357,7 +370,15 @@
             var $multiSelects = $("select[multiple='multiple']");
             
             function install(){
-                $multiSelects.bsMultiSelect();
+                $multiSelects.bsMultiSelect({
+                    cssPatch: {
+                        picks_disabled: {backgroundColor: "transparent", color:"#ddd", borderColor: 'transparent'},
+                        picks_focus: { boxShadow: 'inset 0 -2px 0 #2196F3'},
+                        picks_focus_valid: {boxShadow: 'inset 0 -2px 0 #2196F3'},
+                        picks_focus_invalid: {boxShadow: 'inset 0 -2px 0 #2196F3'},
+                        picks: { boxShadow: 'inset 0 -1px 0 #ddd'} 
+                    }
+                });
             }
 
             function dispose(){
