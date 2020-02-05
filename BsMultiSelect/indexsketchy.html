@@ -27,20 +27,18 @@
                          $("select[multiple='multiple']").bsMultiSelect({
                             cssPatch: { 
                                 picks_focus: { boxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)" , borderColor:"#333"},
-                                picks_disabled: {backgroundColor: "#f7f7f9"}
+                                picks_disabled: {backgroundColor: "#f7f7f9"},
+
+                                // theme had redefined "text-primary bg-light" (used for hover on menu imitation) and I need to replace them with own styling
+                                choice_hover: {
+                                    classes: "",  // remove "text-primary bg-light"
+                                    styles: {
+                                        backgroundColor: "rgb(168, 168, 168)"}
+                                    }
                             }
                          });
                     &lt;/script&gt;</pre>
-
-            <p>Also styles should be patched with css since original <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme redefined bg-light with !important and it makes impossible to redefine using cssPatch :</p>
-            <pre class="code">
-                    &lt;style&gt;
-                    .dashboardcode-bsmultiselect > ul.dropdown-menu > li.bg-light {
-                        background-color:rgb(168, 168, 168) !important;
-                    }
-                    &lt;/style&gt;</pre>
-            
-            
+           
 
             <p>Compare MultiSelect component's styles with <a href="https://bootswatch.com/sketchy/">Sketchy</a> Theme Form Text Input's styles</p>
             
