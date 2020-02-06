@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
         <title>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -14,27 +15,35 @@
         <div class="toast bg-light m-2" data-delay="2000" style="position: fixed;"><div class="toast-body"></div></div>
 
         <div class="container">
-            <div class="py-5 text-center">
-                <h2>BsMultiselect</h2>
-                <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p>
-                <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
+            <div class="pt-4 d-flex justify-content-between ">
+                <div>
+                    <h2>BsMultiselect <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p></h2>
+                </div>
+                <div class="align-self-end">
+                    <pre>$("select[multiple='multiple']").bsMultiSelect();</pre>
+                </div>
             </div>
-            
-             <div class="form-inline dashboardcode-control">
-                
-                <label class="my-1 mr-1 " for="bs-css-name-id">Select theme: </label>
-                <select id="bs-css-name-id" class="custom-select my-1 mr-2">
-                    <option value="DF" selected>Bootstrap 4.1 default</option>
-                    <option value="BS">Bootstrap 4.1 default + BsMultiSelect.css default (useCssPatch=false)</option>
-                    <option value="CS">Cosmo (bootswatch.com)</option>
-                    <option value="SK">Sketchy (bootswatch.com)</option>
-                    <option value="MN">Minty (bootswatch.com)</option>
-                    <option value="DR">Darkly (bootswatch.com)</option>
-                    <option value="MT">Materia (bootswatch.com)</option>
-                    <!-- <option value="NO">(no css)</option> -->
-                </select>
+
+            <div class="form-inline dashboardcode-control mt-2">
+                <div class="custom-control custom-switch mr-4">
+                    <input type="checkbox" checked class="custom-control-input" id="toggle-dispose-id">
+                    <label class="custom-control-label" for="toggle-dispose-id">Attach plugin.</label>
+                </div>
+                <div class="form-group">
+                    <label class="my-1 mr-1" for="bs-css-name-id">Select theme: </label>
+                    <select id="bs-css-name-id" class="custom-select my-1 mr-2">
+                        <option value="DF" selected>Bootstrap 4.1 default</option>
+                        <option value="BS">Bootstrap 4.1 default + BsMultiSelect.css default (useCssPatch=false)</option>
+                        <option value="CS">Cosmo (bootswatch.com)</option>
+                        <option value="SK">Sketchy (bootswatch.com)</option>
+                        <option value="MN">Minty (bootswatch.com)</option>
+                        <option value="DR">Darkly (bootswatch.com)</option>
+                        <option value="MT">Materia (bootswatch.com)</option>
+                        <!-- <option value="NO">(no css)</option> -->
+                    </select>
+                </div>
             </div>
-            <label>Compare BsMultiSelect with standard input fields.</label>
+            <div class="mt-2">
             <div id="cosmo-alert" class="alert alert-primary" role="alert" style="display: none;">
                     Bootswatch <a href="https://bootswatch.com/cosmo/">Cosmo</a> theme applied: no adjusting is required</a></td></tr>
             </div>
@@ -65,13 +74,10 @@
                         <li><a href="./indexmintycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></li>
                     </ul>
             </div>
-
+            </div>
             <!-- <legend>Inline Form</legend> -->
             <div class="form-inline dashboardcode-control">
-                <div class="custom-control custom-switch">
-                            <input type="checkbox" checked class="custom-control-input" id="toggle-dispose-id">
-                            <label class="custom-control-label" for="toggle-dispose-id">Attach plugin</label>
-                </div>
+                
                 <!-- <div id="toggle-dispose-id" class="btn-group btn-group-toggle my-1 mr-2" data-toggle="buttons">
                             <label class="btn btn-outline-secondary active">
                                <input type="radio" name="optionsAD" id="optionAttach" autocomplete="off"  value="ON" checked>Attach
@@ -83,7 +89,7 @@
                 
                 
                 
-                <label class="my-1  ml-3 mr-1" for="bs-size-name-id">Select size</label>
+                <label class="my-1 mr-1" for="bs-size-name-id">Compare BsMultiSelect with standard input fields. <span class="ml-4">Select size: </span></label>
                 <select id="bs-size-name-id" class="custom-select my-1">
                     <option value="DF" selected>Default</option>
                     <option value="LG">Large</option>
@@ -182,8 +188,7 @@
                 </div> -->
 
             </div>
-            <br/>
-                    
+            <hr/>
             <div class="">
                 <form action="https://postman-echo.com/post" method="post">
                     <fieldset id="columnFieldSet">
@@ -323,18 +328,18 @@
                         </div>
                     </div>
                     </fieldset>
-                    <br/>
+                    
                     <fieldset id="inlineFieldSet" >
                     <legend>Form Row / Custom Validation</legend>
                     
                     <div class="form-row">
-						<div class="col-md-3 mb-3">
+						<div class="col-md-3">
 							<label for="validationServer01">Valid input</label>
 							<input  type="text" class="form-control is-valid" id="validationServer01"  value="Some valid text" required>
 							<div class="valid-feedback">Looks good!</div>
 						</div>
 						
-						<div class="col-md-3 mb-3 form-group">
+						<div class="col-md-3 form-group">
                             <label  for="edit-statesV-id">Valid BsMultiSelect</label>
                             <div>
                                 <select name="StatesV" id="edit-statesV-id" class="custom-select is-valid"  multiple="multiple" style="display: none;">
@@ -394,7 +399,7 @@
                             </div>
                         </div>
 					
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3">
                             <label for="validationServer02">Invalid input</label>
                             <input  type="text" class="form-control is-invalid" id="validationServer02"  value="Some invalid text" required>
                             <div class="invalid-feedback">
@@ -402,7 +407,7 @@
                             </div>
                         </div>
 					
-					    <div class="col-md-3 mb-3 form-group">
+					    <div class="col-md-3 form-group">
                             <label  for="edit-statesI-id">Invald BsMultiSelect</label>
                             <div>
                                 <select name="StatesI" id="edit-statesI-id" class="custom-select  is-invalid"  multiple="multiple" style="display: none;">
@@ -466,7 +471,7 @@
 						
                     </div>
                     </fieldset>
-                    <br/>
+                    
                     <fieldset id="ppPendFieldSet">
 
                     <legend>Inline Form / Input groups</legend>
@@ -587,12 +592,12 @@
                     <br/>
                     <div class="form-group">
                             <div class="d-flex flex-row align-self">
-                                <input class="btn btn-primary" type="submit" value="Form Send Echo">
+                                <input class="btn btn-primary" type="submit" value="Form Submit">
                                 <input class="btn btn-secondary ml-2" type="reset" value="Form Reset" onClickSS="$('form select[multiple=\'multiple\']').bsMultiSelect('UpdateData');">
                             </div>
                     </div>
                 </form>
-                <br/><hr/><br/>
+                <hr/><br/>
                 <div class="my-1">
                     <div class="dropdown" id="myDropdown">
                             <button  type="button" class="btn  btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
@@ -686,10 +691,11 @@
                 </div>
                 
                 <br/><hr/>
+                <legend>Initiated with JavaScript Object</legend>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label class="col-form-label" id="bsMultiSelectJsonLabel">From JS object</label>
+                            <label class="col-form-label" id="bsMultiSelectJsonLabel">Over div</label>
                             <div id="bsMultiSelectJson" data-placeholder="Placeholder..."></div>
                         </div>
                         <div><button id="addAntarcticaButton" type="button" class="btn btn-secondary">Add Antarctica</button></div>
@@ -714,7 +720,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
-
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>  -->
         
 	    <script>
@@ -921,12 +926,12 @@
             // TODO disable other controls to do not select internals of multiselect
             $('#toggle-disable-id').find('input[type=radio]').change(function() {
                 if (this.value == 'ON') {
-                    $(":not(.dashboardcode-control) > .custom-select").prop("disabled", false);
+                    $(":not(.dashboardcode-control) .custom-select").prop("disabled", false);
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", false);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", false);
                 }
                 else if (this.value == 'OFF') {
-                    $(":not(.dashboardcode-control) > .custom-select").prop("disabled", true);
+                    $(":not(.dashboardcode-control) .custom-select").prop("disabled", true);
                     $(":not(.dashboardcode-control) > .form-control").prop("disabled", true);
                     $(":not(.dashboardcode-control) > .btn").prop("disabled", true);
                 }
