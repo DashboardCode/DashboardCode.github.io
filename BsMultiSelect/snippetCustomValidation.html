@@ -19,9 +19,11 @@
             <div class="form-inline">
             <label class="my-1 mr-2" for="bs-validation-id">BS4 "custom" validation. Put classes (in your code do it on condition) <code class="mx-2">is-valid</code> and <code class="mx-2">is-invalid</code> on original <code class="ml-2">select</code>:</label>
             <select id="bs-validation-id" class="custom-select my-1 mr-2">
-                <option value="DF" selected>(no validation classes)</option>
+                <option value="DF" selected>(no validation)</option>
                 <option value="VL">is-valid</option>
                 <option value="INVL">is-invalid</option>
+                <option value="NOQY">rule: invalid if Quenya</option>
+                
             </select>
             
             
@@ -38,7 +40,7 @@
                 <label class="col-form-label col-sm-2" for="languages-id">BsMultiselect:</label>
                 <div class="col-sm-10">
                     <select name="States1" id="languages-id" class="custom-select"  multiple="multiple">
-                        <option value="AR">Arabic</option>
+                        <option value="AR" selected>Arabic</option>
                         <option value="EN">English</option>
                         <option value="CH">Chinese</option>
                         <option value="FR">French</option>
@@ -48,6 +50,7 @@
                         <option value="LT" hidden>Lithuanian</option>
                         <option value="PT">Portuguese</option>
                         <option value="RU">Russian</option>
+                        <option value="QY">Quenya</option>
                         <option value="ES">Spanish</option>
                     </select>
                     <div class="valid-feedback">Looks good!</div>
@@ -72,7 +75,7 @@
                     <ul class="form-control"></ul>
                     <select name="ComplexLanguages" id="complex-languages-id" 
                         class="custom-select"  multiple="multiple" style="display: none;">
-                            <option value="AR">Arabic</option>
+                            <option value="AR" selected>Arabic</option>
                             <option value="EN">English</option>
                             <option value="CH">Chinese</option>
                             <option value="FR">French</option>
@@ -82,7 +85,9 @@
                             <option value="LT" hidden>Lithuanian</option>                            
                             <option value="PT">Portuguese</option>
                             <option value="RU">Russian</option>
+                            <option value="QY">Quenya</option>
                             <option value="ES">Spanish</option>
+
                     </select>
 
                     <div class="input-group-append">
@@ -129,25 +134,50 @@
         
 
         <script>
-            $('#languages-id, #complex-languages-id').bsMultiSelect();
-
+            var isValidationEnabled = false;
+            function isValid(element){
+                return $(element).children("option[value='QY']:selected").length==0; 
+            }
+            function setValidity(element){
+                if (isValid(element))
+                    $(element).removeClass('is-invalid').addClass('is-valid')
+                else
+                    $(element).removeClass('is-valid').addClass('is-invalid')
+            }
+            $('#languages-id, #complex-languages-id').bsMultiSelect().change(
+                function(){
+                    if (isValidationEnabled){
+                        setValidity(this)
+                        $(this).bsMultiSelect('UpdateValidity');
+                    }
+                }
+            );
             $('#bs-validation-id').change(function() {
                 var $all = $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id');
                 if (this.value == 'DF') {
                     $all.removeClass('is-valid is-invalid')
+                    isValidationEnabled=false;
                 } else if (this.value == 'VL') {
                     $all.removeClass('is-invalid').addClass('is-valid')
+                    isValidationEnabled=false;
                 } else if (this.value == 'INVL') {
                     $all.removeClass('is-valid').addClass('is-invalid')
+                    isValidationEnabled=false;
+                } else if (this.value == 'NOQY') {
+                    isValidationEnabled=true;
+                    $all.removeClass('is-valid is-invalid')
+                    $('#languages-id, #complex-languages-id').each( function(i,element){
+                        setValidity(element)
+                    })
                 }
-
+                
                 $('#languages-id, #complex-languages-id').bsMultiSelect('UpdateValidity'); // push updates on original select to BsMutliSelect
 
                 // note: next lines solves BS4 problem "feedback for inputs with prepend/append is not supported"
                 var $inputGroup = $('#sample-complex-id').closest('.input-group');
                 var $valid = $inputGroup.siblings('.valid-feedback, .valid-tooltip');
                 var $invalid = $inputGroup.siblings('.invalid-feedback, .invalid-tooltip');
-                if (this.value == 'DF') {
+                if (this.value == 'DF' || this.value == 'NOQY' ) {
                     $valid.add($invalid).css('display','');
                 } else if (this.value == 'VL') {
                     $valid.css('display','block');
