@@ -748,8 +748,10 @@
                         setSelected: function(o,i) { 
                             if (i)
                                 o.setAttribute('selected','');
-                            else
+                            else{
                                 o.removeAttribute('selected');
+                                o.selected=false;
+                            }
                             $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
                         }
                     }
