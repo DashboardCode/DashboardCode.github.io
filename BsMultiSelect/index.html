@@ -745,7 +745,10 @@
                 $selectMultiSelects.bsMultiSelect(
                     {
                         setSelected: function(o,i) { 
-                            o.selected = i;
+                            if (i)
+                                o.setAttribute('selected','');
+                            else
+                                o.removeAttribute('selected');
                             $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
                         }
                     }
