@@ -32,41 +32,38 @@
                     </select>
                 </div>
             </div>
-            <p class="mt-5"><b>Modern browsers only.</b> The BsMultiSelect doesn't require jQuery. Still
-                if you use jQuery you would like that BsMultiSelect continue to publish its events ('change' and 'dashboardcode.multiselect:change') through jQuery, using jQuery `trigger`, see
-                in comments how to setup it.</p>
-            <pre class="prettyprint lang-html linenums:1">
-// attach and dispose BsMultiSelect on buttons #btnAttach and #btnDispose clicks
-&lt;script type="module"&gt;
-    import Popper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.js"
-    import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
-    var languagesElement = document.querySelector('#languages-id');
-    var bsMultiSelect = null;
-
-    document.querySelector('#btnAttach').onclick = function(){
-       if (!bsMultiSelect){
-          var environment = {window, Popper};
-          // add this if you want to trigger events through JQuery events 
-          // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
-          bsMultiSelect = BsMultiSelect(languagesElement, environment, /*settings*/null);
-       }
-    };
-
-    document.querySelector('#btnDispose').onclick = function() {
-        if (bsMultiSelect){
-            bsMultiSelect.Dispose();
-            bsMultiSelect= null;
-        }  
-    };
- &lt;/script&gt;</pre>
+            <p class="mt-5"><b>Modern browsers only.</b> Note: for JQuery as trigger used $(element).trigger(eventName); so if you want to use ES6 modules and JQuery 
+                together just redefine the trigger property of BsMultiSelect configuration's environment parameter</p>
+            <pre> 
+ &lt;script type="module"&gt;
+ import Popper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.js"
+ import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
+ var languagesElement = document.querySelector('#languages-id');
+ var bsMultiSelect = null;
+ document.querySelector('#btnAttach').onclick = function(){
+    if (!bsMultiSelect){
+       var environment = {window, Popper};
+       // environment.trigger = (element,eventName) => $(element).trigger(eventName); // use it with JQuery
+       bsMultiSelect = BsMultiSelect(languagesElement, environment, /*settings*/null);
+    }
+ };
+ 
+ document.querySelector('#btnDispose').onclick =
+     function() {
+         if (bsMultiSelect){
+             bsMultiSelect.Dispose();
+             bsMultiSelect= null;
+         }  
+     };
+ &lt;/script&gt;
+            </pre>
         </div>
         
         
-        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
         <script type="module">
             import Popper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.js"
-            import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
+            import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.wc.min.js"
             var languagesElement = document.querySelector('#languages-id');
             var bsMultiSelect = null;
             document.querySelector('#btnAttach').onclick = function(){
