@@ -32,36 +32,49 @@
                     </select>
                 </div>
             </div>
-            <p class="mt-5"><b>Modern browsers only.</b> Note: for JQuery as trigger used $(element).trigger(eventName); so if you want to use ES6 modules and JQuery 
-                together just redefine the trigger property of BsMultiSelect configuration's environment parameter</p>
-            <pre> 
- &lt;script type="module"&gt;
- import Popper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.js"
- import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
- var languagesElement = document.querySelector('#languages-id');
- var bsMultiSelect = null;
- document.querySelector('#btnAttach').onclick = function(){
-    if (!bsMultiSelect){
-       var environment = {window, Popper};
-       // environment.trigger = (element,eventName) => $(element).trigger(eventName); // use it with JQuery
-       bsMultiSelect = BsMultiSelect(languagesElement, environment, /*settings*/null);
-    }
- };
- 
- document.querySelector('#btnDispose').onclick =
-     function() {
-         if (bsMultiSelect){
-             bsMultiSelect.Dispose();
-             bsMultiSelect= null;
-         }  
-     };
- &lt;/script&gt;
-            </pre>
-        </div>
-        
-        
 
-        <script type="module">
+            <div>
+                <dashboardcode-bsmultiselect>
+                    <template>
+                    <p>Sample</p>
+                    </template>
+                    <select multiple class="x">
+                      <option>Hello</option>
+                      <option>World</option>
+                    </select>
+                  </dashboardcode-bsmultiselect>
+            </div>
+        </div>
+
+      
+        <script>
+            class HelloWorld extends HTMLElement {
+                  constructor() {
+                    super();
+                    // создадим Shadow DOM
+                    this.attachShadow({ mode: "open" });
+                  }
+              //https://habr.com/ru/post/443032/ https://habr.com/ru/post/349366/
+              // если сетапить несколько пропертис перерисовывать придется несклько раз
+                  set items(items) {
+                    // сохраняем значение
+                    this.__items = items;
+                    // перерисовываем компонент
+                    this.__render();
+                    }
+
+
+                  connectedCallback() {
+                    const name = this.getAttribute("name");
+                    // Отрендерим наш контент внутрь Shadow DOM
+                    //this.shadowRoot.innerHTML = `Hello, <strong>${name}</strong> :)`;
+                  }
+            }
+
+            // зарегистрируем наш компонент как html-тэг
+             window.customElements.define("dashboardcode-bsmultiselect", HelloWorld);
+        </script>
+        <!-- <script type="module">
             import Popper from "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.js"
             import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.wc.min.js"
             var languagesElement = document.querySelector('#languages-id');
@@ -80,6 +93,6 @@
                         bsMultiSelect= null;
                     }  
                 };
-        </script>
+        </script> -->
     </body>
 </html>

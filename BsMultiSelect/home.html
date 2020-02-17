@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
         <title>DashboardCode Multiselect JQuery Plugin for Bootstrap 4</title>
     </head>
@@ -49,30 +50,62 @@
             </div>
             
             <div id="sketchy-alert" class="alert alert-warning" role="alert" style="display: none;">
-                    Bootswatch <a href="https://bootswatch.com/sletchy/">Sketchy</a> theme applied: additional adjusting is required
-                    <ul>
-                            <li><a href="./indexsketchy.html">1. customization through js and css theme's features patch</a></li>
-                            <li><a href="./indexsketchycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></li>
-                    </ul>
+                <button class="btn btn-primary mr-2" onclick="window.adjust('SK')">Apply</button> Bootswatch <a href="https://bootswatch.com/sketchy/">Sketchy</a> theme applied; additional adjusting is required: 
+<pre class="mt-2 prettyprint lang-js linenums:1">
+// adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
+$multiSelects.bsMultiSelect(
+    cssPatch : { 
+        picks_focus: {boxShadow:"0px 0px 0px 0.2rem rgba(51,51,51,0.25)" , borderColor:"#333"},
+        picks_disabled: {backgroundColor: "#f7f7f9"},
+        // theme breaks "text-primary bg-light" (used as hover on menu items) so I need to replace them with own styling
+        choice_hover: { classes: "" /* remove default "text-primary bg-light" */,  styles: { backgroundColor: "rgb(168, 168, 168)"}}
+    }
+);
+</pre>
             </div>
 
             <div id="materia-alert" class="alert alert-warning" role="alert" style="display: none;">
-                Bootswatch <a href="https://bootswatch.com/materia/">Materia</a> theme applied: additional adjusting is required.
-                <ul>
-                    <li><a href="./indexmateria.html">1. patching styles through js </a></li>
-                </ul>
+                <button class="btn btn-primary mr-2" onclick="window.adjust('MT')">Apply</button>   Bootswatch <a href="https://bootswatch.com/materia/">Materia</a> theme applied; additional adjusting is required.
+<pre class="mt-2 prettyprint lang-js linenums:1">
+// adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
+$multiSelects.bsMultiSelect(
+    cssPatch: {
+        picks_disabled: {backgroundColor: "transparent", color:"#ddd", borderColor: 'transparent'},
+        picks_focus: { boxShadow: 'inset 0 -2px 0 #2196F3'},
+        picks_focus_valid: {boxShadow: null},
+        picks_focus_invalid: {boxShadow: null},
+        picks: { boxShadow: 'inset 0 -1px 0 #ddd'} 
+    }
+);    
+</pre>
             </div>
 
             <div id="darkly-alert" class="alert alert-warning" role="alert" style="display: none;">
-                    Bootswatch <a href="https://bootswatch.com/darkly/">Darkly</a> theme applied: additional adjusting is required. <br\>Check it <a href="./indexdarkly.html">here...</a> 
+                <button class="btn btn-primary mr-2" onclick="window.adjust('DR')">Apply</button>    Bootswatch <a href="https://bootswatch.com/darkly/">Darkly</a> theme applied; additional adjusting is required. 
+<pre class="mt-2 prettyprint lang-js linenums:1">
+// adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
+$multiSelects.bsMultiSelect(
+    cssPatch: {
+        pickButton: {color: 'black'}
+    }
+);    
+</pre>                
             </div>
 
             <div id = "minty-alert" class="alert alert-warning" role="alert" style="display: none;">
-                    Bootswatch <a href="https://bootswatch.com/minty/">Minty</a> theme applied: 
-                    <ul>
-                        <li><a href="./indexminty.html">1. customization through js and css theme's features patch</a></li>
-                        <li><a href="./indexmintycss.html">2. {useCss:true} - BsMultiSelect.css with some customized values</a></li>
-                    </ul>
+                <button class="btn btn-primary mr-2" onclick="window.adjust('MN')">Apply</button>    Bootswatch <a href="https://bootswatch.com/minty/">Minty</a> theme applied; additional adjusting is required: 
+<pre class="mt-2 prettyprint lang-js linenums:1">
+// adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
+$multiSelects.bsMultiSelect(
+    cssPatch: {
+        picks_disabled: {backgroundColor: "#f7f7f9", borderColor: '#d0eae2'},
+        picks_focus: { borderColor: '#d0eae2', boxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)'},
+        picks_focus_valid: {boxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)'},
+        picks_focus_invalid: {boxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'},
+        pick: {color: 'black'}
+    }
+);    
+</pre>
             </div>
             </div>
             <!-- <legend>Inline Form</legend> -->
@@ -718,7 +751,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
         <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
 
         <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
@@ -742,9 +775,51 @@
                 {text:"Africa",value:"C4",hidden:false,disabled:false,selected:false}
             ];
 
+            window.cssPatch = null;
+
+            function adjust(theme){
+                if (theme=='SK'){
+                    window.cssPatch = { 
+                        picks_focus: {boxShadow: "0px 0px 0px 0.2rem rgba(51,51,51,0.25)", borderColor:"#333"},
+                        picks_disabled: {backgroundColor: "#f7f7f9"},
+                        choice_hover: {
+                            classes: "", 
+                            styles: {backgroundColor: "rgb(168, 168, 168)"}
+                        }
+                    }
+                } else if(theme=='MN'){
+                    window.cssPatch = { 
+                        picks_disabled: {backgroundColor: "#f7f7f9", borderColor: '#d0eae2'},
+                        picks_focus: { borderColor: '#d0eae2', boxShadow: '0 0 0 0.2rem rgba(120,194,173,0.25)'},
+                        picks_focus_valid: {boxShadow: '0 0 0 0.2rem rgba(86,204,157,0.25)'},
+                        picks_focus_invalid: {boxShadow: '0 0 0 0.2rem rgba(255,120,81,0.25)'},
+                        pick: {color: 'black'}
+                    }
+                } else if (theme=='MT'){
+                    window.cssPatch = { 
+                        picks_disabled: {backgroundColor: "transparent", color:"#ddd", borderColor: 'transparent'},
+                        picks_focus: { boxShadow: 'inset 0 -2px 0 #2196F3'},
+                        picks_focus_valid: {boxShadow: null},
+                        picks_focus_invalid: {boxShadow: null},
+                        picks: { boxShadow: 'inset 0 -1px 0 #ddd'} 
+                    }
+                } else if (theme=='DR'){
+                    window.cssPatch = { 
+                        pickButton: {color: 'black'} 
+                    }
+                }
+                else {
+                    window.cssPatch = null;
+                }
+                $(".alert").hide();
+                dispose();
+                install();
+            }
+
             function install(){
                 $selectMultiSelects.bsMultiSelect(
                     {
+                        cssPatch: window.cssPatch,
                         setSelected: function(o,i) { 
                             if (i)
                                 o.setAttribute('selected','');
@@ -757,41 +832,38 @@
                     }
                 );
 
-                $(' #bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect(
-                    {
-                        setSelected: function(o,i) { 
-                            o.selected = i;
-                            $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
-                        },
-                        // for all elements (selected by selector)
-                        options : options, // yes, one source for two multiselects
-                        placeholder: "Placeholder from config object",
-                        getDisabled : function(){ 
-                            return $('#optionDisable').prop("checked");
-                        },
-                        
-                        // for each element
-                        buildConfiguration: function(element, configuration){
-                            configuration.label=$('#'+element.id+'Label').get(0); // TODO: resolve the bug
-                            configuration.getSize = function() {
-                                var $inputGroup = $(element).closest('input-group');
-			                    if ($inputGroup.length>0)
-                                    return $inputGroup.hasClass("input-group-lg")?"input-group-lg":($inputGroup.hasClass("input-group-sm")?"input-group-sm":null);
-                                else{
-                                    var v = $("#bs-size-name-id").val();
-                                    return v=="LG"?"custom-select-lg":(v=="SM"?"custom-select-sm":null);
-                                }
-			    }    
-                        }
+                $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect({
+                    cssPatch: window.cssPatch,
+                    setSelected: function(o,i) { 
+                        o.selected = i;
+                        $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
+                    },
+                    // for all elements (selected by selector)
+                    options : options, // yes, one source for two multiselects
+                    placeholder: "Placeholder from config object",
+                    getDisabled : function(){ 
+                        return $('#optionDisable').prop("checked");
+                    },
+                    
+                    // for each element
+                    buildConfiguration: function(element, configuration){
+                        configuration.label=$('#'+element.id+'Label').get(0); // TODO: resolve the bug
+                        configuration.getSize = function() {
+                            var $inputGroup = $(element).closest('input-group');
+			                if ($inputGroup.length>0)
+                                return $inputGroup.hasClass("input-group-lg")?"input-group-lg":($inputGroup.hasClass("input-group-sm")?"input-group-sm":null);
+                            else{
+                                var v = $("#bs-size-name-id").val();
+                                return v=="LG"?"custom-select-lg":(v=="SM"?"custom-select-sm":null);
+                            }
+			            }    
                     }
-                );
+                });
             }
             install();
 
             function dispose(){
                 $multiSelects.bsMultiSelect("Dispose");
-                $selectMultiSelects.show(); 
-                
             }
 
             // ------------------------------------------------------------------------
@@ -881,12 +953,12 @@
 
             function applyTheme(style){
                 $('.alert').hide();
+                window.cssPatch = null;
                 if (style=="DF"){
                     loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
                 }
 		        if (style=="BS"){
                     loadCss('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', bsMultiSelectLink)
-                    
                 }
                 else if (style == "SK"){
                     loadCss('https://bootswatch.com/4/sketchy/bootstrap.css')
@@ -910,6 +982,9 @@
                 else {
                     $('link[rel=stylesheet]').remove();
                 }
+                
+                //dispose();
+                //install();
             }
             $("#bs-css-name-id").change( function(){
                 applyTheme(this.value);
@@ -919,7 +994,6 @@
                 if ($("#bs-css-name-id").get(0).value!='DF')
                     applyTheme($("#bs-css-name-id").get(0).value)
             })
-            
 
             $('#toggle-dispose-id').change(function() {
                 if (this.checked)
@@ -978,7 +1052,6 @@
                          return false;
                 }
             })
-
         </script>
     </body>
 </html>
