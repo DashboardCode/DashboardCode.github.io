@@ -85,45 +85,45 @@
             </form>
             <hr/>
             <p><b>Notes:</b></p>
-            <p><b>(1)</b> Add dir="rtl" into DOM chierarchy, e.g.:</p>
-            <pre class="code">
-&lt;form dir="rtl"&gt;...&lt;/div&gt;
-            </pre>
+            <p><b>(1)</b> Add dir="rtl" into DOM chierarchy, on any ancestor, e.g.:</p>
+            <pre class="prettyprint lang-html linenums:1" style="border-color: #CCCCCC">
+&lt;form dir="rtl"&gt;...&lt;/form&gt;</pre>
             <p><b>(2)</b> Add rtl support to bootsrap; most probably if you use BS with RTL this step is allready done if not this patch is enough for BsMultiSelect:</p>
-    <pre class="code">
+    <pre  class="prettyprint lang-html linenums:1" style="border-color: #CCCCCC">
 &lt;style&gt;
-[dir="rtl"] .custom-control.custom-checkbox{
-    margin-left: 0;
-    margin-right: 1.5rem;
-}
-[dir="rtl"] .custom-control.custom-checkbox .custom-control-label::after,
-[dir="rtl"] .custom-control.custom-checkbox .custom-control-label::before{
-    left: auto;
-    right: -1.5rem;
-}
-.was-validated .form-control:valid, .form-control.is-valid{
-    padding-right: 0.75rem;
-    padding-left: calc(1.5em + 0.75rem);
-    background-position: left calc(0.375em + 0.1875rem) center;
-}    
+    [dir="rtl"] .custom-control.custom-checkbox{
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+    [dir="rtl"] .custom-control.custom-checkbox .custom-control-label::after,
+    [dir="rtl"] .custom-control.custom-checkbox .custom-control-label::before{
+        left: auto;
+        right: -1.5rem;
+    }
+    .was-validated .form-control:valid, .form-control.is-valid{
+        padding-right: 0.75rem;
+        padding-left: calc(1.5em + 0.75rem);
+        background-position: left calc(0.375em + 0.1875rem) center;
+    }    
 &lt;/style&gt;
 </pre>
 <p><b>(3)</b> Patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control:</p>
-    <pre class="code">
+    <pre class="prettyprint lang-html linenums:1" style="border-color: #CCCCCC">
 &lt;style&gt;
-.was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
-    border-color: var(--primary);
-    background-color: var(--primary);
-}
-.was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
-    border-color: #adb5bd 
-} 
+    .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
+        border-color: var(--primary);
+        background-color: var(--primary);
+    }
+    .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
+        border-color: #adb5bd 
+    } 
 &lt;/style&gt;
 </pre>
 </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
