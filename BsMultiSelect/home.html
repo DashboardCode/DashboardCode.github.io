@@ -659,24 +659,24 @@ $multiSelects.bsMultiSelect(
                                 </form>
                             </div>
                     </div>
+                    <div>
                     <button class="btn btn-link" style="padding-left: 0" type="button" data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
                        To support MultiSelect inside BS DropDown you will need to filter out clicks inside menu...
                     </button>
-                    <div class="collapse" id="collapseComment">
+                    <div class="collapse " id="collapseComment">
                         <div class="card card-body">
-<pre> 
-    $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
-        if (jqEvent.clickEvent) {
-            var target = jqEvent.clickEvent.target;
-            var container = $('#bsMultiSelectOnDropdown').bsMultiSelect("GetContainer");
-            if (container== target || $.contains(container, target))
-                return false;
-        }
-    })
-</pre>
+<pre class="prettyprint lang-js linenums:1" style="border-width: 0;">
+$('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
+    if (jqEvent.clickEvent) {
+        var target = jqEvent.clickEvent.target;
+        var container = $('#bsMultiSelectOnDropdown').bsMultiSelect("GetContainer");
+        if (container== target || $.contains(container, target))
+            return false;
+    }
+})</pre>
                         </div>
                     </div>
-
+                </div>
                 </div>
                 
                 <div class="my-4">
