@@ -86,7 +86,9 @@ $multiSelects.bsMultiSelect(
 // adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
 $multiSelects.bsMultiSelect(
     cssPatch: {
-        pickButton: {color: 'black'}
+        picks_disabled: {backgroundColor:"rgb(235, 235, 235)"},
+        pickButton: {color: 'black'},
+        picks_focus: {borderColor: '#739ac2', boxShadow: '0 0 0 0.2rem rgba(55, 90, 127, 0.25)'}
     }
 );    
 </pre>                
@@ -805,7 +807,9 @@ $multiSelects.bsMultiSelect(
                     }
                 } else if (theme=='DR'){
                     window.cssPatch = { 
-                        pickButton: {color: 'black'} 
+                        picks_disabled: {backgroundColor:"rgb(235, 235, 235)"},
+                        pickButton: {color: 'black'},
+                        picks_focus: {borderColor: '#739ac2', boxShadow: '0 0 0 0.2rem rgba(55, 90, 127, 0.25)'},
                     }
                 }
                 else {
