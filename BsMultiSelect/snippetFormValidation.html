@@ -14,7 +14,9 @@
                 border-color: #adb5bd; /* not available as parameter */
             }
         </style>
-
+        <style>
+           input:invalid{outline: 0;}  /*correct Edge browser "unwanted" red squre; TODO: why Boostrap team didn't add it? */
+        </style>
         <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
@@ -63,7 +65,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-2" for="sample-id">Input sample:</label>
                 <div class="col-sm-10"> 
-                    <input  type="text" class="form-control" id="sample-id" value="" required>
+                    <input  type="text" class="form-control" id="sample-id" value="sample value" required>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Invalid!</div>
                 </div>
@@ -121,6 +123,7 @@
             </div>
 
             <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
+            <input type="reset" class="btn btn-secondary"  value="Reset">
             </form>
             
         </div>
@@ -165,13 +168,8 @@
                         setValidity(ms);
                     })
 
-                    //$('#languages-id, #complex-languages-id').on('dashboardcode.xx', function(o){
-                    //    setValidity(o.selectElement);
-                    //})
+
                 } else {
-                    //$('#languages-id, #complex-languages-id').unbind('dashboardcode.xx', function(o){
-                    //    setValidity(o.selectElement);
-                    //})
                     $bsMultiSelects.each(function(i, e){
                         var ms = $(e).BsMultiSelect();
                         var $container = $(ms.GetContainer());

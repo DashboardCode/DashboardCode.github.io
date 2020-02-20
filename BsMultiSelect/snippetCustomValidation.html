@@ -140,14 +140,14 @@
 
         <script>
             var isValidationEnabled = false;
-            function isValid(element){
-                return $(element).children("option[value='QY']:selected").length==0; 
+            function isValid(selectElement){
+                return $(selectElement).children("option[value='QY']:selected").length==0; 
             }
-            function setValidity(element){
-                if (isValid(element))
-                    $(element).removeClass('is-invalid').addClass('is-valid')
+            function setValidity(selectElement){
+                if (isValid(selectElement))
+                    $(selectElement).removeClass('is-invalid').addClass('is-valid')
                 else
-                    $(element).removeClass('is-valid').addClass('is-invalid')
+                    $(selectElement).removeClass('is-valid').addClass('is-invalid')
             }
             $('#languages-id, #complex-languages-id').bsMultiSelect().change(
                 function(){

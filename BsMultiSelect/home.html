@@ -754,8 +754,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
 
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
         <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> 
         
 	    <script>
@@ -824,14 +824,15 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                 $selectMultiSelects.bsMultiSelect(
                     {
                         cssPatch: window.cssPatch,
-                        setSelected: function(o,i) { 
-                            if (i)
-                                o.setAttribute('selected','');
-                            else{
-                                o.removeAttribute('selected');
-                                o.selected=false;
-                            }
-                            $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
+                        setSelected: function(o,v) { 
+                            o.selected=v;
+                            // if (i)
+                            //     o.setAttribute('selected','');
+                            // else{
+                            //     o.removeAttribute('selected');
+                            //     o.selected=false;
+                            // }
+                            $('.toast').toast('show').find('.toast-body').css('text-decoration',v?'none':'line-through').text(o.text);
                         }
                     }
                 );
