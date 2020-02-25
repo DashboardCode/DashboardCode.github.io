@@ -766,8 +766,9 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
             //var bsMultiSelectLink = 'https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.min.css';
             var bsMultiSelectLink = 'D:\\cot\\DashboardCode\\BsMultiSelect\\dist\\css\\BsMultiSelect.css';
 
-            var $selectMultiSelects = $("select[multiple='multiple']");
-            var $multiSelects = $("select[multiple='multiple'], #bsMultiSelectJson, #bsMultiSelectJson2");
+            var $selectMultiSelects = $("#edit-StatesPp-id, select[multiple='multiple']");
+            var $jsonMultiSelects = $(" #bsMultiSelectJson, #bsMultiSelectJson2");
+            var $multiSelects =  $selectMultiSelects.add($jsonMultiSelects);
 
             var options =  [
                 {text:"Asia", value:"C0",hidden:false,disabled:false,selected:true},
@@ -837,7 +838,7 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                     }
                 );
 
-                $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect({
+                $jsonMultiSelects.bsMultiSelect({
                     cssPatch: window.cssPatch,
                     setSelected: function(o,i) { 
                         o.selected = i;
@@ -1023,8 +1024,11 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                 }
                 
                 $selectMultiSelects.each( function(index, element){
-                    if ( $(element).data("DashboardCode.BsMultiSelect")  )
+                    if ( $(element).data("DashboardCode.BsMultiSelect")  ){
+                        console.log("disabled");
+                        console.log(element);
                         $(element).bsMultiSelect("UpdateDisabled");
+                    }
                 });
                 if ( $('#bsMultiSelectJson').data("DashboardCode.BsMultiSelect")  ){
                     $('#bsMultiSelectJson').bsMultiSelect("UpdateDisabled");
@@ -1044,7 +1048,7 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                    options.push(
                         {text:"Antarctica", value:"C5", hidden:false, disabled:false, selected:false}
                     );
-                    $('#bsMultiSelectJson, #bsMultiSelectJson2').bsMultiSelect("Update");
+                    $jsonMultiSelects.bsMultiSelect("Update");
                     $(this).prop('disabled', true);
                 }
             )
