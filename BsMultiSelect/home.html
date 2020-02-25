@@ -1025,8 +1025,6 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                 
                 $selectMultiSelects.each( function(index, element){
                     if ( $(element).data("DashboardCode.BsMultiSelect")  ){
-                        console.log("disabled");
-                        console.log(element);
                         $(element).bsMultiSelect("UpdateDisabled");
                     }
                 });
