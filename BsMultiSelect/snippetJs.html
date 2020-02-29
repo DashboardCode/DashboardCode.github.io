@@ -45,15 +45,15 @@
             ];
             var $languages = $('#languages1-id, #languages2-id')
             var getIsAttached = function() { return $languages.data("DashboardCode.BsMultiSelect")!=null }
-            var disabled = true;
+            var disabled = false;
             var install = function(){
                 $languages.bsMultiSelect({options, getDisabled: function(){return disabled;}});
-                        $('#languages1-id').on('dashboardcode.multiselect:change', function(){
-                            $('#languages2-id').bsMultiSelect("UpdateSelected");
-                        })
-                        $('#languages2-id').on('dashboardcode.multiselect:change', function(){
-                            $('#languages1-id').bsMultiSelect("UpdateSelected");
-                        })
+                    $('#languages1-id').on('dashboardcode.multiselect:change', function(){
+                        $('#languages2-id').bsMultiSelect("UpdateSelected");
+                    })
+                    $('#languages2-id').on('dashboardcode.multiselect:change', function(){
+                        $('#languages1-id').bsMultiSelect("UpdateSelected");
+                    })
             }
             install();
             $('#btnAttach').click(
