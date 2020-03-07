@@ -10,7 +10,8 @@
         <div class="container">
             <div class="pt-4">
 		        <button id="btnAttach" class="btn btn-primary">Attach | Dispose</button>
-                <button id="btnDisable" class="btn btn-secondary">Disable | Enable</button>
+                <button id="btnDisable" class="btn btn-secondary">Component: Disable | Enable</button>
+                <button id="btnDisableOptions" class="btn btn-secondary">Options: Disable | Enable</button>
             </div>
             <br/>
 
@@ -46,14 +47,18 @@
             var $languages = $('#languages1-id, #languages2-id')
             var getIsAttached = function() { return $languages.data("DashboardCode.BsMultiSelect")!=null }
             var disabled = false;
+            var disabledOptions = false;
             var install = function(){
-                $languages.bsMultiSelect({options, getDisabled: function(){return disabled;}});
-                    $('#languages1-id').on('dashboardcode.multiselect:change', function(){
-                        $('#languages2-id').bsMultiSelect("UpdateSelected");
-                    })
-                    $('#languages2-id').on('dashboardcode.multiselect:change', function(){
-                        $('#languages1-id').bsMultiSelect("UpdateSelected");
-                    })
+                $languages.bsMultiSelect({options, 
+                        getDisabled: function(){return disabled;},
+                        getIsOptionDisabled: function(){ return disabledOptions }
+                        });
+                $('#languages1-id').on('dashboardcode.multiselect:change', function(){
+                    $('#languages2-id').bsMultiSelect("UpdateOptionsSelected");
+                })
+                $('#languages2-id').on('dashboardcode.multiselect:change', function(){
+                    $('#languages1-id').bsMultiSelect("UpdateOptionsSelected");
+                })
             }
             install();
             $('#btnAttach').click(
@@ -77,15 +82,14 @@
                 }      
             );
             
-            
-            $('#btnUpdateSelected').click(
+            $('#btnDisableOptions').click(
                 function() {
                     if (getIsAttached()){
-                        $('#languages1-id, #languages2-id').bsMultiSelect("UpdateSelected");
-
+                        disabledOptions=!disabledOptions;
+                        $languages.bsMultiSelect("UpdateOptionsDisabled");
                     }
-                }
-            )
+                }      
+            );
         </script>
     </body>
 </html>
