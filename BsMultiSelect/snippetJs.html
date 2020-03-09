@@ -8,13 +8,24 @@
     </head>
     <body class="bg-light">
         <div class="container">
-            <div class="pt-4">
-		        <button id="btnAttach" class="btn btn-primary">Attach | Dispose</button>
-                <button id="btnDisable" class="btn btn-secondary">Component: Disable | Enable</button>
-                <button id="btnDisableOptions" class="btn btn-secondary">Options: Disable | Enable</button>
-            </div>
-            <br/>
+            <legend class="mt-4">BsMultiSelect API</legend>
+            <div class="form-inline">
+		        <button id="btnAttach" class="btn btn-primary mr-2">Attach | Dispose</button>
+                <button id="btnDisable" class="btn btn-secondary mr-2">Component: Disable | Enable</button>
 
+                <div class="form-group mr-2">
+                    <label for="languages-disabled-id" class="mr-1">Disabled:</label>
+                    <select class="custom-select" multiple="multiple" id="languages-disabled-id" ></select>
+                </div>
+
+                <!-- <div class="form-group mr-2">
+                    <label for="languages-hidden-id" class="mr-1">Hidden:</label>
+                    <select class="custom-select" multiple="multiple" id="languages-hidden-id" ></select>
+                </div> -->
+            </div>
+
+            <br/><br/>
+            <legend>Two synchronized multiselects</legend>
             <div class="form-row">
                 <div class="col-md-6">
                     <label for="languages1-id">Languages1:</label>
@@ -39,11 +50,47 @@
         
         <script>
             var options = [
-                {text: "English", selected: true},
-                {text: "Lithuanian", selected: false},
-                {text: "Russian", selected: false},
-                {text: "Finnish", selected: false}
+                {text: "English", selected: true, disabled: false,  hidden: false},
+                {text: "Lithuanian", selected: false, disabled: false,  hidden: false},
+                {text: "Russian", selected: false, disabled: false,  hidden: false},
+                {text: "Finnish", selected: false, disabled: false,  hidden: false}
             ];
+
+            var dataHTML = '';
+            for(var i = 0; i<options.length; i++){
+                var o = options[i];
+	            dataHTML += '<option value="'+ o.text +'"  data-index="'+i+'">'+ o.text +'</option>';
+            }
+            var $management = $('#languages-hidden-id, #languages-disabled-id');
+            var languages1 = null;
+            var languages2 = null;
+            $management.html(dataHTML);
+            $management.bsMultiSelect(
+                function(e , c)
+                {
+                    c.setSelected= function(eo, v){
+                        eo.selected = v;
+                        var index = $(eo).data("index");
+                        options[index].disabled = v;
+                        if (e.id == "languages-hidden-id"){
+                            var ms1 = $('#languages1-id').data("DashboardCode.BsMultiSelect")
+                            var ms2 = $('#languages2-id').data("DashboardCode.BsMultiSelect")
+                            if (ms1!=null){
+                                //ms1.UpdateOptionHidden(index)
+                                //ms2.UpdateOptionHidden(index)
+                            }
+                        } else if (e.id == "languages-disabled-id"){
+                            var ms1 = $('#languages1-id').data("DashboardCode.BsMultiSelect")
+                            var ms2 = $('#languages2-id').data("DashboardCode.BsMultiSelect")
+                            if (ms1!=null){
+                                ms1.UpdateOptionDisabled(index)
+                                ms2.UpdateOptionDisabled(index)
+                            }
+                        }
+                    }
+                }
+            );
+
             var $languages = $('#languages1-id, #languages2-id')
             var getIsAttached = function() { return $languages.data("DashboardCode.BsMultiSelect")!=null }
             var disabled = false;
@@ -51,7 +98,8 @@
             var install = function(){
                 $languages.bsMultiSelect({options, 
                         getDisabled: function(){return disabled;},
-                        getIsOptionDisabled: function(){ return disabledOptions }
+                        getIsOptionDisabled: function(o){ return o.disabled },
+                        getIsOptionHidden: function(o){ return o.hidden }
                         });
                 $('#languages1-id').on('dashboardcode.multiselect:change', function(){
                     $('#languages2-id').bsMultiSelect("UpdateOptionsSelected");
