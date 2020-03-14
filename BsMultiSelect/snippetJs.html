@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -18,12 +19,35 @@
                     <select class="custom-select" multiple="multiple" id="languages-disabled-id" ></select>
                 </div>
 
+                
+
+
                 <!-- <div class="form-group mr-2">
                     <label for="languages-hidden-id" class="mr-1">Hidden:</label>
                     <select class="custom-select" multiple="multiple" id="languages-hidden-id" ></select>
                 </div> -->
             </div>
+            <div class="form-inline  mt-3">
+                <div class="form-group mr-4">
+                    <!-- <label for="staticEmail2" class="sr-only">Email</label>
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com"> -->
 
+                    <!-- <label for="ppInput" class="mr-2" >Add</label> -->
+                    <div class="input-group" >
+                            <input  type="text" class="form-control" id="inputValue" placeholder="input value">
+                         
+                            <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" 
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                                <div class="dropdown-menu">
+                                    <a id="btnAdd" class="dropdown-item" href="#">Add</a>
+                                    <a id="btnRemove" class="dropdown-item" href="#">Remove</a>
+                                </div>
+                            </div>
+                    </div>
+
+                  </div>
+            </div>
             <br/><br/>
             <legend>Two synchronized multiselects</legend>
             <div class="form-row">
@@ -38,11 +62,11 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
-        <script src="popper.js"></script>
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <!-- <script src="popper.js"></script>
         <script src="bootstrap.js"></script> -->
 
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
@@ -50,25 +74,31 @@
         
         <script>
             var options = [
-                {text: "English", selected: true, disabled: false,  hidden: false},
+                {text: "English", selected: true,     disabled: false,  hidden: false},
+                {text: "Finnish", selected: false,    disabled: true,  hidden: true},
+                {text: "German",  selected: true,    disabled: false,  hidden: false},
                 {text: "Lithuanian", selected: false, disabled: false,  hidden: false},
+                {text: "Polish",  selected: false, disabled: false,  hidden: true},
                 {text: "Russian", selected: false, disabled: false,  hidden: false},
-                {text: "Finnish", selected: false, disabled: false,  hidden: false}
+                {text: "Sweeden", selected: false, disabled: false,  hidden: false}
             ];
 
-            var dataHTML = '';
-            for(var i = 0; i<options.length; i++){
-                var o = options[i];
-	            dataHTML += '<option value="'+ o.text +'"  data-index="'+i+'">'+ o.text +'</option>';
-            }
             var $management = $('#languages-hidden-id, #languages-disabled-id');
+            function resetManagement(){
+                var dataHTML = '';
+                for(var i = 0; i<options.length; i++) {
+                    var o = options[i];
+	                dataHTML += ('<option '+ (o.disabled?"selected":"") +' value="'+ o.text +'"  data-index="'+i+'">'+ o.text +'</option>');
+                }
+                $management.html(dataHTML);
+            }
+            resetManagement();
             var languages1 = null;
             var languages2 = null;
-            $management.html(dataHTML);
             $management.bsMultiSelect(
                 function(e , c)
                 {
-                    c.setSelected= function(eo, v){
+                    c.setSelected = function(eo, v) {
                         eo.selected = v;
                         var index = $(eo).data("index");
                         options[index].disabled = v;
@@ -76,8 +106,8 @@
                             var ms1 = $('#languages1-id').data("DashboardCode.BsMultiSelect")
                             var ms2 = $('#languages2-id').data("DashboardCode.BsMultiSelect")
                             if (ms1!=null){
-                                //ms1.UpdateOptionHidden(index)
-                                //ms2.UpdateOptionHidden(index)
+                                ms1.UpdateOptionHidden(index)
+                                ms2.UpdateOptionHidden(index)
                             }
                         } else if (e.id == "languages-disabled-id"){
                             var ms1 = $('#languages1-id').data("DashboardCode.BsMultiSelect")
@@ -96,7 +126,7 @@
             var disabled = false;
             var disabledOptions = false;
             var install = function(){
-                $languages.bsMultiSelect({options, 
+                $languages.bsMultiSelect({options:options, 
                         getDisabled: function(){return disabled;},
                         getIsOptionDisabled: function(o){ return o.disabled },
                         getIsOptionHidden: function(o){ return o.hidden }
@@ -137,6 +167,57 @@
                         $languages.bsMultiSelect("UpdateOptionsDisabled");
                     }
                 }      
+            );
+
+            $('#btnRemove').click(
+                function() {
+                    var inputValue = $("#inputValue").val();
+                    if (inputValue) {
+                        var position = -1;
+                        for(var i = 0; i<options.length; i++){
+                            var item = options[i];
+                            if (item.text.toLowerCase()==inputValue.toLowerCase()){
+                                position = i;
+                                break;
+                            }
+                        }
+                        
+                        if (position>=0){
+                            options.splice(position, 1);
+                            resetManagement();
+                            $management.bsMultiSelect("UpdateData");
+                            if (getIsAttached()){
+                                $('#languages1-id').BsMultiSelect().UpdateOptionRemoved(position);
+                                $('#languages2-id').BsMultiSelect().UpdateOptionRemoved(position);
+                            }
+                        }
+                    }
+                }
+            )
+            $('#btnAdd').click(
+                function() {
+                    var inputValue = $("#inputValue").val();
+                    if (inputValue) {
+                        var position = -1;
+                        for(var i = 0; i<options.length; i++){
+                            var item = options[i];
+                            if (item.text.toLowerCase()==inputValue.toLowerCase())
+                                return;
+                            else if (item.text.toLowerCase()>inputValue.toLowerCase())
+                                break;
+                        }
+                        position = i;
+                        if (position>=0){
+                            options.splice(position, 0, {text: inputValue, selected: false, disabled: false,  hidden: false});
+                            resetManagement();
+                            $management.bsMultiSelect("UpdateData");
+                            if (getIsAttached()){
+                                $('#languages1-id').BsMultiSelect().UpdateOptionAdded(position);
+                                $('#languages2-id').BsMultiSelect().UpdateOptionAdded(position);
+                            }
+                        }
+                    }
+                } 
             );
         </script>
     </body>
