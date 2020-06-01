@@ -145,7 +145,7 @@
             function setValidity(ms){
                 var $container = $(ms.getContainer());
                 if($container.closest('.was-validated').length!=0){
-                    if (ms.PicksCount()===0){
+                    if (ms.picksCount()===0){
                         $container.siblings('.valid-feedback, .valid-tooltip').hide();
                         $container.siblings('.invalid-feedback, .invalid-tooltip').show();
 
