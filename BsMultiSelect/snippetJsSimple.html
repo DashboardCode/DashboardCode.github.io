@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css">
+
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+
+        <style>
+            .form-inline .dashboardcode-bsmultiselect .custom-control{  /* IE11 */
+                justify-content: flex-start ; 
+            }
+        </style>
+    </head>
+    <body class="bg-light">
+        <a href="https://github.com/DashboardCode/BsMultiSelect"><img width="149" height="149" 
+            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" 
+             alt="Fork me on GitHub" data-recalc-dims="1"
+             style="position: relative; float:right"></a>
+        <div class="container pt-4 " >
+            <legend class="mt-4">BsMultiSelect API Demo</legend>
+            <div class="container" style="border: 1px solid #AAAAAA; border-radius: 5px; padding: 1rem;">
+            
+            <h5>Manipulate "Two synchronized multiselects"</h5>
+            <br/>
+            <div class="form-inline">
+		        <button id="btnAttach" class="btn btn-primary mr-2">Attach | Dispose</button>
+                <button id="btnDisable" class="btn btn-secondary mr-2">Component: Disable | Enable</button>
+
+            </div>
+            <br/>
+            <legend>Multiselect:</legend>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <label for="languages1-id">Languages1:</label>
+                    <div id="languages1-id"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script> -->
+        <!-- <script src="popper.js"></script>
+        <script src="bootstrap.js"></script> -->
+
+        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
+        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        
+        <script>
+            Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+         </script>
+         
+        <script>
+            var options = [
+                {text: "Arabic", selected: true,     disabled: false,  hidden: false},
+                {text: "Belarusian", selected: false,    disabled: true,   hidden: true},
+                {text: "Chinese",  selected: true,     disabled: false,  hidden: false},
+                {text: "Dutch", selected: false, disabled: false,  hidden: false},
+                {text: "English",  selected: false, disabled: false,  hidden: false},
+                {text: "French", selected: false, disabled: false,  hidden: false},
+                {text: "Greek", selected: false, disabled: false,  hidden: false},
+                {text: "Hindi", selected: false, disabled: false,  hidden: false},
+                {text: "Italian", selected: false, disabled: false,  hidden: false}
+            ];
+
+            var $management = $('#languages-hidden-id, #languages-disabled-id');
+            function resetManagement(){
+                function createData(property){
+                    var dataHTML = '';
+                    for(var i = 0; i<options.length; i++) {
+                        var o = options[i];
+	                    dataHTML += ('<option '+ (o[property]?"selected":"") +' value="'+ o.text +'"  data-index="'+i+'">'+ o.text +'</option>');
+                    }
+                    return dataHTML;
+                }
+                $('#languages-hidden-id').html(createData('hidden'));
+                $('#languages-disabled-id').html(createData('disabled'));
+            }
+            resetManagement();
+            var languages1 = null;
+            var languages2 = null;
+            let isLanguages2 = true;
+            var $languages = $('#languages1-id')
+            if (isLanguages2)
+                $languages =$languages.add('#languages2-id')
+            var callMs  = function(id, process){ return $(id).each(function(i,e){ let ms =$(e).data("DashboardCode.BsMultiSelect"); if (ms) process(ms); }) }
+
+            var install = function(){
+                $languages.bsMultiSelect({options:options, useCssPatch:false});
+            }
+            install();
+            $('#btnAttach').click(
+                function() {
+                    if (getIsAttached()){
+                        $languages.bsMultiSelect("Dispose");
+                    }
+                    else {
+                        install();
+                    }
+                }      
+	        );
+        </script>
+    </body>
+</html>

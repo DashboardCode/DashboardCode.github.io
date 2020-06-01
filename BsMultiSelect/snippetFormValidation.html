@@ -133,7 +133,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         
         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+	    <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
 
         <script>
             // add custom validity
@@ -143,7 +143,7 @@
             $bsMultiSelects.bsMultiSelect(/*{useCssPatch:false}*/);
 
             function setValidity(ms){
-                var $container = $(ms.GetContainer());
+                var $container = $(ms.getContainer());
                 if($container.closest('.was-validated').length!=0){
                     if (ms.PicksCount()===0){
                         $container.siblings('.valid-feedback, .valid-tooltip').hide();
@@ -171,7 +171,7 @@
                 } else {
                     $bsMultiSelects.each(function(i, e){
                         var ms = $(e).BsMultiSelect();
-                        var $container = $(ms.GetContainer());
+                        var $container = $(ms.getContainer());
                         $container.siblings('.valid-feedback , .valid-tooltip').hide();
                         $container.siblings('.invalid-feedback , .invalid-tooltip').hide();
                         $container.siblings('.valid-feedback , .valid-tooltip').hide();

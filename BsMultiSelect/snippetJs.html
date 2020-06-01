@@ -135,10 +135,10 @@
                         
                         if (e.id == "languages-hidden-id"){
                             options[index].hidden = v;
-                            callMs($languages, function(ms){ms.UpdateOptionHidden(index)})
+                            callMs($languages, function(ms){ms.updateOptionHidden(index)})
                         } else if (e.id == "languages-disabled-id"){
                             options[index].disabled = v;
-                            callMs($languages, function(ms){ms.UpdateOptionDisabled(index)})
+                            callMs($languages, function(ms){ms.updateOptionDisabled(index)})
                         }
                     }
                 }
@@ -213,8 +213,8 @@
                             resetManagement();
                             $management.bsMultiSelect("UpdateData");
                             if (getIsAttached()){
-                                callMs('#languages1-id', function(ms){ms.UpdateOptionRemoved(position)})
-                                callMs('#languages2-id', function(ms){ms.UpdateOptionRemoved(position)})
+                                callMs('#languages1-id', function(ms){ms.updateOptionRemoved(position)})
+                                callMs('#languages2-id', function(ms){ms.updateOptionRemoved(position)})
                             }
                         }
                     }
@@ -238,8 +238,8 @@
                             resetManagement();
                             $management.bsMultiSelect("UpdateData");
                             if (getIsAttached()){
-                                callMs('#languages1-id', function(ms){ms.UpdateOptionAdded(position)})
-                                callMs('#languages2-id', function(ms){ms.UpdateOptionAdded(position)})
+                                callMs('#languages1-id', function(ms){ms.updateOptionAdded(position)})
+                                callMs('#languages2-id', function(ms){ms.updateOptionAdded(position)})
                             }
                         }
                     }
