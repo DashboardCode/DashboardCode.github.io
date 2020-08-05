@@ -28,7 +28,6 @@
                 <option value="VL">is-valid</option>
                 <option value="INVL">is-invalid</option>
                 <option value="NOQY">rule: invalid if Quenya</option>
-                
             </select>
             
             
@@ -151,12 +150,14 @@
             }
             $('#languages-id, #complex-languages-id').bsMultiSelect().change(
                 function(){
+                    console.log("change");
                     if (isValidationEnabled){
                         setValidity(this)
                         $(this).bsMultiSelect('UpdateValidity');
                     }
                 }
             );
+
             $('#bs-validation-id').change(function() {
                 var $all = $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id');
                 if (this.value == 'DF') {

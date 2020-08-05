@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css">
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="pt-4">
+		<button id="btnAttach" class="btn btn-primary">Attach | Dispose</button>
+                <button id="btnDisable" class="btn btn-secondary">Disable | Enable</button>
+		<button id="btnClick" class="btn btn-secondary">See console</button>
+                    <!-- <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-secondary active">
+                               <input type="radio" id="optionEnable" name="optionEnableDisable" autocomplete="off"  value="ON" checked>Enable
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                               <input type="radio" id="optionDisable" name="optionEnableDisable"  autocomplete="off" value="OFF">Disable
+                            </label>
+                    </div> -->
+            </div>
+            <br/>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
+                <div class="col-sm-10">
+                    <select name="States1" id="languages-id" class="custom-select"  multiple="multiple">
+                        <option value="AR" >Arabic</option>
+                        <option value="EN" disabled selected>English</option>
+                        <optgroup label="OPT GROUP" disabled>
+                            <option value="CH" selected>Chinese</option>
+                            <option value="FR" dsiabled>French</option>
+                            <option value="DE">German</option>
+                            
+                            <option value="ID">Indonesian</option>                            
+                            <option value="MS">Malay</option>
+                            <option value="LT" hidden>Lithuanian</option>                            
+                            <option value="PT">Portuguese</option>
+                            <option value="RU" selected>Russian</option>
+                            <option value="ES">Spanish</option>
+                        </optgroup>
+                        <optgroup label="OPT GROUP" >
+                            <option value="EO" selected>Esperanto</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <script src="popper.js"></script>
+        <script src="bootstrap.js"></script> -->
+
+        <!--         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
+	<script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
+        
+        <script>
+            var $languages = $('#languages-id')
+            var getIsAttached = function() { return $languages.data("DashboardCode.BsMultiSelect")!=null }
+
+            $('#btnAttach').click(
+                function() {
+                    if (getIsAttached())
+                        $languages.bsMultiSelect("Dispose");
+                    else
+                        $languages.bsMultiSelect({useCssPatch:false, placeholder:"placeholder"});
+                }      
+	        );
+           
+            $('#btnDisable').click(
+                function() {
+                    $languages.prop("disabled", !$languages.prop("disabled"));
+                    if (getIsAttached())
+                        $languages.bsMultiSelect("UpdateDisabled");
+                }      
+            );
+
+	    $('#btnClick').click(
+                function() {
+		   $languages.BsMultiSelect().addPick({text:"bla" , selected:true, disabled:false, hidden:false});
+		   //let picks = [];
+                   //$languages.BsMultiSelect().forEachPeak(function(i){
+                   // 	picks.push(i) 
+                   //   }
+                   //)
+                   //console.log(picks)
+                }      
+            );
+        </script>
+    </body>
+</html>

@@ -76,7 +76,7 @@
             document.querySelector('#btnAttach').onclick = function(){
                 if (!bsMultiSelect){
                     var environment = {window, Popper};
-                    bsMultiSelect = BsMultiSelect(languagesElement, environment);
+                    bsMultiSelect = BsMultiSelect(languagesElement, environment, {placeholder: "placeholder"});
                 }
             };
 
