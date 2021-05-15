@@ -10,8 +10,9 @@
     <body class="bg-light">
         <div class="container">
             <div class="pt-4">
-		        <button id="btnAttach" class="btn btn-primary">Attach | Dispose</button>
+		<button id="btnAttach" class="btn btn-primary">Attach | Dispose</button>
                 <button id="btnDisable" class="btn btn-secondary">Disable | Enable</button>
+		<button id="btnClick" class="btn btn-secondary">See console</button>
                     <!-- <div id="toggle-disable-id" class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-secondary active">
                                <input type="radio" id="optionEnable" name="optionEnableDisable" autocomplete="off"  value="ON" checked>Enable
@@ -25,25 +26,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-2" for="languages-id">Languages:</label>
                 <div class="col-sm-10">
-                    <select name="States1" id="languages-id" class="custom-select"  multiple="multiple">
-                        <option value="AR" >Arabic</option>
-                        <option value="EN" disabled selected>English</option>
-                        <optgroup label="OPT GROUP" disabled>
-                            <option value="CH" selected>Chinese</option>
-                            <option value="FR" dsiabled>French</option>
-                            <option value="DE">German</option>
-                            
-                            <option value="ID">Indonesian</option>                            
-                            <option value="MS">Malay</option>
-                            <option value="LT" hidden>Lithuanian</option>                            
-                            <option value="PT">Portuguese</option>
-                            <option value="RU" selected>Russian</option>
-                            <option value="ES">Spanish</option>
-                        </optgroup>
-                        <optgroup label="OPT GROUP" >
-                            <option value="AB" selected>abc</option>
-                        </optgroup>
-                    </select>
+                    <div id="languages-id"></div>
                 </div>
             </div>
 
@@ -56,27 +39,61 @@
         <script src="popper.js"></script>
         <script src="bootstrap.js"></script> -->
 
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <!--         <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
+	<script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
         
         <script>
+            var options = [
+                {text: "Arabic"},
+                {text: "Belarusian"},
+                {text: "Chinese"},
+                {text: "Dutch"},
+                {text: "English"},
+                {text: "French"},
+                {text: "Greek"},
+                {text: "Hindi"},
+                {text: "Italian"}
+            ];
+            var picks = []; 
+
             var $languages = $('#languages-id')
             var getIsAttached = function() { return $languages.data("DashboardCode.BsMultiSelect")!=null }
-
+            var disabled = false;
+            var plugins = $.fn.bsMultiSelect.tools.MultiSelectBuilder({ajax:true});
+            console.log(plugins);
             $('#btnAttach').click(
                 function() {
                     if (getIsAttached())
                         $languages.bsMultiSelect("Dispose");
                     else
-                        $languages.bsMultiSelect({useCssPatch:false});
+                        $languages.bsMultiSelect({
+                            options:options, 
+                            picks: picks,
+                            plugins: plugins,
+                            getDisabled: function(){return disabled },
+                            useCssPatch:false, 
+                            placeholder:"placeholder"});
                 }      
 	        );
            
             $('#btnDisable').click(
                 function() {
-                    $languages.prop("disabled", !$languages.prop("disabled"));
+                    disabled = ! disabled;
                     if (getIsAttached())
                         $languages.bsMultiSelect("UpdateDisabled");
+                }      
+            );
+
+	    $('#btnClick').click(
+                function() {
+                    console.log(picks);
+		            //$languages.BsMultiSelect().addPick({text:"bla" , selected:true, disabled:false, hidden:false});
+		   //let picks = [];
+                   //$languages.BsMultiSelect().forEachPeak(function(i){
+                   // 	picks.push(i) 
+                   //   }
+                   //)
+                   //console.log(picks)
                 }      
             );
         </script>
