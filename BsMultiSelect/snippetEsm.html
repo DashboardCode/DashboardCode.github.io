@@ -43,14 +43,14 @@
             <pre class="prettyprint lang-html linenums:1">
 // attach and dispose BsMultiSelect on buttons #btnAttach and #btnDispose clicks
 &lt;script type="module"&gt;
-    import Popper from "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/esm/popper.min.js"
-    import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
+    import {createPopper} from "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/esm/popper.min.js"
+    import {BsMultiSelect} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.0/dist/js/BsMultiSelect.esm.min.js"
     var languagesElement = document.querySelector('#languages-id');
     var bsMultiSelect = null;
 
     document.querySelector('#btnAttach').onclick = function(){
        if (!bsMultiSelect){
-          var environment = {window, Popper};
+          var environment = {window, createPopper};
           // add this if you want to trigger events through JQuery events 
           // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
           bsMultiSelect = BsMultiSelect(languagesElement, environment, /*settings*/null);
