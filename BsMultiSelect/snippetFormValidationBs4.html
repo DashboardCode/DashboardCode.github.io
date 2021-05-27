@@ -3,25 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
-
-
         <style>
-            /* patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control */
-            .was-validated .dashboardcode-bsmultiselect ul.dropdown-menu > li .form-check-input:valid:checked {
-                border-color: var(--bs-primary);
-                background-color: var(--bs-primary);
+            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
+                border-color: var(--primary);
+                background-color: var(--primary);
             }
-            .was-validated .dashboardcode-bsmultiselect ul.dropdown-menu > li .form-check-input:valid:not(:checked) {
-                border-color: #adb5bd;
-            } 
+            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
+                border-color: #adb5bd; /* not available as parameter */
+            }
         </style>
-
         <style>
            input:invalid{outline: 0;}  /*correct Edge browser's "unwanted" red squre; TODO: why Boostrap team didn't add it? */
         </style>
-        <title>DashboardCode Multiselect Plugin for Bootstrap 5</title>
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
     </head>
     <body class="bg-light">
         <a href="https://github.com/DashboardCode/BsMultiSelect"><img width="149" height="149" 
@@ -32,7 +28,7 @@
         <div class="container">
             <div class="py-5 text-center">
                 <h2>BsMultiselect</h2>
-                <p class="lead">Multiselect JQuery Plugin for Bootstrap 5</p>
+                <p class="lead">Multiselect JQuery Plugin for Bootstrap 4</p>
                 <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
             </div>
             <br/>
@@ -45,8 +41,7 @@
             </div>
             <br/>
             <form action="https://postman-echo.com/post" method="post" class="was-validated">
-            
-            <div class="row mb-3">
+            <div class="form-group row">
                 <label class="col-form-label col-sm-2" for="languages-id">BsMultiSelect:</label>
                 <div class="col-sm-10">
                     <select name="States1" id="languages-id" class="form-control"  multiple="multiple" required>
@@ -67,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="form-group row">
                 <label class="col-form-label col-sm-2" for="sample-id">Input sample:</label>
                 <div class="col-sm-10"> 
                     <input  type="text" class="form-control" id="sample-id" value="sample value" required>
@@ -76,15 +71,18 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="form-group row">
                 <label class="col-form-label col-sm-2" for="sample-complex-id">BsMultiSelect:</label>
             
                 <div class="col-sm-10">
                 <div class="input-group dashboardcode-bsmultiselect">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('DeselectAll')">Clear</a>
-                        <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('SelectAll')">Select All</a>
+                    
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('DeselectAll')">Clear</a>
+                            <a class="dropdown-item" href="#"  onClick="$('#complex-languages-id').bsMultiSelect('SelectAll')">Select All</a>
+                        </div>
                     </div>
                     <select name="ComplexLanguages" id="complex-languages-id" 
                         class="custom-select"  multiple="multiple" style="display: none;" required>
@@ -107,13 +105,15 @@
                 </div>
             </div>
 
-            <div class="row  mb-3">
+            <div class="form-group row  mb-3">
                 <label class="col-form-label col-sm-2" for="sample-complex-id">Input sample:</label>
                 <div class="col-sm-10"> 
                     <div id="input-group-input-sample" class="input-group">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"  onClick="$('#sample-complex-id').val('')">Clear</a>
+                        <div  class="input-group-prepend">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"  onClick="$('#sample-complex-id').val('')">Clear</a>
+                            </div>
                         </div>
                         <input type="text" class="form-control" id="sample-complex-id" aria-label="Amount (to the nearest dollar)" required>
                     </div>
@@ -125,18 +125,18 @@
             <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
             <input type="reset" class="btn btn-secondary"  value="Reset">
             </form>
+            
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.0/dist/js/BsMultiSelect.min.js"></script>
-	    <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.0/dist/js/BsMultiSelect.bs4.min.js"></script>
 
         <script>
             var $bsMultiSelects = $('#languages-id, #complex-languages-id')
-            $bsMultiSelects.bsMultiSelect({useCssPatch:true});
+            $bsMultiSelects.bsMultiSelect();
 
             $('#toggle-wasvalidated-id').change(function() {
                 $('form').toggleClass('was-validated');
@@ -150,6 +150,7 @@
             // input-group over input support (BS4 bug, nothing common with BsMultiSelect, you can remove it)
             supportValidationMsgOnInputGroupWithInput($('#toggle-wasvalidated-id').prop('checked'));
             function supportValidationMsgOnInputGroupWithInput(checked){
+                console.log(checked)
                 var $inputGroup = $('#input-group-input-sample');
                 var $input = $inputGroup.find('input');
                 if (checked) {
@@ -171,6 +172,8 @@
                     $inputGroup.siblings('.valid-feedback , .valid-tooltip, .invalid-feedback , .invalid-tooltip').hide();
                 }
             }
+            
         </script>
+
     </body>
 </html>

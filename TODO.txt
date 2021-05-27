@@ -1,2 +1,8 @@
+NOTE: SVG editor for svg close buttons
+https://boxy-svg.com/app
+
+
+TODO:
 Better Github pages
 https://habr.com/post/419893/
+
