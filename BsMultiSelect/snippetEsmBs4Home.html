@@ -44,7 +44,7 @@
 // attach and dispose BsMultiSelect on buttons #btnAttach and #btnDispose clicks
 &lt;script type="module"&gt;
     import Popper from "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/esm/popper.min.js"
-    import {BsMultiSelect} from "https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.esm.min.js"
+    import {ModuleFactory as dashboardCodeFactory} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.1/dist/js/BsMultiSelect.bs4.esm.min.js"
     var languagesElement = document.querySelector('#languages-id');
     var bsMultiSelect = null;
 
@@ -53,7 +53,9 @@
           var environment = {window, Popper};
           // add this if you want to trigger events through JQuery events 
           // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
-          bsMultiSelect = BsMultiSelect(languagesElement, environment, /*settings*/null);
+          let dashboardCode = dashboardCodeFactory(environment);
+          bsMultiSelect = dashboardCode.BsMultiSelect(languagesElement,  {placeholder: "placeholder"}); 
+          // dashboardCode.BsMultiSelect.Default - access to default BsMultiSelect settings
        }
     };
 
@@ -70,13 +72,16 @@
 
         <script type="module">
             import Popper from "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/esm/popper.min.js"
-            import {BsMultiSelect} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.1/dist/js/BsMultiSelect.bs4.esm.min.js"
+            // import {ModuleFactory as dashboardCodeFactory, BsMultiSelect /*derpicated*/} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.0.1/dist/js/BsMultiSelect.bs4.esm.min.js"
+            import {ModuleFactory as dashboardCodeFactory, BsMultiSelect /*derpicated*/} from "http://127.0.0.1:5500/dist/js/BsMultiSelect.esm.js"
             var languagesElement = document.querySelector('#languages-id');
             var bsMultiSelect = null;
             document.querySelector('#btnAttach').onclick = function(){
                 if (!bsMultiSelect){
-                    var environment = {window, Popper};
-                    bsMultiSelect = BsMultiSelect(languagesElement, environment, {placeholder: "placeholder"});
+                    var environment = {window, createPopper};
+                    let dashboardCode = dashboardCodeFactory(environment);
+                    bsMultiSelect = dashboardCode.BsMultiSelect(languagesElement,  {placeholder: "placeholder"}); 
+                    //bsMultiSelect = BsMultiSelect(languagesElement, environment, {placeholder: "placeholder"}); // depricated
                 }
             };
 
