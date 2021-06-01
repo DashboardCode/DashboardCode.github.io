@@ -78,7 +78,7 @@
             var bsMultiSelect = null;
             document.querySelector('#btnAttach').onclick = function(){
                 if (!bsMultiSelect){
-                    var environment = {window, createPopper};
+                    var environment = {window, Popper};
                     let dashboardCode = dashboardCodeFactory(environment);
                     bsMultiSelect = dashboardCode.BsMultiSelect(languagesElement,  {placeholder: "placeholder"}); 
                     //bsMultiSelect = BsMultiSelect(languagesElement, environment, {placeholder: "placeholder"}); // depricated
