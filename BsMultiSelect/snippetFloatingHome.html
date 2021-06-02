@@ -18,10 +18,10 @@
     <div class="py-5 text-center">
         <h2>BsMultiselect</h2>
         <p class="lead">Multiselect Plugin for Bootstrap 5</p>
-        <p class="code">$("select[multiple='multiple']").bsMultiSelect();</p>
+        <p class="code">dashboardcode.BsMultiSelect("#myElement");<br>$("#myElement").bsMultiSelect(); // jquery</p>
     </div>
     <h4 class="m-3">Multiselect for floating labels</h4>
-    <p class="m-3"> Note:  Bootstrap-5 Floating labels doesn't work well with  RTL direction and effects of  form-control-lg and form-control-sm (sizes). The same true for current realisation of floating labels for BsMultiSelect. </p>
+  
     <form class="pt-4">
 
         <div class="rom m-3 form-floating">
@@ -55,6 +55,6 @@
     <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
     <script>
             var $bsMultiSelects = $('#complex-languages-id')
-            $bsMultiSelects.bsMultiSelect({useCssPatch:true});
+            $bsMultiSelects.bsMultiSelect({ cssPatch : {  choices: {columnCount:'3' }}});
     </script>
 </html>
