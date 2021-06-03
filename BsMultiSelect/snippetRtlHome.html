@@ -95,16 +95,16 @@
                 </div>
                 </div>
             </div>
-            <br>
+            <br/>
             <!-- <div class="row" dir="rtl">
-            <div class="col-sm-10" >
-                <div class="form-floating">
-                    <label for="sample2-id">زبان فارسی</label>
-                    <input  type="text" class="form-control" id="sample2-id"    required>
-                    <div class="valid-feedback">درست</div>
-                    <div class="invalid-feedback">ضروری</div>
+                <div class="col-sm-10  offset-sm-2" >
+                    <div class="form-floating">
+                        <label for="sample2-id">زبان فارسی</label>
+                        <input  type="text" class="form-control" id="sample2-id"    required>
+                        <div class="valid-feedback">درست</div>
+                        <div class="invalid-feedback">ضروری</div>
+                    </div>
                 </div>
-            </div>
             </div> -->
             <input type="submit" class="btn btn-primary" action="https://postman-echo.com/post" method="post">
         </form>
@@ -139,9 +139,6 @@
             // $.fn.bsMultiSelect.defaults.isRtl = true; // alternative to dir="rtl" attribute
             $('#select-persian-id').bsMultiSelect();
             $('#select-floating-id').bsMultiSelect({
-                cssPatch: {
-                    label_floating_lifted: { opacity: '.65', transform : 'scale(.85) translateY(-.5rem) translateX(.15rem)'}
-                }
 
             });
             
