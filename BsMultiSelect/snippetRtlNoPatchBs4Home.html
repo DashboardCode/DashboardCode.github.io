@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css">
+        <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.bs4.css">
 
         <style>
             [dir="rtl"] .custom-control.custom-checkbox{
@@ -22,13 +22,16 @@
                 background-position: left calc(0.375em + 0.1875rem) center;
             }
             /* patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control */
-            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:checked ~ .custom-control-label::before {
+            /* .was-validated .dashboardcode-bsmultiselect > div.dropdown-menu > ul>li .custom-control-input:valid ~ .custom-control-label {
+                color: inherit;
+            }
+            .was-validated .dashboardcode-bsmultiselect > div.dropdown-menu > ul>li .custom-control-input:valid:checked ~ .custom-control-label::before {
                 border-color: var(--primary);
                 background-color: var(--primary);
             }
-            .was-validated .dashboardcode-bsmultiselect .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
-                border-color: #adb5bd 
-            } 
+            .was-validated .dashboardcode-bsmultiselect > div.dropdown-menu > ul>li .custom-control-input:valid:not(:checked) ~ .custom-control-label::before {
+                border-color: #adb5bd  
+            } */
         </style>
         <style>
             input:invalid{outline: 0;}  /*correct Edge browser "unwanted" red squre; TODO: why Boostrap team didn't add it? */
@@ -154,8 +157,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
-        <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.bs4.min.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.bs4.js"></script>
         
         <script>
             // $.fn.bsMultiSelect.defaults.isRtl = true; // alternative to dir="rtl" attribute

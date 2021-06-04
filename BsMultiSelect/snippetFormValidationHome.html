@@ -9,11 +9,11 @@
 
         <style>
             /* patch the BS4 .was-validated problem - there are no way to exclude BS4 styling for concreate `.was-validated :valid` or `.was-validated :invalid` control */
-            .was-validated .dashboardcode-bsmultiselect ul.dropdown-menu > li .form-check-input:valid:checked {
+            .was-validated .dashboardcode-bsmultiselect div.dropdown-menu > ul > li .form-check-input:valid:checked {
                 border-color: var(--bs-primary);
                 background-color: var(--bs-primary);
             }
-            .was-validated .dashboardcode-bsmultiselect ul.dropdown-menu > li .form-check-input:valid:not(:checked) {
+            .was-validated .dashboardcode-bsmultiselect div.dropdown-menu > ul > li .form-check-input:valid:not(:checked) {
                 border-color: #adb5bd;
             } 
         </style>
