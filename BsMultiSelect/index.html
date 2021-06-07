@@ -704,6 +704,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
         <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.0/dist/js/BsMultiSelect.min.js"></script>
         
         <script>
+            var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+            
             var bsMultiSelectLink = 'https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.0/dist/css/BsMultiSelect.min.css';
 
             var $selectMultiSelects = $("#edit-StatesPp-id, select[multiple='multiple']");
@@ -775,7 +777,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                             //     o.removeAttribute('selected');
                             //     o.selected=false;
                             // }
-                            $('.toast').toast('show').find('.toast-body').css('text-decoration',v?'none':'line-through').text(o.text);
+                            if (!isIE11)                            
+                                $('.toast').toast('show').find('.toast-body').css('text-decoration',v?'none':'line-through').text(o.text);
                         },
                         
                        
@@ -786,7 +789,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                     cssPatch: window.cssPatch,
                     setSelected: function(o,i) { 
                         o.selected = i;
-                        $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
+                        if (!isIE11)                        
+                            $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
                     },
                     // for all elements (selected by selector)
                     options : options, // yes, one source for two multiselects

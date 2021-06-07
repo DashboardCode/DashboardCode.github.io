@@ -690,10 +690,12 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
             </div>
         </div>
 
+        <!-- add polyfills to support popper 2 in IE1 -->
         <script src="https://polyfill.io/v3/polyfill.min.js?features=CustomEvent,Array.prototype.find,Promise,Object.assign"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script> -->
+        <script src="./bootstrap.js"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
@@ -708,6 +710,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
         <script>
             var bsMultiSelectLink = 'https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.min.css';
             //var bsMultiSelectLink = 'D:\\cot\\DashboardCode\\BsMultiSelect\\dist\\css\\BsMultiSelect.css';
+
+            var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
             var $selectMultiSelects = $("#edit-StatesPp-id, select[multiple='multiple']");
             var $jsonMultiSelects = $(" #bsMultiSelectJson, #bsMultiSelectJson2");
@@ -778,7 +782,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                             //     o.removeAttribute('selected');
                             //     o.selected=false;
                             // }
-                            $('.toast').toast('show').find('.toast-body').css('text-decoration',v?'none':'line-through').text(o.text);
+                            if (!isIE11)
+                                $('.toast').toast('show').find('.toast-body').css('text-decoration',v?'none':'line-through').text(o.text);
                         },
                         
                        
@@ -789,7 +794,8 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                     cssPatch: window.cssPatch,
                     setSelected: function(o,i) { 
                         o.selected = i;
-                        $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
+                        if (!isIE11)
+                            $('.toast').toast('show').find('.toast-body').css('text-decoration',i?'none':'line-through').text(o.text);
                     },
                     // for all elements (selected by selector)
                     options : options, // yes, one source for two multiselects
