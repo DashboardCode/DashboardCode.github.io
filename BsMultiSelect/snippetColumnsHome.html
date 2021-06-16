@@ -89,8 +89,10 @@
             <pre class="prettyprint lang-html linenums:0" style="border-color: #CCCCCC">
                 $("select[multiple='multiple']").bsMultiSelect({
                     cssPatch : { 
-                       choices: {columnCount:'3' },
-                    }
+                       choices: {columnCount:'3' }
+                    },
+                    isNoResultWarningEnabled : true,
+                    // noResultsWarning = "No results found";  // default
                 });</pre>
             
 </div>
@@ -112,7 +114,8 @@
             $("select[multiple='multiple']").bsMultiSelect({
                  cssPatch : { 
                     choices: {columnCount:'3' },
-                 }
+                 },
+                 isNoResultWarningEnabled : true
             });
         </script>
     </body>
