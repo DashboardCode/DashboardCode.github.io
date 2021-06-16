@@ -803,7 +803,6 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                     getDisabled : function(){ 
                         return $('#optionDisable').prop("checked");
                     },
-                    
                     // for each element
                     buildConfiguration: function(element, configuration){
                         configuration.label=$('#'+element.id+'Label').get(0); // TODO: resolve the bug
