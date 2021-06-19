@@ -708,9 +708,12 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
 	    </script>        
 
         <script>
+			console.log($.fn.bsMultiSelect.defaults.useChoicesDynamicStyling);
+			$.fn.bsMultiSelect.defaults.useChoicesDynamicStyling = true;
+		
             //var bsMultiSelectLink = 'https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/css/BsMultiSelect.min.css';
             var bsMultiSelectLink = 'D:\\cot\\DashboardCode\\BsMultiSelect\\dist\\css\\BsMultiSelect.css';
-
+		
             var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
             var $selectMultiSelects = $("#edit-StatesPp-id, select[multiple='multiple']");
