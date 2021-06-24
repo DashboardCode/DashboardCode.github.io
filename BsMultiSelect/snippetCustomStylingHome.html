@@ -19,7 +19,8 @@
              alt="Fork me on GitHub" data-recalc-dims="1"
              style="position: relative; float:right"></a>
         <div class="container pt-4 " >
-            <legend class="mt-4">BsMultiSelect API Demo</legend>
+            <legend class="mt-4">BsMultiSelect API Demo - with custom styling items</legend>
+            <p> Check how to configure custom styling (here: items that starts with 'a' are rose) to work with dynamic effects (like hover), states (like selected) and dinamic api (like "disable option" and "disable compent")</p>
             <div class="container" style="border: 1px solid #AAAAAA; border-radius: 5px; padding: 1rem;">
             
             <h5>Manipulate "Two synchronized multiselects"</h5>
@@ -74,6 +75,54 @@
                     <div id="languages2-id"></div>
                 </div>
             </div>
+
+            <p class="mt-4">Configuration:</p>
+            <pre class="prettyprint lang-html linenums:0" style="border-color: #CCCCCC">
+                $("select[multiple='multiple']").bsMultiSelect({
+                    customChoiceStylings :  function(choiceDom, option){
+                        if (option.text.startsWith("A") || option.text.startsWith("a")) 
+                        {
+                            choiceDom.choiceElement.style.backgroundColor = 'HotPink';
+                            return {
+                                // updateHoverIn, updateDisabled, updateSelected, updateHighlighted are  possible
+                                updateHoverIn(state){
+                                    if (state.isHoverIn){
+                                        choiceDom.choiceElement.style.setProperty("background-color", "Pink", "important");
+                                    } else {
+                                        choiceDom.choiceElement.style.setProperty("background-color", "HotPink");
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    customPickStylings :  function(pickDom, option){
+                        if (option.text.startsWith("A") || option.text.startsWith("a")) 
+                        {
+                            pickDom.pickContentElement.style.backgroundColor = 'HotPink';
+                            return {
+                                updateDisabled(state){
+                                    if (state.isOptionDisabled){
+                                        pickDom.pickContentElement.style.setProperty("background-color", "Pink");
+                                    } else {
+                                        pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
+                                    }
+                                },
+                                updateComponentDisabled(state){
+                                    if (state.isComponentDisabled) {
+                                        pickDom.pickContentElement.style.setProperty("background-color", "transparent");
+                                    }
+                                    else {
+                                        if (state.isOptionDisabled){
+                                            pickDom.pickContentElement.style.setProperty("background-color", "Pink");
+                                        } else {
+                                            pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });</pre>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -85,8 +134,8 @@
 
         <!-- <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@0.6.8/dist/js/BsMultiSelect.js"></script>  -->
                     
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.8/dist/js/BsMultiSelect.min.js"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.8/dist/js/BsMultiSelect.min.js"></script> -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script>
         
         <script>
             var options = [
@@ -150,7 +199,49 @@
                 $languages.bsMultiSelect({options:options, 
                         getDisabled: function(){return disabled },
                         getIsOptionDisabled: function(o){ return o.disabled },
-                        getIsOptionHidden: function(o){ return o.hidden }
+                        getIsOptionHidden: function(o){ return o.hidden },
+                        customChoiceStylings :  function(choiceDom, option){
+                            if (option.text.startsWith("A")|| option.text.startsWith("a")) 
+                            {
+                                choiceDom.choiceElement.style.backgroundColor = 'HotPink';
+                                return {
+                                    updateHoverIn(state){
+                                        if (state.isHoverIn){
+                                            choiceDom.choiceElement.style.setProperty("background-color", "Pink", "important");
+                                        } else {
+                                            choiceDom.choiceElement.style.setProperty("background-color", "HotPink");
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        customPickStylings :  function(pickDom, option){
+                            if (option.text.startsWith("A")|| option.text.startsWith("a")) 
+                            {
+                                pickDom.pickContentElement.style.backgroundColor = 'HotPink';
+                                return {
+                                    updateDisabled(state){
+                                        if (state.isOptionDisabled){
+                                            pickDom.pickContentElement.style.setProperty("background-color", "Pink");
+                                        } else {
+                                            pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
+                                        }
+                                    },
+                                    updateComponentDisabled(state){
+                                        if (state.isComponentDisabled) {
+                                            pickDom.pickContentElement.style.setProperty("background-color", "transparent");
+                                        }
+                                        else {
+                                            if (state.isOptionDisabled){
+                                                pickDom.pickContentElement.style.setProperty("background-color", "Pink");
+                                            } else {
+                                                pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         });
                 if (isLanguages2){
                     $('#languages1-id').on('dashboardcode.multiselect:change', function(){

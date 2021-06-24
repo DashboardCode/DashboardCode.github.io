@@ -4,8 +4,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-        <title>DashboardCode Multiselect Plugin for Bootstrap 5</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <title>DashboardCode Multiselect Plugin for Bootstrap 4</title>
 
         <style>
             .form-inline .dashboardcode-bsmultiselect .custom-control{  /* IE11 */
@@ -24,9 +24,10 @@
             
             <h5>Manipulate "Two synchronized multiselects"</h5>
             <br/>
-            <div>
+            <div class="form-inline">
 		        <button id="btnAttach" class="btn btn-primary mr-2">Attach | Dispose</button>
                 <button id="btnDisable" class="btn btn-secondary mr-2">Component: Disable | Enable</button>
+
             </div>
             <br/>
             <div class="form-inline">
@@ -49,14 +50,14 @@
                     <div class="input-group" >
                             <input  type="search" autocomplete="off" class="form-control" id="inputValue" placeholder="input value">
                          
-                            
+                            <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" 
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</button>
-                            <div class="dropdown-menu">
-                                <a id="btnAddSelected" class="dropdown-item" href="#">Add</a>
-                                <a id="btnRemove" class="dropdown-item" href="#">Remove</a>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</button>
+                                <div class="dropdown-menu">
+                                    <a id="btnAddSelected" class="dropdown-item" href="#">Add</a>
+                                    <a id="btnRemove" class="dropdown-item" href="#">Remove</a>
+                                </div>
                             </div>
-                            
                     </div>
 
                   </div>
@@ -77,17 +78,16 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script> -->
-        <!-- <script src="popper.js"></script>
-        <script src="bootstrap.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-        <!-- <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@0.6.8/dist/js/BsMultiSelect.js"></script>  -->
-                    
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.8/dist/js/BsMultiSelect.min.js"></script>
-        <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
-        
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.8/dist/js/BsMultiSelect.bs4.min.js"></script>   -->
+        <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.bs4.js"></script>
+                
+        <script>
+            Popper.Defaults.modifiers.computeStyle.gpuAcceleration = !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform));
+         </script>
+         
         <script>
             var options = [
                 {text: "Arabic", selected: true,     disabled: false,  hidden: false},
