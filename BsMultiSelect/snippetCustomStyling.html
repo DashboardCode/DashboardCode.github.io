@@ -99,25 +99,23 @@
                         if (option.text.startsWith("A") || option.text.startsWith("a")) 
                         {
                             pickDom.pickContentElement.style.backgroundColor = 'HotPink';
-                            return {
-                                updateDisabled(state){
+                            var setBackground = function(state){
+                                if (state.isComponentDisabled) {
+                                  pickDom.pickContentElement.style.setProperty("background-color", "transparent");
+                                } else {
                                     if (state.isOptionDisabled){
                                         pickDom.pickContentElement.style.setProperty("background-color", "Pink");
                                     } else {
                                         pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
                                     }
+                                }
+                            }
+                            return {
+                                updateDisabled(state){
+                                    setBackground(state)
                                 },
                                 updateComponentDisabled(state){
-                                    if (state.isComponentDisabled) {
-                                        pickDom.pickContentElement.style.setProperty("background-color", "transparent");
-                                    }
-                                    else {
-                                        if (state.isOptionDisabled){
-                                            pickDom.pickContentElement.style.setProperty("background-color", "Pink");
-                                        } else {
-                                            pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
-                                        }
-                                    }
+                                    setBackground(state)
                                 }
                             }
                         }
@@ -134,7 +132,7 @@
 
         <!-- <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@0.6.8/dist/js/BsMultiSelect.js"></script>  -->
                     
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.8/dist/js/BsMultiSelect.min.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.9/dist/js/BsMultiSelect.min.js"></script> 
         <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
         <script>
@@ -219,25 +217,23 @@
                             if (option.text.startsWith("A")|| option.text.startsWith("a")) 
                             {
                                 pickDom.pickContentElement.style.backgroundColor = 'HotPink';
-                                return {
-                                    updateDisabled(state){
+                                var setBackground = function(state){
+                                    if (state.isComponentDisabled) {
+                                        pickDom.pickContentElement.style.setProperty("background-color", "transparent");
+                                    } else {
                                         if (state.isOptionDisabled){
                                             pickDom.pickContentElement.style.setProperty("background-color", "Pink");
                                         } else {
                                             pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
                                         }
+                                    }
+                                }
+                                return {
+                                    updateDisabled(state){
+                                        setBackground(state)
                                     },
                                     updateComponentDisabled(state){
-                                        if (state.isComponentDisabled) {
-                                            pickDom.pickContentElement.style.setProperty("background-color", "transparent");
-                                        }
-                                        else {
-                                            if (state.isOptionDisabled){
-                                                pickDom.pickContentElement.style.setProperty("background-color", "Pink");
-                                            } else {
-                                                pickDom.pickContentElement.style.setProperty("background-color", "HotPink");
-                                            }
-                                        }
+                                        setBackground(state)
                                     }
                                 }
                             }
