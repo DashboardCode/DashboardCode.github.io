@@ -40,31 +40,18 @@
             <p class="mt-5"><b>Modern browsers only.</b> The BsMultiSelect doesn't require jQuery. Still
                 if you use jQuery you would like that BsMultiSelect continue to publish its events ('change' and 'dashboardcode.multiselect:change') through jQuery, using jQuery `trigger`, see
                 in comments how to setup it.</p>
-            <pre class="prettyprint lang-html linenums:1">
-// attach and dispose BsMultiSelect on buttons #btnAttach and #btnDispose clicks
+<pre class="prettyprint lang-html linenums:1">
 &lt;script type="module"&gt;
     import Popper from "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/esm/popper.min.js"
     import {ModuleFactory as dashboardCodeFactory} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.14/dist/js/BsMultiSelect.bs4.esm.min.js"
-    var languagesElement = document.querySelector('#languages-id');
-    var bsMultiSelect = null;
 
-    document.querySelector('#btnAttach').onclick = function(){
-       if (!bsMultiSelect){
-          var environment = {window, Popper};
-          // add this if you want to trigger events through JQuery events 
-          // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
-          let dashboardCode = dashboardCodeFactory(environment);
-          bsMultiSelect = dashboardCode.BsMultiSelect(languagesElement,  {placeholder: "placeholder"}); 
-          // dashboardCode.BsMultiSelect.Default - access to default BsMultiSelect settings
-       }
-    };
+    var environment = {window, Popper};
+    // add this if you want to trigger events through JQuery events 
+    // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
+    let dashboardCode = dashboardCodeFactory(environment);
+    var bsMultiSelect = dashboardCode.BsMultiSelect(('#languages-id',  {placeholder: "placeholder"}); 
+    // dashboardCode.BsMultiSelect.Default - access to default BsMultiSelect settings
 
-    document.querySelector('#btnDispose').onclick = function() {
-        if (bsMultiSelect){
-            bsMultiSelect.dispose();
-            bsMultiSelect= null;
-        }  
-    };
  &lt;/script&gt;</pre>
         </div>
         
