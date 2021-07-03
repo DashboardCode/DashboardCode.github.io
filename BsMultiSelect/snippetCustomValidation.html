@@ -134,7 +134,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
         
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.14/dist/js/BsMultiSelect.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.15/dist/js/BsMultiSelect.min.js"></script>
         <!--  <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
 	    <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
         
@@ -144,37 +144,51 @@
             function isValid(selectElement){
                 return $(selectElement).children("option[value='QY']:selected").length==0; 
             }
+
             function setValidity(selectElement){
                 if (isValid(selectElement))
                     $(selectElement).removeClass('is-invalid').addClass('is-valid')
                 else
                     $(selectElement).removeClass('is-valid').addClass('is-invalid')
             }
+
+            $(function(){
+                setValidationMethod($('#bs-validation-id').get(0).value);
+                setFeedbackMethod($('#bs-feedback-method-id').get(0).value);
+            }); // browser history backward support
+
             $('#languages-id, #complex-languages-id').bsMultiSelect().change(
                 function(){
-                    console.log("change");
                     if (isValidationEnabled){
-                        setValidity(this)
+                        setValidity(this);
                         $(this).bsMultiSelect('UpdateValidity');
                     }
                 }
             );
 
             $('#bs-validation-id').change(function() {
+                setValidationMethod(this.value); 
+            });
+
+            $('#bs-feedback-method-id').change(function() {
+                setFeedbackMethod(this.value);
+            })
+
+            function setValidationMethod(validationMethod) {
                 var $all = $('#languages-id, #complex-languages-id, #sample-complex-id, #sample-id');
-                if (this.value == 'DF') {
+                if (validationMethod == 'DF') {
                     $all.removeClass('is-valid is-invalid')
                     isValidationEnabled=false;
-                } else if (this.value == 'VL') {
+                } else if (validationMethod == 'VL') {
                     $all.removeClass('is-invalid').addClass('is-valid')
                     isValidationEnabled=false;
-                } else if (this.value == 'INVL') {
+                } else if (validationMethod == 'INVL') {
                     $all.removeClass('is-valid').addClass('is-invalid')
                     isValidationEnabled=false;
-                } else if (this.value == 'NOQY') {
+                } else if (validationMethod == 'NOQY') {
                     isValidationEnabled=true;
-                    $all.removeClass('is-valid is-invalid')
-                    $('#languages-id, #complex-languages-id').each( function(i,element){
+                    $all.removeClass('is-valid is-invalid');
+                    $('#languages-id, #complex-languages-id').each( function(i, element){
                         setValidity(element)
                     })
                 }
@@ -185,19 +199,19 @@
                 var $inputGroup = $('#sample-complex-id').closest('.input-group');
                 var $valid = $inputGroup.siblings('.valid-feedback, .valid-tooltip');
                 var $invalid = $inputGroup.siblings('.invalid-feedback, .invalid-tooltip');
-                if (this.value == 'DF' || this.value == 'NOQY' ) {
+                if (validationMethod == 'DF' || validationMethod == 'NOQY' ) {
                     $valid.add($invalid).css('display','');
-                } else if (this.value == 'VL') {
+                } else if (validationMethod == 'VL') {
                     $valid.css('display','block');
                     $invalid.css('display','');
-                } else if (this.value == 'INVL') {
+                } else if (validationMethod == 'INVL') {
                     $valid.css('display','');
                     $invalid.css('display','block');
                 }
-            });
+            }
 
-            $('#bs-feedback-method-id').change(function() {
-                if (this.value == 'TL') {
+            function setFeedbackMethod(feedbackMethod) {
+                if (feedbackMethod == 'TL') {
                     $('.valid-feedback').parent().addClass('position-relative')
                     $('.valid-feedback').removeClass('valid-feedback').addClass('valid-tooltip')
                     $('.invalid-feedback').removeClass('invalid-feedback').addClass('invalid-tooltip')
@@ -206,7 +220,7 @@
                     $('.valid-tooltip').removeClass('valid-tooltip').addClass('valid-feedback')
                     $('.invalid-tooltip').removeClass('invalid-tooltip').addClass('invalid-feedback')
                 }
-            })
+            }
         </script>
     </body>
 </html>

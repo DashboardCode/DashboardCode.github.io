@@ -131,7 +131,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
         
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.14/dist/js/BsMultiSelect.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.15/dist/js/BsMultiSelect.min.js"></script>
         <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script>  -->
 	    <!-- <script src="./../../BsMultiSelect/dist/js/BsMultiSelect.js"></script> -->
 
@@ -140,16 +140,21 @@
             $bsMultiSelects.bsMultiSelect({useCssPatch:true});
 
             $('#toggle-wasvalidated-id').change(function() {
-                $('form').toggleClass('was-validated');
+                $('form').toggleClass('was-validated',this.checked);
                 //there are no observers inside bsMultiSelect so you should push changes to BsMultiSelect
                 $bsMultiSelects.bsMultiSelect('UpdateWasValidated');
 
                 // input-group over input support (BS4 bug, nothing common with BsMultiSelect, you can remove it)
                 supportValidationMsgOnInputGroupWithInput(this.checked);
             });
+            $(function(){
+                $('form').toggleClass('was-validated',$('#toggle-wasvalidated-id').get(0).checked);
+                $bsMultiSelects.bsMultiSelect('UpdateWasValidated');
+            }) // browser history backward support
 
             // input-group over input support (BS4 bug, nothing common with BsMultiSelect, you can remove it)
-            supportValidationMsgOnInputGroupWithInput($('#toggle-wasvalidated-id').prop('checked'));
+            $(function(){supportValidationMsgOnInputGroupWithInput($('#toggle-wasvalidated-id').prop('checked'));}) // browser history backward support
+
             function supportValidationMsgOnInputGroupWithInput(checked){
                 var $inputGroup = $('#input-group-input-sample');
                 var $input = $inputGroup.find('input');
