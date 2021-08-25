@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
         
         <!-- <link rel="stylesheet" href="./../../BsMultiSelect/dist/css/BsMultiSelect.css"> -->
         <title>DashboardCode Multiselect Plugin for Bootstrap 5</title>
@@ -19,7 +19,7 @@
             }
         </style>
     </head>
-    <body class="bg-light">
+    <body >
         <a href="https://github.com/DashboardCode/BsMultiSelect"><img width="149" height="149" 
            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" 
             alt="Fork me on GitHub" data-bs-recalc-dims="1"
@@ -104,11 +104,12 @@ $multiSelects.bsMultiSelect(
             <div id="darkly-alert" class="alert alert-warning" role="alert" style="display: none;">
                 <button class="btn btn-primary mr-2 blink_me" onclick="window.adjust('DR')">Apply</button>    Bootswatch <a href="https://bootswatch.com/darkly/">Darkly</a> theme applied; additional adjusting is required. 
 <pre class="mt-2 prettyprint lang-js linenums:1">
+    // extrimely strange theme for BS5: "input fields" are dark; when disabled are grey. 
 // adjusting through cssPatch; altiernatively you can change values in BsMultiSelect.css (or link BsMultiSelect.scss)
 $multiSelects.bsMultiSelect(
     cssPatch: {
         picks_disabled: {backgroundColor:"rgb(235, 235, 235)"},
-        pickButton: {filter: invert(1)},
+        pickButton: {filter: invert(.5)},
         picks_focus: {borderColor: '#739ac2', boxShadow: '0 0 0 0.2rem rgba(55, 90, 127, 0.25)'}
     }
 );    
@@ -695,18 +696,18 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
         <!-- add polyfills to support popper 2 in IE1 -->
         <script src="https://polyfill.io/v3/polyfill.min.js?features=CustomEvent,Array.prototype.find,Promise,Object.assign"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
         <!-- <script src="https://rawgit.com/DashboardCode/BsMultiSelect/master/dist/js/BsMultiSelect.min.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.15/dist/js/BsMultiSelect.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.16/dist/js/BsMultiSelect.min.js"></script>
         
         <script>
             var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
-            var bsMultiSelectLink = 'https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.15/dist/css/BsMultiSelect.min.css';
+            var bsMultiSelectLink = 'https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.16/dist/css/BsMultiSelect.min.css';
 
             var $selectMultiSelects = $("#edit-StatesPp-id, select[multiple='multiple']");
             var $jsonMultiSelects = $(" #bsMultiSelectJson, #bsMultiSelectJson2");
@@ -753,7 +754,7 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                 } else if (theme=='DR'){
                     window.cssPatch = { 
                         picks_disabled: {backgroundColor:"rgb(235, 235, 235)"},
-                        pickButton: {filter: 'invert(1)'},
+                        pickButton: {filter: 'invert(.5)'},
                         picks_focus: {borderColor: '#739ac2', boxShadow: '0 0 0 0.2rem rgba(55, 90, 127, 0.25)'}
                     }
                 }
@@ -908,10 +909,10 @@ $('#myDropdown').on('hide.bs.dropdown', function (jqEvent) {
                 $('.alert').hide();
                 window.cssPatch = null;
                 if (style=="DF"){
-                    loadCss('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css')
+                    loadCss('https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css')
                 }
 		        if (style=="BS"){
-                    loadCss('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', bsMultiSelectLink)
+                    loadCss('https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css', bsMultiSelectLink)
                 }
                 else if (style == "SK"){
                     loadCss('https://bootswatch.com/5/sketchy/bootstrap.css')
