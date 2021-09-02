@@ -45,7 +45,7 @@
     import {createPopper} from "https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.0/dist/esm/popper.min.js"
     import {ModuleFactory as dashboardCodeFactory} from "https://cdn.jsdelivr.net/npm/@dashboardcode/bsmultiselect@1.1.17/dist/js/BsMultiSelect.esm.min.js"
 
-    var environment = {window, Popper};
+    var environment = {window, createPopper};
     // add this if you want to trigger events through JQuery events 
     // environment.trigger = (element,eventName) => $(element).trigger(eventName); 
     let dashboardCode = dashboardCodeFactory(environment);
