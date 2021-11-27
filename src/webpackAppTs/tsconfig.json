@@ -1,0 +1,15 @@
+{
+    //"include": ["../src/**/*.ts"],
+    //"exclude": ["../**/*.test.ts"],
+    "compilerOptions": {
+      "target": "es5",
+      "moduleResolution": "node" ,
+    //   "lib": ["dom", "es2017"],
+    //   "moduleResolution": "node",
+      "module": "es2015",
+    //   "removeComments": false,
+    //   "declaration": true,
+    //   "emitDeclarationOnly": true,
+    //   "outDir": "lib"
+    }
+  }
